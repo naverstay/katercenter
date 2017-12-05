@@ -1,0 +1,246 @@
+
+mixin dev_head(page_title, index, news, search, product, lk, cart)
+    head
+        title= page_title
+        |
+        | <!-- saved from url=(0014)about:internet -->
+        meta(charset='utf-8')
+        meta(name='viewport', content="width=device-width, initial-scale=1.0")
+        meta(name="SKYPE_TOOLBAR", content="SKYPE_TOOLBAR_PARSER_COMPATIBLE")
+        meta(name="apple-mobile-web-app-capable", content="yes")
+        meta(name="format-detection", content="telephone=no")
+        |
+        | <!--build:css css/styles.min.css-->
+        link(rel='stylesheet', href='css/main_global.css', media='all')
+        |
+        | <!--endbuild-->
+
+        |
+        | <!--build:js js/main.min.js -->
+        script(src='js/lib/jquery-1.12.1.min.js')
+        script(src='js/lib/jquery-ui-1.11.4.js')
+        script(src='js/lib/jquery.backstretch.min.js')
+        script(src='js/lib/jquery.sticky-kit.min.js')
+        script(src='js/lib/jquery.inputmask.bundle.js')
+        script(src='js/lib/skrollr.js')
+        script(src='js/lib/select2.js')
+        script(src='js/main.js')
+        |
+        | <!--endbuild-->
+        - if (index)
+            |
+            | <!--build:js js/index.min.js -->
+            script(src='js/index.js')
+            |
+            | <!--endbuild-->
+        - if (news)
+            |
+            | <!--build:js js/news.min.js -->
+            script(src='js/lib/imagesloaded.pkgd.min.js')
+            script(src='js/lib/isotope.pkgd.min.js')
+            script(src='js/lib/packery-mode.pkgd.js')
+            script(src='js/news.js')
+            |
+            | <!--endbuild-->
+
+        - if (cart)
+            |
+            | <!--build:js js/cart.min.js -->
+            script(src='js/cart.js')
+            |
+            | <!--endbuild-->
+
+
+mixin loop_while(counter)
+    -i=0;
+    while i < counter
+        -i++;
+        block
+
+mixin header(active)
+    .header_bg.bs
+        img(src='./images/hero_1.jpg')
+    div.header
+        .header_bg_w: .header_bg.bs
+            img(src='./images/hero_1.jpg')
+
+        .section_inner
+            .header_menu
+                a.mob_menu_btn.openMobMenu(href='#')
+                    span
+                .logo_block
+                    a.logo(href='index.html')
+                        span Kater&nbsp;&nbsp;Center
+                        img.logo_decor(src='./images/decor_wave_2.svg')
+                a.mob_menu_btn(href='#')
+                    span
+
+                .callback_block
+                    a.tel_link(href='tel:+79262862116') +7 926 286-21-16
+                    a.callback_btn(href='#')
+                        span Обратный звонок
+
+            .header_nav
+                ul.main_menu
+                    li
+                        +menu_link((active === 1 ? '_active' : ''), 'delivery.html', 'Доставка')
+                    li
+                        +menu_link((active === 2 ? '_active' : ''), 'survey.html', 'Сюрвей')
+                    li
+                        +menu_link((active === 3 ? '_active' : ''), 'accessories.html', 'Аксессуары')
+                    li
+                        +menu_link((active === 4 ? '_active' : ''), 'articles.html', 'Статьи')
+
+
+
+mixin menu_link(cls, ref, txt)
+    - if (cls && cls.length)
+        span.menu_link(class= cls)= txt
+    - else
+        a.menu_link(href= ref)= txt
+
+mixin footer()
+    .footer
+        .section_inner.clearfix
+            .footer_logo
+                a.logo(href='index.html')
+                    span Kater<br>Center
+                    img.logo_decor(src='./images/decor_wave_2.svg')
+
+            .footer_slogan Катера<br>из европы
+
+            .footer_info
+                p Крупшейшая база данных по продаже поддержанныех катеров со стационарным и подвесными двигателями, моторных лодок и трейлеров для лодок.
+
+            ul.footer_contacts
+                li
+                    a.gl_link(href='tel:+79262862116') +7 926 286-21-16
+
+
+mixin breadcrumbs(list)
+    ul.breadcrumbs
+        for item, i in list
+            li.breadcrumb_item
+                - if (i == list.length - 1)
+                    span=item
+                - else
+                    a.gl_link(href= item == 'Главная' ? 'index.html' : (item == 'Каталог' ? 'catalog.html' : 'products.html'))=item
+
+mixin popups()
+    .popup_close_btn.popupClose
+
+    #review_popup.popup.popup_v5
+        .popup_inner
+            .prod_review
+                .prod_review_photos
+                    h3 Топ и брючки тонкой вязки
+                    .fotorama(data-thumbwidth=60, data-thumbheight=60, data-height=340, data-nav="thumbs", data-thumbmargin=3)
+                        .prod_review_img.product_img(data-thumb='images/preview_small_1.jpg')
+                            img(src='images/preview_main_1.jpg')
+                            .product_hit Хит продаж
+                        .prod_review_img.product_img(data-thumb='images/preview_small_2.jpg')
+                            img(src='images/preview_main_1.jpg')
+                            .product_hit Хит продаж
+                        .prod_review_img.product_img(data-thumb='images/preview_small_3.jpg')
+                            img(src='images/preview_main_1.jpg')
+                            .product_hit Хит продаж
+
+    #callback_popup.popup.popup_v2
+        .popup_inner
+            ul#callback_switcher.tab_holder.tab_v1
+                li: a.tab_link(href='#callback_tab_1'): span Перезвоните мне
+                li: a.tab_link(href='#callback_tab_2'): span Задать вопрос
+
+            .tabBlock(data-tab-context='#callback_switcher')
+                #callback_tab_1
+                    .tab_content
+                        form(action='#')
+                            .form_cell
+                                input.f_input.input_v2(placeholder='Имя')
+
+                            .form_cell
+                                input.f_input.input_v2(placeholder='Телефон' data-inputmask="'mask': '[+7] (999)-999-99-99'")
+
+                            .form_cell
+                                button.btn_v1.blue_btn.order_btn Отправить заявку
+
+                #callback_tab_2
+                    .tab_content
+                        form(action='#')
+                            .form_cell
+                                input.f_input.input_v2(placeholder='Имя')
+
+                            .form_cell
+                                input.f_input.input_v2(placeholder='Телефон' data-inputmask="'mask': '[+7] (999)-999-99-99'")
+
+                            .form_cell
+                                textarea.f_input.input_v2(placeholder='Вопрос')
+
+                            .form_cell
+                                button.btn_v1.blue_btn.order_btn Отправить вопрос
+
+    #fail_popup.popup.popup_v3.popup_fail
+        .popup_inner.form_cell_v1
+            .popup_caption Ошибка
+            .popup_msg Вы указали почту, которой нет.  <br>  Попробуйте еще раз
+
+            .form_cell
+                a.btn_v1.blue_btn.order_btn.mod_2(href='#') Попробовать еще раз
+                a.gl_link.popupClose(href='#') Закрыть
+
+    #success_popup.popup.popup_v3.popup_success
+        .popup_inner.form_cell_v1
+            .popup_caption Успех!
+            .popup_msg Новый пароль отправлен на вашу почту. Откройте письмо и пройдите по ссылке
+
+            .form_cell
+                button.btn_v1.blue_btn.order_btn.mod_3.popupClose Закрыть
+
+    #recovery_popup.popup.popup_v3
+        .popup_inner.form_cell_v1
+            .popup_caption Восстановление пароля
+            form(action='#')
+                .form_cell
+                    input.f_input.input_v2(placeholder='Email' value='mysweetmail@gmail.com')
+
+                .form_cell
+                    button.btn_v1.blue_btn.order_btn.mod_2 Выслать новый пароль
+
+    #auth_popup.popup.popup_v3
+        .popup_inner
+            ul.tab_holder.tab_v2
+                li.ui-state-active: span.tab_link(href='#'): span Вход
+                li: a.tab_link(href='#auth_tab_2'): span Зарегистрироваться
+
+            .tab_content
+                form(action='#')
+                    .form_cell
+                        input.f_input.input_v2(placeholder='Email')
+
+                    .form_cell
+                        input.f_input.input_v2(placeholder='пароль')
+
+                    .form_cell
+                        a.gl_link.cool_text.fz_13.fw_500.passRecoveryBtn(href='#') Забыли пароль?
+
+                    .form_cell
+                        button.btn_v1.blue_btn.order_btn Войти
+
+                    .alter_auth
+                        p Войти через:
+                        ul.about_list
+                            li
+                                a.about_link(href='#')
+                                    span.i-v
+                            li
+                                a.about_link(href='#')
+                                    span.i-f
+                            li
+                                a.about_link(href='#')
+                                    span.i-t
+                            li
+                                a.about_link(href='#')
+                                    span.i-o
+                            li
+                                a.about_link(href='#')
+                                    span.i-g

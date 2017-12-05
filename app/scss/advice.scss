@@ -1,0 +1,186 @@
+.advice_section {
+  background: #f5f5f5;
+  position: relative;
+}
+
+.advice_block {
+  padding: 80px 0 67px;
+  position: relative;
+}
+
+.advice_caption {
+  position: relative;
+  text-align: center;
+  color: #000;
+  font: 24px/32px $MontserratBold;
+  padding-bottom: 40px;
+  max-width: 620px;
+  margin: 0 auto;
+  letter-spacing: .07em;
+}
+
+.adv_decor {
+  position: absolute;
+
+  img {
+    display: block;
+    width: 100%;
+  }
+
+  &._dec-bird-1 {
+    //left: 290px;
+    top: 48px;
+    left: 23.2%;
+  }
+
+  &._dec-bird-2 {
+    bottom: 33px;
+    right: 53px;
+  }
+
+  &._dec-cloud-1 {
+    //right: 170px;
+    right: 13.5%;
+    top: 48px;
+  }
+
+  &._dec-cloud-2 {
+    //left: 150px;
+    top: 108px;
+    left: 12%;
+  }
+
+  &._dec-wave-2 {
+    right: 13%;
+    bottom: 15px;
+  }
+
+  &._dec-wave-1 {
+    bottom: 65px;
+    left: 34.5%;
+
+    &:before {
+      content: '';
+      position: absolute;
+      width: 108px;
+      height: 4px;
+      bottom: 0;
+      right: 100%;
+      background: $gl_blue;
+    }
+  }
+
+  &._dec-wave-3 {
+    bottom: 71px;
+    left: 55.5%;
+
+    &:before {
+      content: '';
+      position: absolute;
+      width: 108px;
+      height: 4px;
+      bottom: 0;
+      right: 100%;
+      background: $gl_blue;
+    }
+  }
+
+}
+
+.advice_consultant_block {
+  float: left;
+  width: 50%;
+  text-align: center;
+  position: relative;
+
+  @include respond-to-min($resp_s) {
+    text-align: right;
+    padding-bottom: 150px;
+
+    &._right {
+      text-align: left;
+    }
+  }
+
+  @include respond-to-min($resp_xl) {
+    width: 25%;
+
+    &._left {
+      padding-right: 15px;
+    }
+
+    &._right {
+      float: right;
+      padding-left: 15px;
+    }
+  }
+}
+
+.advice_consultant_info {
+  display: inline-block;
+  vertical-align: top;
+  text-align: center;
+
+  @include respond-to-min($resp_xl) {
+    display: block;
+    padding-top: 24px;
+  }
+}
+
+.advice_consultant_photo {
+  margin-bottom: 8px;
+
+  img {
+    display: inline-block;
+    vertical-align: top;
+  }
+}
+
+.advice_consultant_name {
+  color: #000;
+  font: 18px/25px $LedgerRegular;
+  margin-bottom: 1px;
+}
+
+.advice_form_holder {
+  padding: 0 5px;
+
+  @include respond-to-min($resp_xl) {
+    float: left;
+    width: 50%;
+  }
+}
+
+.advice_form {
+  background: #fff;
+}
+
+.advice_form_cell {
+  border-top: 1px solid #f6f6f6;
+
+  &:first-child {
+    border-top: 0;
+  }
+
+  @include respond-to-min($resp_s) {
+    &._half {
+      float: left;
+      width: 50%;
+
+      + ._half {
+        border-left: 1px solid #f6f6f6;
+      }
+    }
+  }
+}
+
+.advice_consultant_contacts {
+  li {
+    margin-bottom: -4px;
+  }
+
+  .gl_link {
+    color: #000;
+    font: 12px/20px $MontserratBold;
+  }
+}

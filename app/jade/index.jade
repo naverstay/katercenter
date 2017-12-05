@@ -1,0 +1,240 @@
+include mixins.pug
+doctype html
+html(lang='ru')
+    +dev_head("Kater Главная", true)
+
+    body.wide_menu
+        .rect_1024
+        .wrapper
+            .base
+                +header(1)
+
+                .filter_section
+                    .section_inner
+                        .filter_block
+                            .filter_decoration
+                                .filter_decor._dec-bird(
+                                data-0-top-top='transform: scale(.5) translate(0, 200px); opacity: 0;'
+                                data-120-top-top='transform: scale(1) translate(0, 0px); opacity: 1;'
+                                )
+                                    img(src='./images/decor_bird.svg')
+                                .filter_decor._dec-cloud(
+                                data-0-top-top='transform: scale(.5) translate(0, 200px); opacity: 0;'
+                                data-120-top-top='transform: scale(1) translate(0, 0px); opacity: 1;'
+                                )
+                                    img(src='./images/decor_cloud.svg')
+                                .filter_decor._dec-wave-1(
+                                data-300-top-top='transform: scale(.5) translate(0, 200px); opacity: 0;'
+                                data-420-top-top='transform: scale(1) translate(0, 0px); opacity: 1;'
+                                )
+                                    img(src='./images/decor_wave_2.svg')
+                                .filter_decor._dec-wave-2(
+                                data-300-top-top='transform: scale(.5) translate(0, 200px); opacity: 0;'
+                                data-420-top-top='transform: scale(1) translate(0, 0px); opacity: 1;'
+                                )
+                                    img(src='./images/decor_wave_2.svg')
+                                .filter_decor._dec-wave-3(
+                                data-300-top-top='transform: scale(.5) translate(0, 200px); opacity: 0;'
+                                data-420-top-top='transform: scale(1) translate(0, 0px); opacity: 1;'
+                                )
+                                    img(src='./images/decor_wave_2.svg')
+
+                            .filter_title(
+                                data-0-top-top='transform: scale(.8) translate(0, 200px); opacity: 0;'
+                                data-120-top-top='transform: scale(1) translate(0, 0px); opacity: 1;'
+                                ) Катера из Европы
+
+                            .filter_wrapper.sticky(data-margin-top='100' data-sticky-class='_stuck')
+                                .filter_tabs
+                                    .section_inner
+
+                                .filter_box
+                                    .section_inner
+
+                            .filter_banner(
+                            data-120-top-top='transform: scale(.8) translate(0, 200px); opacity: 0;'
+                            data-220-top-top='transform: scale(1) translate(0, 0px); opacity: 1;'
+                            )
+                                img(src='./images/adv.jpg')
+
+                .main_content
+                    .section_inner.clearfix
+                        .main_block
+                            .ad_title.clearfix
+                                .fl
+                                    span.ff_mon_b 2070
+                                    span  объявлений
+                                .fr
+                                    .sort_block
+                                        span.fl Сортировка:
+                                        span.select_box_v1.fl
+                                            select.select2
+                                                option По цене
+                                                option По дате
+
+                            ul.ad_list.clearfix
+                                +loop_while(6)
+                                    li
+                                        .ad_unit
+                                            .ad_photo.bs
+                                                .ad_photo_year 2012
+                                                a.ad_unit_more(href='#')
+                                                img(src='./images/kater_1.jpg')
+                                            .ad_info
+                                                .ad_info_name LINSSEN YACHTS LINSSEN 439 SEDAN
+                                                .ad_info_price 26 686 000 руб.
+                                                .ad_info_old_price 395 000 €
+                                                .ad_info_options
+                                                    span Нидерланды –
+                                                    span.ff_mon_r 2х345 cv
+                                                    span  - Дизель
+                                    li
+                                        .ad_unit
+                                            .ad_photo.bs
+                                                .ad_photo_year 2017
+                                                a.ad_unit_more(href='#')
+                                                img(src='./images/kater_1.jpg')
+                                            .ad_info
+                                                .ad_info_name PRESTIGE PRESTIGE 630
+                                                .ad_info_price 112 220 000 руб.
+                                                .ad_info_old_price 1 650 000 €
+                                                .ad_info_options
+                                                    span Нидерланды –
+                                                    span.ff_mon_r 2х345 cv
+                                                    span  - Дизель
+                                    li
+                                        .ad_unit
+                                            .ad_photo.bs
+                                                .ad_photo_year 2017
+                                                a.ad_unit_more(href='#')
+                                                img(src='./images/kater_1.jpg')
+                                            .ad_info
+                                                .ad_info_name PRINCESS YACHTS PRINCESS V53
+                                                .ad_info_price 112 220 000 руб.
+                                                .ad_info_old_price 1 650 000 €
+                                                .ad_info_options
+                                                    span Нидерланды –
+                                                    span.ff_mon_r 2х345 cv
+                                                    span  - Дизель
+
+                            ul.ad_list_pagination
+                                li._first
+                                    a.btn_v1.pagination_btn.btn_gray(href='#')
+                                        span.i-chevron-left
+                                li
+                                    span.btn_v1.pagination_btn.btn_gray._active() 1
+                                li
+                                    a.btn_v1.pagination_btn.btn_gray(href='#') 2
+                                li
+                                    a.btn_v1.pagination_btn.btn_gray(href='#') 3
+                                li
+                                    a.btn_v1.pagination_btn.btn_gray(href='#') 4
+                                li
+                                    span.btn_v1.pagination_btn.btn_gray() ...
+                                li
+                                    a.btn_v1.pagination_btn.btn_gray(href='#') 24
+                                li._last
+                                    a.btn_v1.pagination_btn.btn_gray(href='#')
+                                        span.i-chevron-right
+
+                        .aside._title_space
+                            ul.aside_ads
+                                li
+                                    .ad_box.text_center
+                                        .ad_box_decor
+                                            .ad_infinity._left
+                                            .ad_infinity._right
+                                            .ad_bird
+                                                img(src='./images/ad_bird.svg')
+                                        .ad_box_title
+                                            span -&nbsp;20%
+                                            .ad_box_wave
+                                                img(src='./images/wave_light_blue.svg')
+                                        .ad_box_counter До лета осталось 243 дня.
+                                        .ad_box_tip Время задуматься о катере!
+                                        a.ad_box_more(href='#') Подробнее
+
+                                li
+                                    .ad_box
+                                        .ad_box_recommend
+                                            span.ff_mon_b Kater Center<br>
+                                            span рекомендует
+                                        ul.ad_box_links
+                                            li: a.ad_box_link(href='#') Selected boats
+                                            li: a.ad_box_link(href='#') Trade-in possible
+                                            li: a.ad_box_link(href='#') Guarantee
+                                            li: a.ad_box_link(href='#') Insurance
+
+
+
+
+
+
+                .advice_section
+                    .section_inner
+                        .advice_block.clearfix
+                            .advice_caption
+                                span Получите индивидуальную консультацию по&nbsp;выбору&nbsp;катера
+                                span.adv_decor._dec-bird-2
+                                    img(src='./images/decor_bird.svg')
+
+                            .adv_decor._dec-cloud-1
+                                img(src='./images/decor_cloud.svg')
+                            .adv_decor._dec-cloud-2
+                                img(src='./images/decor_cloud.svg')
+                            .adv_decor._dec-bird-1
+                                img(src='./images/decor_bird.svg')
+
+                            .advice_consultant_block._left
+                                .adv_decor._dec-wave-1.mob_hidden
+                                    img(src='./images/decor_wave_2.svg')
+                                .adv_decor._dec-wave-2.mob_hidden
+                                    img(src='./images/decor_wave_2.svg')
+                                .advice_consultant_info
+                                    .advice_consultant_photo
+                                        img(src='./images/anton.png')
+                                    .advice_consultant_name Антон
+                                    ul.advice_consultant_contacts
+                                        li: a.gl_link(href='mailto:stas@katercenter.ru') stas@katercenter.ru
+                                        li: a.gl_link(href='tel:+79151337988') +7 915 133-79-88
+
+                            .advice_consultant_block._right
+                                .adv_decor._dec-wave-3.mob_hidden
+                                    img(src='./images/decor_wave_2.svg')
+                                .advice_consultant_info
+                                    .advice_consultant_photo
+                                        img(src='./images/stas.png')
+                                    .advice_consultant_name Стас
+                                    ul.advice_consultant_contacts
+                                        li: a.gl_link(href='mailto:stas@katercenter.ru') stas@katercenter.ru
+                                        li: a.gl_link(href='tel:+79151337988') +7 915 133-79-88
+
+                            .advice_form_holder
+                                form(action='#')
+                                    .advice_form
+                                        .advice_form_cell
+                                            label.f_label.label_v1(for='contact_name') Ваше имя
+                                            .input_w
+                                                input#contact_name.f_input.input_v1(placeholder='Заполнтие поле')
+                                        .advice_form_cell._half
+                                            label.f_label.label_v1(for='contact_email') Электронная почта
+                                            .input_w
+                                                input#contact_email.f_input.input_v1(placeholder='Заполнтие поле')
+                                        .advice_form_cell._half
+                                            label.f_label.label_v1(for='contact_phone') телефон
+                                            .input_w
+                                                input#contact_phone.f_input.input_v1(placeholder='+7 (___) ___-__-__' data-inputmask="'mask': '[+7] (999) 999-99-99'")
+                                        .advice_form_cell.cb
+                                            label.f_label.label_v1(for='contact_comment') Комментарий
+                                            .input_w
+                                                textarea#contact_comment.f_input.input_v1(placeholder='Текст комментария')
+                                    .text_center
+                                        button.btn_v2.advice_btn.btn_blue
+                                            span.i-dove.btn_icon
+                                            span Отправить запрос
+
+
+            +footer()
+
+        +popups()
+

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="111px" height="10px" viewBox="0 0 111 10" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>wave</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Pages" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="1920---Главная" transform="translate(-651.000000, -520.000000)">
+            <g id="first-display">
+                <g id="Декор" transform="translate(629.000000, 113.000000)">
+                    <g id="wave" transform="translate(22.000000, 407.000000)">
+                        <path d="M63,8 C67.418278,8 71,4.418278 71,0" id="Oval" stroke="#1961C5" stroke-width="4"></path>
+                        <path d="M103,8 C107.418278,8 111,4.418278 111,0" id="Oval-Copy-4" stroke="#1961C5" stroke-width="4" transform="translate(107.000000, 4.000000) scale(-1, 1) translate(-107.000000, -4.000000) "></path>
+                        <path d="M71,0 C71,4.418278 74.581722,8 79,8 L79,8 C83.418278,8 87,4.418278 87,0" id="Oval-Copy" stroke="#1961C5" stroke-width="4"></path>
+                        <path d="M87,0 C87,4.418278 90.581722,8 95,8 L95,8 C99.418278,8 103,4.418278 103,0" id="Oval-Copy-2" stroke="#1961C5" stroke-width="4"></path>
+                        <rect id="Rectangle-5-Copy" fill="#1961C5" x="0" y="6" width="63" height="4"></rect>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

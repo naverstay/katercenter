@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="70px" height="26px" viewBox="0 0 70 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>cloud</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Pages" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="1920---Главная" transform="translate(-1203.000000, -111.000000)" stroke-width="4" stroke="#1961C5">
+            <g id="first-display">
+                <g id="Декор" transform="translate(629.000000, 113.000000)">
+                    <path d="M587,22 C580.924868,22 576,17.0751322 576,11 C576,4.92486775 580.924868,0 587,0 C593.075132,0 598,4.92486775 598,11 M598,11 C598,4.92486775 602.924868,0 609,0 C615.075132,0 620,4.92486775 620,11 M620,11 C620,4.92486775 624.924868,0 631,0 C637.075132,0 642,4.92486775 642,11 C642,16.622038 637.782349,21.2589908 632.338522,21.919383 C631.89979,21.9726057 631.453094,22 631,22 C626.949912,22 612.202985,22 586.759219,22" id="cloud"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

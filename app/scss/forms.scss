@@ -1,0 +1,91 @@
+.select_box_v1 {
+
+  .select2-container--default {
+
+    .select2-container {
+    }
+
+    .select2-selection__rendered {
+      font: 12px/25px $LedgerRegular;
+      color: #4a4a4a;
+      padding: 0 18px 0 0;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      margin-left: 20px;
+    }
+
+    .select2-selection__placeholder {
+
+    }
+
+    .select2-selection--single {
+      background: none;
+      border: none;
+
+      &:hover {
+        .select2-selection__arrow:before {
+          color: $gl_violette_link_hover;
+        }
+      }
+    }
+
+    .select2-selection__arrow {
+      @extend %icon_pseudo;
+
+      &:before {
+        @include transition_all(color .3s);
+        position: absolute;
+        font-size: 10px;
+        height: 12px;
+        top: 50%;
+        margin-top: -5px;
+        right: -2px;
+        content: $i-chevron-down;
+        color: $gl_blue;
+        transform-origin: 50% 50%;
+      }
+
+      b {
+        display: none;
+      }
+    }
+
+    &.select2-container--open {
+      .select2-selection__arrow {
+        @extend %icon_pseudo;
+
+        &:before {
+          content: $i-chevron-up;
+        }
+      }
+    }
+  }
+}
+
+.input_w {
+  position: relative;
+}
+
+.label_v1 {
+  display: block;
+  padding: 16px 16px 2px;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: #000;
+  font: 12px/18px $LucidaGrandeBold;
+}
+
+.f_input {
+  display: block;
+  width: 100%;
+
+  &.input_v1 {
+    padding: 5px 16px 12px;
+    height: 40px;
+    font: 12px/18px $LucidaGrandeRegular;
+
+    @at-root textarea#{&} {
+      height: 110px;
+    }
+  }
+}

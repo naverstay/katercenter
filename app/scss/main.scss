@@ -1,0 +1,393 @@
+html, body {
+  height: 100%;
+}
+
+html {
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+body {
+  font: 15px/24px $LucidaGrandeRegular;
+  color: $default_t_color;
+}
+
+.hide {
+  display: none !important;
+}
+
+.clearfix:before, .clearfix:after {
+  content: " ";
+  display: table;
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+.cb {
+  clear: both;
+}
+
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+.wrapper {
+  position: relative;
+  min-height: 100%;
+  overflow: hidden;
+
+  @include respond-to-min($resp_s) {
+    padding-top: 100px;
+  }
+
+  @include respond-to-min($resp_xxl) {
+
+  }
+}
+
+.base {
+  //padding-top: 60px;
+}
+
+.section_inner {
+  max-width: $content-max-w;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+
+.main_content {
+  padding: 24px 0 0;
+  background: #fff;
+  position: relative;
+  z-index: 1;
+  min-height: 1500px;
+
+  @include respond-to-min($resp_s) {
+
+  }
+}
+
+.main_block {
+
+  @include respond-to-min($resp_xl) {
+    float: left;
+    padding-right: 23px;
+    width: 75%;
+  }
+}
+
+.ad_list_pagination {
+  text-align: center;
+  margin-bottom: 60px;
+
+  li {
+    display: inline-block;
+    vertical-align: top;
+    padding: 0 2px;
+
+    &._first {
+      padding-right: 25px;
+
+      .pagination_btn {
+        border-radius: 100%;
+      }
+    }
+
+    &._last {
+      padding-left: 25px;
+
+      .pagination_btn {
+        border-radius: 100%;
+      }
+    }
+  }
+
+  @include respond-to-min($resp_xl) {
+    margin-bottom: 120px;
+  }
+}
+
+.ad_list {
+  margin-left: -40px;
+  padding-bottom: 40px;
+
+  @include respond-to-min($resp_xl) {
+    margin-right: -1%;
+  }
+
+  li {
+    margin-top: 40px;
+    padding-left: 40px;
+
+    @include respond-to-min($resp_s) {
+      width: 50%;
+      float: left;
+    }
+
+    @include respond-to-min($resp_xl) {
+      width: 33%;
+    }
+  }
+}
+
+.ad_unit {
+  height: 374px;
+  position: relative;
+}
+
+.ad_photo {
+  height: 210px;
+  position: relative;
+
+  &._backstretched {
+    > img {
+      display: none;
+    }
+  }
+}
+
+.ad_photo_year {
+  z-index: 1;
+  position: absolute;
+  top: 16px;
+  left: 14px;
+  color: #fff;
+  padding: 3px 14px 3px 8px;
+  background: $gl_blue;
+  font: 12px/18px $MontserratBold;
+  letter-spacing: -.01em;
+}
+
+.ad_unit_more {
+  @extend %icon_pseudo;
+  position: absolute;
+  right: 30px;
+  bottom: -12px;
+  width: 24px;
+  height: 24px;
+  font-size: 11px;
+  line-height: 26px;
+  text-align: center;
+  color: #fff;
+  background: $gl_blue;
+  border-radius: 100%;
+
+  &:before {
+    content: $i-chevron-right;
+  }
+}
+
+.ad_info {
+  padding: 15px 22px;
+  background: #f8f8f8;
+}
+
+.ad_info_name {
+  font: 12px/18px $MontserratBold;
+  color: #000;
+  height: 3em;
+  overflow: hidden;
+  margin-bottom: 1px;
+  letter-spacing: .025em;
+}
+
+.ad_info_price {
+  color: #000;
+  font: 18px/32px $LedgerRegular;
+}
+
+.ad_info_old_price {
+  color: #000;
+  opacity: .5;
+  font: 12px/17px $LedgerRegular;
+  margin-bottom: 15px;
+}
+
+.ad_title {
+  font: 24px/29px $LucidaGrandeBold;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #d8d8d8;
+}
+
+.ad_info_options {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: -.03em;
+  color: #878787;
+  padding-top: 16px;
+  border-top: 1px solid #dfdfdf;
+}
+
+.sort_block {
+  font: 12px/29px $LucidaGrandeRegular;
+  color: #5d5d5d;
+  padding-top: 3px;
+}
+
+.aside {
+  @include respond-to-min($resp_xl) {
+    float: right;
+    width: 23.8%;
+
+    &._title_space {
+      padding-top: 83px;
+    }
+  }
+}
+
+.aside_ads {
+
+  li {
+    margin-bottom: 40px;
+  }
+}
+
+.ad_box {
+  background: $gl_blue;
+  position: relative;
+  color: #fff;
+  padding: 20px 20px 10px;
+  min-height: 250px;
+}
+
+.ad_box_recommend {
+  font: 24px/31px $LucidaGrandeBold;
+  margin-bottom: 14px;
+  padding: 5px 0 22px;
+  letter-spacing: .025em;
+  position: relative;
+  background: url(../images/wave_light_blue.svg) no-repeat 0 100%;
+}
+
+.ad_bird {
+  position: absolute;
+  top: 0;
+  right: 97px;
+}
+
+.ad_box_decor {
+  position: relative;
+  height: 28px;
+}
+
+.ad_infinity {
+  position: absolute;
+  top: 0;
+  width: 48px;
+
+  &:after,
+  &:before {
+    content: '';
+    position: absolute;
+    border-radius: 100%;
+    width: 26px;
+    height: 26px;
+    border: 4px solid #84c2f1;
+    top: 0;
+  }
+
+  &:before {
+    left: 0;
+  }
+
+  &:after {
+    left: 22px;
+  }
+
+  &._left {
+    left: 8px;
+  }
+
+  &._right {
+    right: 10px;
+  }
+}
+
+.ad_box_title {
+  font: 48px/58px $MontserratBold;
+  text-align: center;
+  background: inherit;
+  position: relative;
+  margin: 0 12px 20px;
+  padding-right: 20px;
+  padding-bottom: 10px;
+  border-bottom: 4px solid #84c2f1;
+}
+
+.ad_box_counter {
+  font: 16px/24px $MontserratBold;
+  letter-spacing: .06em;
+}
+
+.ad_box_tip {
+  font: 18px/24px $LedgerRegular;
+  letter-spacing: .025em;
+  margin-bottom: 23px;
+}
+
+.ad_box_more {
+  display: inline-block;
+  vertical-align: top;
+  color: #fff;
+  font: 12px/15px $LucidaGrandeBold;
+}
+
+.ad_box_links {
+  background: url(../images/lifebuoy.svg) 93% 93% no-repeat;
+
+  li {
+    margin-bottom: -1px;
+  }
+}
+
+.ad_box_link {
+  color: #fff;
+  font: 14px/24px $MontserratSemiBold;
+}
+
+.ad_box_wave {
+  position: absolute;
+  bottom: -4px;
+  right: 0;
+  background: inherit;
+
+  img {
+    display: block;
+  }
+}
+
+.gl_link {
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+// **********  text
+
+.text_center {
+  text-align: center;
+}
+
+.text_right {
+  text-align: right;
+}
+
+.text_left {
+  text-align: left;
+}
+
+.text_upper {
+  text-transform: uppercase;
+}
