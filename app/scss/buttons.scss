@@ -1,14 +1,21 @@
 //************  buttons
 
 .btn_v1 {
-  height: 48px;
 
   &.pagination_btn {
     @extend %no-user-select;
     display: block;
     width: 48px;
     text-align: center;
-    font: 12px/46px $MontserratBold;
+    font: bold 12px/12px $Montserrat;
+    position: relative;
+    max-width: 100%;
+
+    &:before {
+      content: '';
+      display: block;
+      padding-bottom: 100%;
+    }
   }
 }
 
@@ -16,13 +23,15 @@
   height: 36px;
 
   &.advice_btn {
-    margin: 25px 0;
+    margin: 22px 0 26px;
     text-align: center;
+    width: 100%;
     display: inline-block;
     vertical-align: top;
     border-radius: 18px;
     padding: 0 21px;
-    font: 12px/36px $LucidaGrandeBold;
+    font: bold 12px/36px $Montserrat;
+    letter-spacing: .03em;
 
     span {
       display: inline-block;
@@ -35,13 +44,23 @@
       font-size: 18px;
       margin-right: 8px;
     }
+
+    @include respond-to-min($resp_s) {
+      margin: 25px 0;
+      width: auto;
+    }
   }
 }
 
 .btn_gray {
-  @include transition_all(background .3s);
+  @include transition_all(background .2s ease-in-out);
   color: #1a1a1a;
   border: 1px solid #dfdfdf;
+
+  &:hover {
+    color: $gl_blue;
+    border-color: transparentize($gl_blue, .7);
+  }
 
   &._active {
     cursor: default;
@@ -49,19 +68,14 @@
     background: #f5f5f5;
     border-color: #f5f5f5;
   }
-
-  &:hover {
-    background: #f5f5f5;
-  }
-
 }
 
 .btn_blue {
-  @include transition_all(background .3s);
+  @include transition_all(background .2s ease-in-out);
   color: #fff;
   background: $gl_blue;
 
   &:hover {
-    background: darken($gl_blue, 5%);
+    background: #34b6ef;
   }
 }

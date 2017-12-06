@@ -3,7 +3,7 @@ var s, heroDecoration;
 $(function ($) {
     heroDecoration = $('.heroDecoration');
 
-    initSkrollr();
+    //initSkrollr();
 
 });
 
@@ -51,9 +51,7 @@ function initSkrollr() {
             s = skrollr.init({
                 forceHeight: false,
                 //scale: .6,
-                mobileCheck: function () {
-                    return (/Android|iPhone|iPad|iPod|BlackBerry/i).test(navigator.userAgent || navigator.vendor || window.opera) || (('ontouchstart' in window) || (navigator.MaxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0));
-                },
+                mobileCheck: false,
                 //skrollrBody: 'scroll-content',
                 //edgeStrategy: 'reset',
                 easing: 'easeOutQuad'

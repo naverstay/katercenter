@@ -4,19 +4,23 @@
 }
 
 .advice_block {
-  padding: 80px 0 67px;
+  padding: 82px 0 55px;
   position: relative;
+
+  @include respond-to-min($resp_xl) {
+    padding-bottom: 67px;
+  }
 }
 
 .advice_caption {
   position: relative;
   text-align: center;
   color: #000;
-  font: 24px/32px $MontserratBold;
+  font: bold 24px/32px $Montserrat;
   padding-bottom: 40px;
   max-width: 620px;
   margin: 0 auto;
-  letter-spacing: .07em;
+  letter-spacing: .03em;
 }
 
 .adv_decor {
@@ -30,34 +34,59 @@
   &._dec-bird-1 {
     //left: 290px;
     top: 48px;
-    left: 23.2%;
+    left: 3.2%;
+
+    @include respond-to-min($resp_xl) {
+      left: 23.2%;
+    }
   }
 
   &._dec-bird-2 {
     bottom: 33px;
-    right: 53px;
+    right: 50px;
+
+    @include respond-to-min($resp_s) {
+      bottom: 36px;
+      right: 43px;
+    }
+
+    @include respond-to-min($resp_xl) {
+      bottom: 33px;
+      right: 53px;
+    }
   }
 
   &._dec-cloud-1 {
-    //right: 170px;
-    right: 13.5%;
-    top: 48px;
+    top: 45px;
+    left: 3.5%;
+
+    @include respond-to-min($resp_s) {
+      right: 1.7%;
+      top: 35px;
+      left: auto;
+    }
+
+    @include respond-to-min($resp_xl) {
+      //right: 170px;
+      right: 13.5%;
+      top: 48px;
+    }
   }
 
   &._dec-cloud-2 {
-    //left: 150px;
-    top: 108px;
-    left: 12%;
-  }
+    top: 158px;
+    left: 7.3%;
 
-  &._dec-wave-2 {
-    right: 13%;
-    bottom: 15px;
+    @include respond-to-min($resp_xl) {
+      //left: 150px;
+      top: 108px;
+      left: 12%;
+    }
   }
 
   &._dec-wave-1 {
-    bottom: 65px;
-    left: 34.5%;
+    bottom: 37px;
+    left: 26.5%;
 
     &:before {
       content: '';
@@ -68,11 +97,31 @@
       right: 100%;
       background: $gl_blue;
     }
+
+    @include respond-to-min($resp_s) {
+      bottom: 80px;
+      left: 30.5%;
+    }
+
+    @include respond-to-min($resp_xl) {
+      bottom: 65px;
+      left: 34.5%;
+    }
+  }
+
+  &._dec-wave-2 {
+    right: 22%;
+    bottom: 30px;
+
+    @include respond-to-min($resp_xl) {
+      right: 13%;
+      bottom: 15px;
+    }
   }
 
   &._dec-wave-3 {
-    bottom: 71px;
-    left: 55.5%;
+    bottom: 46px;
+    left: 76.5%;
 
     &:before {
       content: '';
@@ -82,6 +131,11 @@
       bottom: 0;
       right: 100%;
       background: $gl_blue;
+    }
+
+    @include respond-to-min($resp_xl) {
+      bottom: 71px;
+      left: 55.5%;
     }
   }
 
@@ -91,18 +145,35 @@
   float: left;
   width: 50%;
   text-align: center;
-  position: relative;
+  padding-bottom: 45px;
+
+  &._right {
+    padding-left: 15px;
+  }
+
+  &._left {
+    padding-right: 15px;
+  }
 
   @include respond-to-min($resp_s) {
     text-align: right;
-    padding-bottom: 150px;
+    padding-top: 18px;
+    padding-bottom: 130px;
+    position: relative;
+
+    &._left {
+      padding-right: 0;
+    }
 
     &._right {
       text-align: left;
+      padding-left: 0;
     }
   }
 
   @include respond-to-min($resp_xl) {
+    padding-top: 0;
+    padding-bottom: 150px;
     width: 25%;
 
     &._left {
@@ -120,6 +191,7 @@
   display: inline-block;
   vertical-align: top;
   text-align: center;
+  min-width: 69%;
 
   @include respond-to-min($resp_xl) {
     display: block;
@@ -128,7 +200,7 @@
 }
 
 .advice_consultant_photo {
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 
   img {
     display: inline-block;
@@ -138,16 +210,19 @@
 
 .advice_consultant_name {
   color: #000;
-  font: 18px/25px $LedgerRegular;
+  font: 18px/25px $Ledger;
   margin-bottom: 1px;
 }
 
 .advice_form_holder {
-  padding: 0 5px;
+  display: inline-block;
+  vertical-align: top;
+  width: 100%;
 
   @include respond-to-min($resp_xl) {
-    float: left;
+    padding: 0 5px;
     width: 50%;
+    float: left;
   }
 }
 
@@ -156,7 +231,6 @@
 }
 
 .advice_form_cell {
-  border-top: 1px solid #f6f6f6;
 
   &:first-child {
     border-top: 0;
@@ -181,6 +255,6 @@
 
   .gl_link {
     color: #000;
-    font: 12px/20px $MontserratBold;
+    font: bold 12px/20px $Montserrat;
   }
 }

@@ -9,26 +9,11 @@
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <meta name="format-detection" content="telephone=no"/>
     <!--build:css css/styles.min.css-->
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ledger|Montserrat:400,600,700&amp;amp;subset=cyrillic" media="all"/>
     <link rel="stylesheet" href="css/main_global.css" media="all"/>
-    <!--endbuild-->
-    
-    <!--build:js js/main.min.js -->
-    <script src="js/lib/jquery-1.12.1.min.js"></script>
-    <script src="js/lib/jquery-ui-1.11.4.js"></script>
-    <script src="js/lib/jquery.backstretch.min.js"></script>
-    <script src="js/lib/jquery.sticky-kit.min.js"></script>
-    <script src="js/lib/jquery.inputmask.bundle.js"></script>
-    <script src="js/lib/skrollr.js"></script>
-    <script src="js/lib/select2.js"></script>
-    <script src="js/main.js"></script>
-    <!--endbuild-->
-    
-    <!--build:js js/index.min.js -->
-    <script src="js/index.js"></script>
     <!--endbuild-->
   </head>
   <body class="wide_menu">
-    <div class="rect_1024"></div>
     <div class="wrapper">
       <div class="base">
         <div class="header_bg bs"><img src="./images/hero_1.jpg"/></div>
@@ -38,10 +23,10 @@
           </div>
           <div class="section_inner">
             <div class="header_menu"><a class="mob_menu_btn openMobMenu" href="#"><span></span></a>
-              <div class="logo_block"><a class="logo" href="index.html"><span>Kater&nbsp;&nbsp;Center</span><img class="logo_decor" src="./images/decor_wave_2.svg"/></a></div><a class="mob_menu_btn" href="#"><span></span></a>
-              <div class="callback_block"><a class="tel_link" href="tel:+79262862116">+7 926 286-21-16</a><a class="callback_btn" href="#"><span>Обратный звонок</span></a></div>
+              <div class="logo_block"><a class="logo" href="index.html"><span>Kater&nbsp;&nbsp;Center</span><img class="logo_decor" src="./images/decor_wave_2.svg"/></a></div>
             </div>
             <div class="header_nav">
+              <div class="callback_block"><a class="tel_link" href="tel:+79262862116">+7 926 286-21-16</a><a class="callback_btn" href="#"><span>Обратный звонок</span></a></div>
               <ul class="main_menu">
                 <li><span class="menu_link _active">Доставка</span>
                 </li>
@@ -66,7 +51,7 @@
                 <div class="filter_decor _dec-wave-3" data-300-top-top="transform: scale(.5) translate(0, 200px); opacity: 0;" data-420-top-top="transform: scale(1) translate(0, 0px); opacity: 1;"><img src="./images/decor_wave_2.svg"></div>
               </div>
               <div class="filter_title" data-0-top-top="transform: scale(.8) translate(0, 200px); opacity: 0;" data-120-top-top="transform: scale(1) translate(0, 0px); opacity: 1;">Катера из Европы</div>
-              <div class="filter_wrapper sticky" data-margin-top="100" data-sticky-class="_stuck">
+              <div class="filter_wrapper sticky" data-margin-top_="100" data-sticky-class="_stuck">
                 <div class="filter_tabs">
                   <div class="section_inner"></div>
                 </div>
@@ -81,265 +66,262 @@
         <div class="main_content">
           <div class="section_inner clearfix">
             <div class="main_block">
-              <div class="ad_title clearfix">
-                <div class="fl"><span class="ff_mon_b">2070</span><span> объявлений</span></div>
-                <div class="fr">
-                  <div class="sort_block"><span class="fl">Сортировка:</span><span class="select_box_v1 fl">
-                      <select class="select2">
-                        <option>По цене</option>
-                        <option>По дате</option>
-                      </select></span></div>
-                </div>
+              <div class="ad_title_holder clearfix">
+                <div class="ad_title"><span class="ff_mon_b">2070</span><span> объявлений</span></div>
+                <div class="sort_block"><span class="fl">Сортировка:</span><span class="select_box_v1 fl">
+                    <select class="select2">
+                      <option>По цене</option>
+                      <option>По дате</option>
+                    </select></span></div>
               </div>
-              <ul class="ad_list clearfix">
-                <li>
+              <ul class="ad_list clearfix boardGrid">
+                <li class="gridItem">
                   <div class="ad_unit">
-                    <div class="ad_photo bs">
-                      <div class="ad_photo_year">2012</div><a class="ad_unit_more" href="#"></a><img src="./images/kater_1.jpg">
+                    <div class="ad_photo bs imgLoad">
+                      <div class="ad_photo_year">2012</div><a class="ad_unit_more btn_blue" href="#"></a><img src="./images/kater_1.jpg">
                     </div>
                     <div class="ad_info">
                       <div class="ad_info_name">LINSSEN YACHTS LINSSEN 439 SEDAN</div>
                       <div class="ad_info_price">26 686 000 руб.</div>
                       <div class="ad_info_old_price">395 000 €</div>
-                      <div class="ad_info_options"><span>Нидерланды –</span><span class="ff_mon_r">2х345 cv</span><span> - Дизель</span></div>
+                      <div class="ad_info_options"><span>Нидерланды – 2х345 cv - Дизель</span></div>
                     </div>
                   </div>
                 </li>
-                <li>
+                <li class="gridItem">
                   <div class="ad_unit">
-                    <div class="ad_photo bs">
-                      <div class="ad_photo_year">2017</div><a class="ad_unit_more" href="#"></a><img src="./images/kater_1.jpg">
+                    <div class="ad_photo bs imgLoad">
+                      <div class="ad_photo_year">2017</div><a class="ad_unit_more btn_blue" href="#"></a><img src="./images/kater_1.jpg">
                     </div>
                     <div class="ad_info">
                       <div class="ad_info_name">PRESTIGE PRESTIGE 630</div>
                       <div class="ad_info_price">112 220 000 руб.</div>
                       <div class="ad_info_old_price">1 650 000 €</div>
-                      <div class="ad_info_options"><span>Нидерланды –</span><span class="ff_mon_r">2х345 cv</span><span> - Дизель</span></div>
+                      <div class="ad_info_options"><span>Нидерланды – 2х345 cv - Дизель</span></div>
                     </div>
                   </div>
                 </li>
-                <li>
-                  <div class="ad_unit">
-                    <div class="ad_photo bs">
-                      <div class="ad_photo_year">2017</div><a class="ad_unit_more" href="#"></a><img src="./images/kater_1.jpg">
+                <li class="gridItem dt_hidden _fr">
+                  <div class="ad_box text_center">
+                    <div class="ad_box_decor">
+                      <div class="ad_infinity _left"></div>
+                      <div class="ad_infinity _right"></div>
+                      <div class="ad_bird"><img src="./images/ad_bird.svg"></div>
                     </div>
-                    <div class="ad_info">
-                      <div class="ad_info_name">PRINCESS YACHTS PRINCESS V53</div>
-                      <div class="ad_info_price">112 220 000 руб.</div>
-                      <div class="ad_info_old_price">1 650 000 €</div>
-                      <div class="ad_info_options"><span>Нидерланды –</span><span class="ff_mon_r">2х345 cv</span><span> - Дизель</span></div>
+                    <div class="ad_box_title"><span>-&nbsp;20%</span>
+                      <div class="ad_box_wave"><img src="./images/wave_light_blue.svg"></div>
                     </div>
+                    <div class="ad_box_counter">До лета осталось 243 дня.</div>
+                    <div class="ad_box_tip">Время задуматься о катере!</div><a class="ad_box_more" href="#">Подробнее</a>
                   </div>
                 </li>
-                <li>
+                <li class="gridItem">
                   <div class="ad_unit">
-                    <div class="ad_photo bs">
-                      <div class="ad_photo_year">2012</div><a class="ad_unit_more" href="#"></a><img src="./images/kater_1.jpg">
+                    <div class="ad_photo bs imgLoad">
+                      <div class="ad_photo_year">2012</div><a class="ad_unit_more btn_blue" href="#"></a><img src="./images/kater_1.jpg">
                     </div>
                     <div class="ad_info">
                       <div class="ad_info_name">LINSSEN YACHTS LINSSEN 439 SEDAN</div>
                       <div class="ad_info_price">26 686 000 руб.</div>
                       <div class="ad_info_old_price">395 000 €</div>
-                      <div class="ad_info_options"><span>Нидерланды –</span><span class="ff_mon_r">2х345 cv</span><span> - Дизель</span></div>
+                      <div class="ad_info_options"><span>Нидерланды – 2х345 cv - Дизель</span></div>
                     </div>
                   </div>
                 </li>
-                <li>
+                <li class="gridItem">
                   <div class="ad_unit">
-                    <div class="ad_photo bs">
-                      <div class="ad_photo_year">2017</div><a class="ad_unit_more" href="#"></a><img src="./images/kater_1.jpg">
+                    <div class="ad_photo bs imgLoad">
+                      <div class="ad_photo_year">2017</div><a class="ad_unit_more btn_blue" href="#"></a><img src="./images/kater_1.jpg">
                     </div>
                     <div class="ad_info">
                       <div class="ad_info_name">PRESTIGE PRESTIGE 630</div>
                       <div class="ad_info_price">112 220 000 руб.</div>
                       <div class="ad_info_old_price">1 650 000 €</div>
-                      <div class="ad_info_options"><span>Нидерланды –</span><span class="ff_mon_r">2х345 cv</span><span> - Дизель</span></div>
+                      <div class="ad_info_options"><span>Нидерланды – 2х345 cv - Дизель</span></div>
                     </div>
                   </div>
                 </li>
-                <li>
-                  <div class="ad_unit">
-                    <div class="ad_photo bs">
-                      <div class="ad_photo_year">2017</div><a class="ad_unit_more" href="#"></a><img src="./images/kater_1.jpg">
-                    </div>
-                    <div class="ad_info">
-                      <div class="ad_info_name">PRINCESS YACHTS PRINCESS V53</div>
-                      <div class="ad_info_price">112 220 000 руб.</div>
-                      <div class="ad_info_old_price">1 650 000 €</div>
-                      <div class="ad_info_options"><span>Нидерланды –</span><span class="ff_mon_r">2х345 cv</span><span> - Дизель</span></div>
-                    </div>
+                <li class="gridItem dt_hidden _fl">
+                  <div class="ad_box">
+                    <div class="ad_box_recommend"><span class="ff_mon_b">Kater Center<br></span><span>рекомендует</span></div>
+                    <ul class="ad_box_links">
+                      <li><a class="ad_box_link" href="#">Selected boats</a></li>
+                      <li><a class="ad_box_link" href="#">Trade-in possible</a></li>
+                      <li><a class="ad_box_link" href="#">Guarantee</a></li>
+                      <li><a class="ad_box_link" href="#">Insurance</a></li>
+                    </ul>
                   </div>
                 </li>
-                <li>
+                <li class="gridItem">
                   <div class="ad_unit">
-                    <div class="ad_photo bs">
-                      <div class="ad_photo_year">2012</div><a class="ad_unit_more" href="#"></a><img src="./images/kater_1.jpg">
+                    <div class="ad_photo bs imgLoad">
+                      <div class="ad_photo_year">2012</div><a class="ad_unit_more btn_blue" href="#"></a><img src="./images/kater_1.jpg">
                     </div>
                     <div class="ad_info">
                       <div class="ad_info_name">LINSSEN YACHTS LINSSEN 439 SEDAN</div>
                       <div class="ad_info_price">26 686 000 руб.</div>
                       <div class="ad_info_old_price">395 000 €</div>
-                      <div class="ad_info_options"><span>Нидерланды –</span><span class="ff_mon_r">2х345 cv</span><span> - Дизель</span></div>
+                      <div class="ad_info_options"><span>Нидерланды – 2х345 cv - Дизель</span></div>
                     </div>
                   </div>
                 </li>
-                <li>
+                <li class="gridItem">
                   <div class="ad_unit">
-                    <div class="ad_photo bs">
-                      <div class="ad_photo_year">2017</div><a class="ad_unit_more" href="#"></a><img src="./images/kater_1.jpg">
+                    <div class="ad_photo bs imgLoad">
+                      <div class="ad_photo_year">2017</div><a class="ad_unit_more btn_blue" href="#"></a><img src="./images/kater_1.jpg">
                     </div>
                     <div class="ad_info">
                       <div class="ad_info_name">PRESTIGE PRESTIGE 630</div>
                       <div class="ad_info_price">112 220 000 руб.</div>
                       <div class="ad_info_old_price">1 650 000 €</div>
-                      <div class="ad_info_options"><span>Нидерланды –</span><span class="ff_mon_r">2х345 cv</span><span> - Дизель</span></div>
+                      <div class="ad_info_options"><span>Нидерланды – 2х345 cv - Дизель</span></div>
                     </div>
                   </div>
                 </li>
-                <li>
+                <li class="gridItem">
                   <div class="ad_unit">
-                    <div class="ad_photo bs">
-                      <div class="ad_photo_year">2017</div><a class="ad_unit_more" href="#"></a><img src="./images/kater_1.jpg">
+                    <div class="ad_photo bs imgLoad">
+                      <div class="ad_photo_year">2017</div><a class="ad_unit_more btn_blue" href="#"></a><img src="./images/kater_1.jpg">
                     </div>
                     <div class="ad_info">
                       <div class="ad_info_name">PRINCESS YACHTS PRINCESS V53</div>
                       <div class="ad_info_price">112 220 000 руб.</div>
                       <div class="ad_info_old_price">1 650 000 €</div>
-                      <div class="ad_info_options"><span>Нидерланды –</span><span class="ff_mon_r">2х345 cv</span><span> - Дизель</span></div>
+                      <div class="ad_info_options"><span>Нидерланды – 2х345 cv - Дизель</span></div>
                     </div>
                   </div>
                 </li>
-                <li>
+                <li class="gridItem">
                   <div class="ad_unit">
-                    <div class="ad_photo bs">
-                      <div class="ad_photo_year">2012</div><a class="ad_unit_more" href="#"></a><img src="./images/kater_1.jpg">
+                    <div class="ad_photo bs imgLoad">
+                      <div class="ad_photo_year">2012</div><a class="ad_unit_more btn_blue" href="#"></a><img src="./images/kater_1.jpg">
                     </div>
                     <div class="ad_info">
                       <div class="ad_info_name">LINSSEN YACHTS LINSSEN 439 SEDAN</div>
                       <div class="ad_info_price">26 686 000 руб.</div>
                       <div class="ad_info_old_price">395 000 €</div>
-                      <div class="ad_info_options"><span>Нидерланды –</span><span class="ff_mon_r">2х345 cv</span><span> - Дизель</span></div>
+                      <div class="ad_info_options"><span>Нидерланды – 2х345 cv - Дизель</span></div>
                     </div>
                   </div>
                 </li>
-                <li>
+                <li class="gridItem">
                   <div class="ad_unit">
-                    <div class="ad_photo bs">
-                      <div class="ad_photo_year">2017</div><a class="ad_unit_more" href="#"></a><img src="./images/kater_1.jpg">
+                    <div class="ad_photo bs imgLoad">
+                      <div class="ad_photo_year">2017</div><a class="ad_unit_more btn_blue" href="#"></a><img src="./images/kater_1.jpg">
                     </div>
                     <div class="ad_info">
                       <div class="ad_info_name">PRESTIGE PRESTIGE 630</div>
                       <div class="ad_info_price">112 220 000 руб.</div>
                       <div class="ad_info_old_price">1 650 000 €</div>
-                      <div class="ad_info_options"><span>Нидерланды –</span><span class="ff_mon_r">2х345 cv</span><span> - Дизель</span></div>
+                      <div class="ad_info_options"><span>Нидерланды – 2х345 cv - Дизель</span></div>
                     </div>
                   </div>
                 </li>
-                <li>
+                <li class="gridItem">
                   <div class="ad_unit">
-                    <div class="ad_photo bs">
-                      <div class="ad_photo_year">2017</div><a class="ad_unit_more" href="#"></a><img src="./images/kater_1.jpg">
+                    <div class="ad_photo bs imgLoad">
+                      <div class="ad_photo_year">2017</div><a class="ad_unit_more btn_blue" href="#"></a><img src="./images/kater_1.jpg">
                     </div>
                     <div class="ad_info">
                       <div class="ad_info_name">PRINCESS YACHTS PRINCESS V53</div>
                       <div class="ad_info_price">112 220 000 руб.</div>
                       <div class="ad_info_old_price">1 650 000 €</div>
-                      <div class="ad_info_options"><span>Нидерланды –</span><span class="ff_mon_r">2х345 cv</span><span> - Дизель</span></div>
+                      <div class="ad_info_options"><span>Нидерланды – 2х345 cv - Дизель</span></div>
                     </div>
                   </div>
                 </li>
-                <li>
+                <li class="gridItem">
                   <div class="ad_unit">
-                    <div class="ad_photo bs">
-                      <div class="ad_photo_year">2012</div><a class="ad_unit_more" href="#"></a><img src="./images/kater_1.jpg">
+                    <div class="ad_photo bs imgLoad">
+                      <div class="ad_photo_year">2012</div><a class="ad_unit_more btn_blue" href="#"></a><img src="./images/kater_1.jpg">
                     </div>
                     <div class="ad_info">
                       <div class="ad_info_name">LINSSEN YACHTS LINSSEN 439 SEDAN</div>
                       <div class="ad_info_price">26 686 000 руб.</div>
                       <div class="ad_info_old_price">395 000 €</div>
-                      <div class="ad_info_options"><span>Нидерланды –</span><span class="ff_mon_r">2х345 cv</span><span> - Дизель</span></div>
+                      <div class="ad_info_options"><span>Нидерланды – 2х345 cv - Дизель</span></div>
                     </div>
                   </div>
                 </li>
-                <li>
+                <li class="gridItem">
                   <div class="ad_unit">
-                    <div class="ad_photo bs">
-                      <div class="ad_photo_year">2017</div><a class="ad_unit_more" href="#"></a><img src="./images/kater_1.jpg">
+                    <div class="ad_photo bs imgLoad">
+                      <div class="ad_photo_year">2017</div><a class="ad_unit_more btn_blue" href="#"></a><img src="./images/kater_1.jpg">
                     </div>
                     <div class="ad_info">
                       <div class="ad_info_name">PRESTIGE PRESTIGE 630</div>
                       <div class="ad_info_price">112 220 000 руб.</div>
                       <div class="ad_info_old_price">1 650 000 €</div>
-                      <div class="ad_info_options"><span>Нидерланды –</span><span class="ff_mon_r">2х345 cv</span><span> - Дизель</span></div>
+                      <div class="ad_info_options"><span>Нидерланды – 2х345 cv - Дизель</span></div>
                     </div>
                   </div>
                 </li>
-                <li>
+                <li class="gridItem dt_only">
                   <div class="ad_unit">
-                    <div class="ad_photo bs">
-                      <div class="ad_photo_year">2017</div><a class="ad_unit_more" href="#"></a><img src="./images/kater_1.jpg">
-                    </div>
-                    <div class="ad_info">
-                      <div class="ad_info_name">PRINCESS YACHTS PRINCESS V53</div>
-                      <div class="ad_info_price">112 220 000 руб.</div>
-                      <div class="ad_info_old_price">1 650 000 €</div>
-                      <div class="ad_info_options"><span>Нидерланды –</span><span class="ff_mon_r">2х345 cv</span><span> - Дизель</span></div>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="ad_unit">
-                    <div class="ad_photo bs">
-                      <div class="ad_photo_year">2012</div><a class="ad_unit_more" href="#"></a><img src="./images/kater_1.jpg">
+                    <div class="ad_photo bs imgLoad">
+                      <div class="ad_photo_year">2012</div><a class="ad_unit_more btn_blue" href="#"></a><img src="./images/kater_1.jpg">
                     </div>
                     <div class="ad_info">
                       <div class="ad_info_name">LINSSEN YACHTS LINSSEN 439 SEDAN</div>
                       <div class="ad_info_price">26 686 000 руб.</div>
                       <div class="ad_info_old_price">395 000 €</div>
-                      <div class="ad_info_options"><span>Нидерланды –</span><span class="ff_mon_r">2х345 cv</span><span> - Дизель</span></div>
+                      <div class="ad_info_options"><span>Нидерланды – 2х345 cv - Дизель</span></div>
                     </div>
                   </div>
                 </li>
-                <li>
+                <li class="gridItem dt_only">
                   <div class="ad_unit">
-                    <div class="ad_photo bs">
-                      <div class="ad_photo_year">2017</div><a class="ad_unit_more" href="#"></a><img src="./images/kater_1.jpg">
+                    <div class="ad_photo bs imgLoad">
+                      <div class="ad_photo_year">2017</div><a class="ad_unit_more btn_blue" href="#"></a><img src="./images/kater_1.jpg">
                     </div>
                     <div class="ad_info">
                       <div class="ad_info_name">PRESTIGE PRESTIGE 630</div>
                       <div class="ad_info_price">112 220 000 руб.</div>
                       <div class="ad_info_old_price">1 650 000 €</div>
-                      <div class="ad_info_options"><span>Нидерланды –</span><span class="ff_mon_r">2х345 cv</span><span> - Дизель</span></div>
+                      <div class="ad_info_options"><span>Нидерланды – 2х345 cv - Дизель</span></div>
                     </div>
                   </div>
                 </li>
-                <li>
+                <li class="gridItem dt_only">
                   <div class="ad_unit">
-                    <div class="ad_photo bs">
-                      <div class="ad_photo_year">2017</div><a class="ad_unit_more" href="#"></a><img src="./images/kater_1.jpg">
+                    <div class="ad_photo bs imgLoad">
+                      <div class="ad_photo_year">2017</div><a class="ad_unit_more btn_blue" href="#"></a><img src="./images/kater_1.jpg">
                     </div>
                     <div class="ad_info">
                       <div class="ad_info_name">PRINCESS YACHTS PRINCESS V53</div>
                       <div class="ad_info_price">112 220 000 руб.</div>
                       <div class="ad_info_old_price">1 650 000 €</div>
-                      <div class="ad_info_options"><span>Нидерланды –</span><span class="ff_mon_r">2х345 cv</span><span> - Дизель</span></div>
+                      <div class="ad_info_options"><span>Нидерланды – 2х345 cv - Дизель</span></div>
+                    </div>
+                  </div>
+                </li>
+                <li class="gridItem dt_only">
+                  <div class="ad_unit">
+                    <div class="ad_photo bs imgLoad">
+                      <div class="ad_photo_year">2017</div><a class="ad_unit_more btn_blue" href="#"></a><img src="./images/kater_1.jpg">
+                    </div>
+                    <div class="ad_info">
+                      <div class="ad_info_name">PRINCESS YACHTS PRINCESS V53</div>
+                      <div class="ad_info_price">112 220 000 руб.</div>
+                      <div class="ad_info_old_price">1 650 000 €</div>
+                      <div class="ad_info_options"><span>Нидерланды – 2х345 cv - Дизель</span></div>
                     </div>
                   </div>
                 </li>
               </ul>
               <ul class="ad_list_pagination">
-                <li class="_first"><a class="btn_v1 pagination_btn btn_gray" href="#"><span class="i-chevron-left"></span></a></li>
-                <li><span class="btn_v1 pagination_btn btn_gray _active">1</span></li>
-                <li><a class="btn_v1 pagination_btn btn_gray" href="#">2</a></li>
-                <li><a class="btn_v1 pagination_btn btn_gray" href="#">3</a></li>
-                <li><a class="btn_v1 pagination_btn btn_gray" href="#">4</a></li>
-                <li><span class="btn_v1 pagination_btn btn_gray">...</span></li>
-                <li><a class="btn_v1 pagination_btn btn_gray" href="#">24</a></li>
-                <li class="_last"><a class="btn_v1 pagination_btn btn_gray" href="#"><span class="i-chevron-right"></span></a></li>
+                <li class="_first"><a class="btn_v1 pagination_btn btn_gray" href="#"><span class="pagination_text"><span class="i-chevron-left"></span></span></a></li>
+                <li><span class="btn_v1 pagination_btn btn_gray _active"><span class="pagination_text">1</span></span></li>
+                <li><a class="btn_v1 pagination_btn btn_gray" href="#"><span class="pagination_text">2</span></a></li>
+                <li class="mob_hidden"><a class="btn_v1 pagination_btn btn_gray" href="#"><span class="pagination_text">3</span></a></li>
+                <li class="mob_hidden"><a class="btn_v1 pagination_btn btn_gray" href="#"><span class="pagination_text">4</span></a></li>
+                <li><span class="btn_v1 pagination_btn btn_gray"><span class="pagination_text">...</span></span></li>
+                <li><a class="btn_v1 pagination_btn btn_gray" href="#"><span class="pagination_text">24</span></a></li>
+                <li class="_last"><a class="btn_v1 pagination_btn btn_gray" href="#"><span class="pagination_text"><span class="i-chevron-right"></span></span></a></li>
               </ul>
             </div>
             <div class="aside _title_space">
-              <ul class="aside_ads">
+              <ul class="aside_ads dt_only">
                 <li>
                   <div class="ad_box text_center">
                     <div class="ad_box_decor">
@@ -374,10 +356,10 @@
             <div class="advice_block clearfix">
               <div class="advice_caption"><span>Получите индивидуальную консультацию по&nbsp;выбору&nbsp;катера</span><span class="adv_decor _dec-bird-2"><img src="./images/decor_bird.svg"></span></div>
               <div class="adv_decor _dec-cloud-1"><img src="./images/decor_cloud.svg"></div>
-              <div class="adv_decor _dec-cloud-2"><img src="./images/decor_cloud.svg"></div>
-              <div class="adv_decor _dec-bird-1"><img src="./images/decor_bird.svg"></div>
+              <div class="adv_decor _dec-cloud-2 mob_hidden"><img src="./images/decor_cloud.svg"></div>
+              <div class="adv_decor _dec-bird-1 mob_hidden"><img src="./images/decor_bird.svg"></div>
               <div class="advice_consultant_block _left">
-                <div class="adv_decor _dec-wave-1 mob_hidden"><img src="./images/decor_wave_2.svg"></div>
+                <div class="adv_decor _dec-wave-1"><img src="./images/decor_wave_2.svg"></div>
                 <div class="adv_decor _dec-wave-2 mob_hidden"><img src="./images/decor_wave_2.svg"></div>
                 <div class="advice_consultant_info">
                   <div class="advice_consultant_photo"><img src="./images/anton.png"></div>
@@ -575,4 +557,22 @@
       </div>
     </div>
   </body>
+  
+  <!--build:js js/main.min.js -->
+  <script src="js/lib/jquery-1.12.1.min.js"></script>
+  <script src="js/lib/jquery-ui-1.11.4.js"></script>
+  <script src="js/lib/jquery.backstretch.min.js"></script>
+  <script src="js/lib/jquery.sticky-kit.min.js"></script>
+  <script src="js/lib/jquery.inputmask.bundle.js"></script>
+  <script src="js/lib/imagesloaded.pkgd.min.js"></script>
+  <script src="js/lib/isotope.pkgd.min.js"></script>
+  <script src="js/lib/packery-mode.pkgd.js"></script>
+  <script src="js/lib/skrollr.js"></script>
+  <script src="js/lib/select2.js"></script>
+  <script src="js/main.js"></script>
+  <!--endbuild-->
+  
+  <!--build:js js/index.min.js -->
+  <script src="js/index.js"></script>
+  <!--endbuild-->
 </html>

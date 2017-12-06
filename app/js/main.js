@@ -1,5 +1,6 @@
 var body, html, doc, wnd,
     closeMenuTimer,
+    boardGrid,
     callback_popup,
     auth_popup,
     fail_popup,
@@ -11,17 +12,21 @@ var body, html, doc, wnd,
 $(function ($) {
 
     body = $('body');
+    html = $('html');
 
     body.delegate('.openMobMenu', 'click', function () {
-        clearTimeout(closeMenuTimer);
-
-        if (body.hasClass('menu_opened')) {
-            closeMenuTimer = setTimeout(function () {
-                body.removeClass('icon_close');
-            }, 250);
+        if (html.hasClass('menu_opened')) {
+            html.removeClass('menu_opened').css('margin-right', '');
+            $('.callback_block').addClass('_invis');
+            setTimeout(function () {
+                $('.callback_block').removeClass('_invis');
+            }, 200);
+        } else {
+            html.addClass('menu_opened').css('margin-right', getScrollbarWidth());
         }
 
-        body.addClass('icon_close').toggleClass('menu_opened');
+        initBoard();
+
         return false;
 
     }).delegate('.openFav', 'click', function () {
@@ -39,9 +44,13 @@ $(function ($) {
         return false;
     });
 
-    initBS();
+    loadImages();
 
     initMask();
+
+    initBoard();
+
+    initBS();
 
     initStick();
 
@@ -70,6 +79,67 @@ $(function ($) {
     all_dialog_close();
 
 });
+
+function getScrollbarWidth() {
+    var outer = document.createElement("div");
+    outer.style.visibility = "hidden";
+    outer.style.width = "100px";
+    outer.style.msOverflowStyle = "scrollbar"; // needed for WinJS apps
+
+    document.body.appendChild(outer);
+
+    var widthNoScroll = outer.offsetWidth;
+    // force scrollbars
+    outer.style.overflow = "scroll";
+
+    // add innerdiv
+    var inner = document.createElement("div");
+    inner.style.width = "100%";
+    outer.appendChild(inner);
+
+    var widthWithScroll = inner.offsetWidth;
+
+    // remove divs
+    outer.parentNode.removeChild(outer);
+
+    return widthNoScroll - widthWithScroll;
+}
+
+function initBoard() {
+    if ((boardGrid && boardGrid.length && boardGrid.data() && boardGrid.data('isotope'))) {
+        setTimeout(function () {
+            boardGrid.isotope('layout');
+        }, 20);
+    } else if ($('.boardGrid').length) {
+        boardGrid = $('.boardGrid').isotope({
+            percentPosition: true,
+            gutter: 0,
+            // main isotope options
+            itemSelector: '.gridItem',
+            // set layoutMode
+            layoutMode: 'packery'
+        });
+    }
+}
+
+function loadImages() {
+    $('.imgLoad').each(function (ind) {
+        var img = $(this);
+
+        img.imagesLoaded()
+            .always(function (instance) {
+                console.log(img.addClass('_loaded'));
+            })
+            .done(function (instance) {
+
+            })
+            .fail(function () {
+
+            })
+            .progress(function (instance, image) {
+            });
+    });
+}
 
 function initMask() {
     $("input").filter(function (i, el) {

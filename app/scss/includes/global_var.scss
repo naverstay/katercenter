@@ -63,6 +63,9 @@ $MontserratBold: 'MontserratBold', sans-serif;
 $MontserratSemiBold: 'MontserratSemiBold', sans-serif;
 $MontserratRegular: 'MontserratRegular', sans-serif;
 
+$Montserrat: 'Montserrat', sans-serif;
+$Ledger: 'Ledger', serif;
+
 $OpenSans: 'Open Sans', sans-serif;
 $PTRoubleSans: 'PTRoubleSans', sans-serif;
 $PTSerif: 'PT Serif', serif;
@@ -833,15 +836,15 @@ $cross_font_Verdana: Verdana, 'Geneva CY', 'DejaVu Sans', sans-serif;
 }
 
 @mixin keyframe_sub($animation_name) {
-  @-webkit-keyframes $animation_name {
+  @-webkit-keyframes #{$animation_name} {
     @content;
   }
 
-  @-moz-keyframes $animation_name {
+  @-moz-keyframes #{$animation_name} {
     @content;
   }
 
-  @keyframes $animation_name {
+  @keyframes #{$animation_name} {
     @content;
   }
 }

@@ -1,3 +1,4 @@
+- var production = locals['production'];
 
 mixin dev_head(page_title, index, news, search, product, lk, cart)
     head
@@ -11,45 +12,10 @@ mixin dev_head(page_title, index, news, search, product, lk, cart)
         meta(name="format-detection", content="telephone=no")
         |
         | <!--build:css css/styles.min.css-->
+        link(rel='stylesheet', href='//fonts.googleapis.com/css?family=Ledger|Montserrat:400,600,700&amp;subset=cyrillic', media='all')
         link(rel='stylesheet', href='css/main_global.css', media='all')
         |
         | <!--endbuild-->
-
-        |
-        | <!--build:js js/main.min.js -->
-        script(src='js/lib/jquery-1.12.1.min.js')
-        script(src='js/lib/jquery-ui-1.11.4.js')
-        script(src='js/lib/jquery.backstretch.min.js')
-        script(src='js/lib/jquery.sticky-kit.min.js')
-        script(src='js/lib/jquery.inputmask.bundle.js')
-        script(src='js/lib/skrollr.js')
-        script(src='js/lib/select2.js')
-        script(src='js/main.js')
-        |
-        | <!--endbuild-->
-        - if (index)
-            |
-            | <!--build:js js/index.min.js -->
-            script(src='js/index.js')
-            |
-            | <!--endbuild-->
-        - if (news)
-            |
-            | <!--build:js js/news.min.js -->
-            script(src='js/lib/imagesloaded.pkgd.min.js')
-            script(src='js/lib/isotope.pkgd.min.js')
-            script(src='js/lib/packery-mode.pkgd.js')
-            script(src='js/news.js')
-            |
-            | <!--endbuild-->
-
-        - if (cart)
-            |
-            | <!--build:js js/cart.min.js -->
-            script(src='js/cart.js')
-            |
-            | <!--endbuild-->
-
 
 mixin loop_while(counter)
     -i=0;
@@ -72,15 +38,12 @@ mixin header(active)
                     a.logo(href='index.html')
                         span Kater&nbsp;&nbsp;Center
                         img.logo_decor(src='./images/decor_wave_2.svg')
-                a.mob_menu_btn(href='#')
-                    span
 
+            .header_nav
                 .callback_block
                     a.tel_link(href='tel:+79262862116') +7 926 286-21-16
                     a.callback_btn(href='#')
                         span Обратный звонок
-
-            .header_nav
                 ul.main_menu
                     li
                         +menu_link((active === 1 ? '_active' : ''), 'delivery.html', 'Доставка')
@@ -244,3 +207,39 @@ mixin popups()
                             li
                                 a.about_link(href='#')
                                     span.i-g
+
+mixin scripts(index, news, search, product, lk, cart)
+    |
+    | <!--build:js js/main.min.js -->
+    script(src='js/lib/jquery-1.12.1.min.js')
+    script(src='js/lib/jquery-ui-1.11.4.js')
+    script(src='js/lib/jquery.backstretch.min.js')
+    script(src='js/lib/jquery.sticky-kit.min.js')
+    script(src='js/lib/jquery.inputmask.bundle.js')
+    script(src='js/lib/imagesloaded.pkgd.min.js')
+    script(src='js/lib/isotope.pkgd.min.js')
+    script(src='js/lib/packery-mode.pkgd.js')
+    script(src='js/lib/skrollr.js')
+    script(src='js/lib/select2.js')
+    script(src='js/main.js')
+    |
+    | <!--endbuild-->
+    - if (index)
+        |
+        | <!--build:js js/index.min.js -->
+        script(src='js/index.js')
+        |
+        | <!--endbuild-->
+    - if (news)
+        |
+        | <!--build:js js/news.min.js -->
+        script(src='js/news.js')
+        |
+        | <!--endbuild-->
+
+    - if (cart)
+        |
+        | <!--build:js js/cart.min.js -->
+        script(src='js/cart.js')
+        |
+        | <!--endbuild-->

@@ -1,7 +1,7 @@
 //*************************** header
 
 .header {
-  padding-top: 24px;
+  @include transition_all(z-index 0s .2s);
   position: fixed;
   top: 0;
   right: 0;
@@ -11,17 +11,21 @@
   .section_inner {
     @extend %clearfix;
     @extend %translate3d;
+    padding-top: 16px;
   }
 
   @include respond-to-min($resp_s) {
 
-    &:hover {
-      //z-index: 20;
+    .section_inner {
+      padding-top: 24px;
     }
   }
 
-  @include respond-to-min($resp_xl) {
-
+  @include respond-to-max($resp_xl) {
+    .menu_opened & {
+      @include transition_all(z-index 0s 0s);
+      z-index: 7;
+    }
   }
 
   @include respond-to-min($resp_xxl) {
@@ -37,10 +41,14 @@
   right: 0;
   left: 0;
   overflow: hidden;
-  height: 100px;
+  height: 80px;
+
+  @include respond-to-min($resp_s) {
+    height: 100px;
+  }
 
   ._wide & {
-    height: 148px;
+    height: 148px !important;
   }
 }
 
@@ -64,15 +72,114 @@
 
 .header_menu {
   position: relative;
-  padding: 0 250px;
+
+  @include respond-to-min($resp_s) {
+    padding: 0 250px;
+  }
 }
 
 .header_nav {
 
-  @include respond-to-min($resp_xl) {
-    position: relative;
-    margin: 0 300px 0 295px;
+  @include respond-to-max($resp_xl) {
+    @include transition_all(transform .2s ease-in-out);
+    @include transform_translate(100%, 0);
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    padding-bottom: 130px;
+    white-space: nowrap;
     text-align: center;
+    background: rgba(21, 37, 59, .98);
+
+    &:after {
+      content: '';
+      display: inline-block;
+      //vertical-align: middle;
+      //height: 100%;
+      vertical-align: bottom;
+      height: 78%;
+
+      @include respond-to-min($resp_s) {
+        height: 75%;
+      }
+    }
+
+    .main_menu {
+      overflow-y: auto;
+      width: 100%;
+      max-height: 100%;
+      //padding-top: 30%;
+
+      @include respond-to-min($resp_s) {
+        //padding-top: 17%;
+      }
+    }
+
+    .callback_block {
+      top: 28px;
+      right: 100%;
+      margin-right: 110px;
+    }
+
+    .menu_opened & {
+      @include transform_translate(0, 0);
+
+      .callback_block {
+        display: block;
+        position: absolute;
+        top: auto;
+        bottom: 27px;
+        right: 50%;
+        padding: 0;
+        text-align: center;
+        margin: 0 -100px 0 0;
+        opacity: 1;
+
+        .tel_link {
+          width: 100%;
+          margin-bottom: 22px;
+        }
+
+        .callback_btn {
+          width: 100%;
+          margin: 0;
+
+          &:after {
+            display: none;
+          }
+
+          &:before {
+            position: relative;
+            display: inline-block;
+            vertical-align: middle;
+            left: auto;
+            top: auto;
+            margin: 0 12px 0 0;
+          }
+        }
+
+        @include respond-to-min($resp_s) {
+          bottom: 45px;
+        }
+      }
+    }
+  }
+
+  @include respond-to-min($resp_xl) {
+    @include transform_translate(0, 0);
+    background: none;
+    position: relative;
+    padding: 0 300px 0 295px;
+    text-align: center;
+    display: block;
+    width: auto;
+    height: auto;
+
+    &:before {
+      display: none;
+    }
   }
 }
 
@@ -99,8 +206,9 @@
   position: absolute;
   height: 40px;
   width: 40px;
-  top: 0;
+  top: 2px;
   right: 0;
+  z-index: 1;
   background: $gl_blue;
 
   &:after,
@@ -108,6 +216,7 @@
     content: '';
     position: absolute;
     right: 11px;
+    transform-origin: 50% 50%;
   }
 
   &:after {
@@ -116,7 +225,7 @@
   }
 
   &:before {
-    @include transition_all(width .3s ease);
+    @include transition_all(transform .2s ease-in-out, width .2s ease-in-out);
     height: 2px;
     background: #fff;
     width: 14px;
@@ -124,7 +233,7 @@
   }
 
   &:after {
-    @include transition_all(transform .3s ease);
+    @include transition_all(transform .2s ease-in-out, border .2s ease-in-out, height .2s ease-in-out);
     height: 9px;
     border: solid #fff;
     border-width: 2px 0;
@@ -139,11 +248,18 @@
   .menu_opened & {
 
     &:before {
-      display: none;
+      width: 18px;
+      -webkit-transform: translate(0, -7px) rotate(135deg);
+      -ms-transform: translate(0, -7px) rotate(135deg);
+      transform: translate(0, -7px) rotate(135deg);
     }
 
     &:after {
-      @include transform_rotate(180);
+      -webkit-transform: translate(0, 7px) rotate(-135deg);
+      -ms-transform: translate(0, 7px) rotate(-135deg);
+      transform: translate(0, 7px) rotate(-135deg);
+      height: 2px;
+      border-width: 2px 0 0;
     }
   }
 
@@ -163,41 +279,28 @@
   }
 
   @include respond-to-min($resp_s) {
+    top: -5px;
+  }
+
+  @include respond-to-min($resp_xl) {
     display: none;
   }
 }
 
 .callback_block {
-  @extend %icon_pseudo;
+  display: none;
   position: absolute;
   top: 8px;
   right: 60px;
   padding-right: 45px;
+  width: 200px;
 
-  &:before {
-    content: $i-phone;
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 24px;
-    height: 24px;
-    text-align: center;
-    color: #fff;
-    background: $gl_blue;
-    font-size: 14px;
-    line-height: 24px;
-    border-radius: 100%;
+  &._invis {
+    display: none;
   }
 
-  &:after {
-    content: '';
-    position: absolute;
-    right: 11px;
-    top: 35px;
-    width: 25px;
-    height: 6px;
-    border: solid rgba(255, 255, 255, .3);
-    border-width: 0 1px 1px 0;
+  @include respond-to-min($resp_s) {
+    display: block;
   }
 
   @include respond-to-min($resp_xl) {
@@ -208,8 +311,8 @@
 .tel_link {
   float: right;
   color: #fff;
-  font: 16px/22px $LedgerRegular;
-  margin-bottom: 12px;
+  font: 16px/22px $Ledger;
+  margin-bottom: 8px;
 
   &:hover {
     text-decoration: underline;
@@ -217,19 +320,57 @@
 }
 
 .callback_btn {
-  @include transition_all(color .3s, border-color .3s);
+  @extend %icon_pseudo;
+  @include transition_all(color .2s ease-in-out, border-color .2s ease-in-out);
+  position: relative;
   float: right;
   clear: both;
   font-size: 12px;
-  line-height: 14px;
+  line-height: 18px;
   color: rgba(255, 255, 255, .7);
-  border-bottom: 1px dotted rgba(255, 255, 255, .33);
   margin-right: 5px;
-  letter-spacing: -.04em;
+  letter-spacing: .02em;
+
+  &:before {
+    content: $i-phone;
+    position: absolute;
+    top: -30px;
+    left: 100%;
+    margin-left: 28px;
+    width: 24px;
+    height: 24px;
+    text-align: center;
+    font-size: 14px;
+    line-height: 24px;
+    text-indent: 1px;
+    border-radius: 100%;
+    @extend .btn_blue;
+  }
+
+  &:after {
+    pointer-events: none;
+    content: '';
+    position: absolute;
+    left: 100%;
+    margin-left: 14px;
+    top: 5px;
+    width: 25px;
+    height: 6px;
+    border: solid rgba(255, 255, 255, .3);
+    border-width: 0 1px 1px 0;
+  }
+
+  span {
+    display: inline-block;
+    white-space: nowrap;
+    border-bottom: 1px dotted rgba(255, 255, 255, .33);
+  }
 
   &:hover {
-    color: #fff;
-    border-color: #fff;
+
+    &:before {
+
+    }
   }
 }
 
@@ -243,13 +384,14 @@
   position: absolute;
   top: 0;
   left: 0;
+  z-index: 1;
 }
 
 .logo {
   display: inline-block;
   vertical-align: middle;
   position: relative;
-  font: 24px/29px $MontserratSemiBold;
+  font: bold 24px/29px $Montserrat;
   color: #fff;
   padding-left: 3px;
   letter-spacing: -.025em;
@@ -272,9 +414,22 @@
 
 .main_menu {
   text-align: center;
+  display: inline-block;
+  vertical-align: middle;
+  margin-bottom: -5px;
+
+  > li {
+    padding: 11px 10px;
+
+    @include respond-to-min($resp_s) {
+      padding: 24px 10px;
+    }
+  }
 
   @include respond-to-min($resp_xl) {
     position: relative;
+    display: block;
+    margin: 0;
 
     > li {
       display: inline-block;
@@ -291,17 +446,20 @@
   vertical-align: middle;
   text-decoration: none;
   color: #fff;
-  font: 24px/32px $LucidaGrandeBold;
+  font: bold 12px/15px $Montserrat;
   text-transform: uppercase;
-  letter-spacing: .015em;
+  letter-spacing: .04em;
 
   @include respond-to-min($resp_s) {
-
+    font-size: 24px;
+    line-height: 32px;
   }
 
   @include respond-to-min($resp_xl) {
-    font: 12px/15px $LucidaGrandeBold;
+    font-size: 12px;
+    line-height: 15px;
     padding: 12px 0 10px;
+    letter-spacing: .015em;
   }
 
   &._active {
@@ -323,7 +481,7 @@
   }
 
   @at-root a#{&} {
-    @include transition_all(color .3s);
+    @include transition_all(color .2s ease-in-out);
 
     &:hover {
       color: $gl_violette_link_hover;
@@ -332,7 +490,7 @@
 }
 
 .fav_container {
-  @include transition_all(transform .3s, box-shadow .3s);
+  @include transition_all(transform .2s ease-in-out, box-shadow .2s ease-in-out);
   @include transform_translate(100%, 0);
   position: fixed;
   top: 0;
@@ -389,7 +547,7 @@
   }
 
   .gl_link {
-    @include transition_all(color .3s);
+    @include transition_all(color .2s ease-in-out);
     display: inline-block;
     vertical-align: middle;
     text-decoration: none;
@@ -419,8 +577,13 @@
   margin: 0 auto;
   position: relative;
   max-width: 1046px;
-  min-height: 550px;
+  min-height: 540px;
+  padding-top: 20px;
   //padding-bottom: 200px;
+
+  @include respond-to-min($resp_s) {
+    min-height: 550px;
+  }
 
   @include respond-to-min($resp_xl) {
     padding-top: 43px;
@@ -437,29 +600,41 @@
 
 .filter_decor {
   position: absolute;
+  display: none;
 
   img {
     display: block;
     width: 100%;
   }
 
+  @include respond-to-min($resp_s) {
+    display: block;
+  }
+
   &._dec-bird {
     top: 43px;
-    //left: 180px;
-    left: 17.3%;
+    left: 6.5%;
+
+    @include respond-to-min($resp_xl) {
+      left: 17.3%;
+      top: 43px;
+    }
   }
 
   &._dec-cloud {
-    top: 12px;
-    //right: 220px;
-    right: 21%;
+    top: 22px;
+    right: 5.75%;
+
+    @include respond-to-min($resp_xl) {
+      top: 12px;
+      //right: 220px;
+      right: 21%;
+    }
   }
 
   &._dec-wave-1 {
-    //bottom: 15px;
-    //left: 265px;
     top: 420px;
-    left: 25.5%;
+    left: 14.5%;
 
     &:before {
       content: '';
@@ -470,20 +645,30 @@
       right: 100%;
       background: $gl_blue;
     }
+
+    @include respond-to-min($resp_xl) {
+      //bottom: 15px;
+      //left: 265px;
+      top: 420px;
+      left: 25.5%;
+    }
   }
 
   &._dec-wave-2 {
-    //bottom: 27px;
-    //right: 210px;
-    right: 20%;
-    top: 407px;
+    right: 22.3%;
+    top: 387px;
+
+    @include respond-to-min($resp_xl) {
+      //bottom: 27px;
+      //right: 210px;
+      right: 20%;
+      top: 407px;
+    }
   }
 
   &._dec-wave-3 {
-    //bottom: 0;
-    //right: 33px;
-    top: 435px;
-    right: 3%;
+    top: 408px;
+    right: 13%;
 
     &:before {
       content: '';
@@ -494,14 +679,27 @@
       left: 100%;
       background: $gl_blue;
     }
+
+    @include respond-to-min($resp_xl) {
+      //bottom: 0;
+      //right: 33px;
+      top: 435px;
+      right: 3%;
+    }
   }
 }
 
 .filter_title {
+  position: relative;
   text-align: center;
-  font: 40px/55px $LedgerRegular;
+  font: 32px/45px $Ledger;
   color: #fff;
   margin-bottom: -68px;
+
+  @include respond-to-min($resp_s) {
+    font-size: 40px;
+    line-height: 55px;
+  }
 }
 
 .filter_banner {
@@ -510,7 +708,6 @@
   right: 0;
   left: 0;
   z-index: 1;
-  padding-right: 10%;
   text-align: center;
 
   img {
@@ -518,11 +715,25 @@
     vertical-align: top;
     max-width: 100%;
   }
+
+  @include respond-to-min($resp_s) {
+    bottom: 20px;
+    right: -15px;
+    left: -15px;
+  }
+
+  @include respond-to-min($resp_xl) {
+    right: 0;
+    left: 0;
+    bottom: 15px;
+    padding-right: 10%;
+  }
 }
 
 .filter_wrapper {
   pointer-events: none;
   z-index: 6;
+  padding-top: 100px;
 
   &._stuck {
     //top: 100px !important;
@@ -546,7 +757,7 @@
       }
 
       ~ .filter_banner {
-        visibility: hidden;
+        //visibility: hidden;
       }
     }
   }

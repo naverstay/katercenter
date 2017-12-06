@@ -4,7 +4,7 @@ html(lang='ru')
     +dev_head("Kater Главная", true)
 
     body.wide_menu
-        .rect_1024
+        //-.rect_1024
         .wrapper
             .base
                 +header(1)
@@ -44,7 +44,7 @@ html(lang='ru')
                                 data-120-top-top='transform: scale(1) translate(0, 0px); opacity: 1;'
                                 ) Катера из Европы
 
-                            .filter_wrapper.sticky(data-margin-top='100' data-sticky-class='_stuck')
+                            .filter_wrapper.sticky(data-margin-top_='100' data-sticky-class='_stuck')
                                 .filter_tabs
                                     .section_inner
 
@@ -60,85 +60,234 @@ html(lang='ru')
                 .main_content
                     .section_inner.clearfix
                         .main_block
-                            .ad_title.clearfix
-                                .fl
+                            .ad_title_holder.clearfix
+                                .ad_title
                                     span.ff_mon_b 2070
                                     span  объявлений
-                                .fr
-                                    .sort_block
-                                        span.fl Сортировка:
-                                        span.select_box_v1.fl
-                                            select.select2
-                                                option По цене
-                                                option По дате
+                                .sort_block
+                                    span.fl Сортировка:
+                                    span.select_box_v1.fl
+                                        select.select2
+                                            option По цене
+                                            option По дате
 
-                            ul.ad_list.clearfix
-                                +loop_while(6)
-                                    li
+                            ul.ad_list.clearfix.boardGrid
+                                li.gridItem
+                                    .ad_unit
+                                        .ad_photo.bs.imgLoad
+                                            .ad_photo_year 2012
+                                            a.ad_unit_more.btn_blue(href='#')
+                                            img(src='./images/kater_1.jpg')
+                                        .ad_info
+                                            .ad_info_name LINSSEN YACHTS LINSSEN 439 SEDAN
+                                            .ad_info_price 26 686 000 руб.
+                                            .ad_info_old_price 395 000 €
+                                            .ad_info_options
+                                                span Нидерланды – 2х345 cv - Дизель
+                                li.gridItem
+                                    .ad_unit
+                                        .ad_photo.bs.imgLoad
+                                            .ad_photo_year 2017
+                                            a.ad_unit_more.btn_blue(href='#')
+                                            img(src='./images/kater_1.jpg')
+                                        .ad_info
+                                            .ad_info_name PRESTIGE PRESTIGE 630
+                                            .ad_info_price 112 220 000 руб.
+                                            .ad_info_old_price 1 650 000 €
+                                            .ad_info_options
+                                                span Нидерланды – 2х345 cv - Дизель
+                                li.gridItem.dt_hidden._fr
+                                    .ad_box.text_center
+                                        .ad_box_decor
+                                            .ad_infinity._left
+                                            .ad_infinity._right
+                                            .ad_bird
+                                                img(src='./images/ad_bird.svg')
+                                        .ad_box_title
+                                            span -&nbsp;20%
+                                            .ad_box_wave
+                                                img(src='./images/wave_light_blue.svg')
+                                        .ad_box_counter До лета осталось 243 дня.
+                                        .ad_box_tip Время задуматься о катере!
+                                        a.ad_box_more(href='#') Подробнее
+
+                                li.gridItem
+                                    .ad_unit
+                                        .ad_photo.bs.imgLoad
+                                            .ad_photo_year 2012
+                                            a.ad_unit_more.btn_blue(href='#')
+                                            img(src='./images/kater_1.jpg')
+                                        .ad_info
+                                            .ad_info_name LINSSEN YACHTS LINSSEN 439 SEDAN
+                                            .ad_info_price 26 686 000 руб.
+                                            .ad_info_old_price 395 000 €
+                                            .ad_info_options
+                                                span Нидерланды – 2х345 cv - Дизель
+                                li.gridItem
+                                    .ad_unit
+                                        .ad_photo.bs.imgLoad
+                                            .ad_photo_year 2017
+                                            a.ad_unit_more.btn_blue(href='#')
+                                            img(src='./images/kater_1.jpg')
+                                        .ad_info
+                                            .ad_info_name PRESTIGE PRESTIGE 630
+                                            .ad_info_price 112 220 000 руб.
+                                            .ad_info_old_price 1 650 000 €
+                                            .ad_info_options
+                                                span Нидерланды – 2х345 cv - Дизель
+                                li.gridItem.dt_hidden._fl
+                                    .ad_box
+                                        .ad_box_recommend
+                                            span.ff_mon_b Kater Center<br>
+                                            span рекомендует
+                                        ul.ad_box_links
+                                            li: a.ad_box_link(href='#') Selected boats
+                                            li: a.ad_box_link(href='#') Trade-in possible
+                                            li: a.ad_box_link(href='#') Guarantee
+                                            li: a.ad_box_link(href='#') Insurance
+
+                                +loop_while(2)
+                                    li.gridItem
                                         .ad_unit
-                                            .ad_photo.bs
+                                            .ad_photo.bs.imgLoad
                                                 .ad_photo_year 2012
-                                                a.ad_unit_more(href='#')
+                                                a.ad_unit_more.btn_blue(href='#')
                                                 img(src='./images/kater_1.jpg')
                                             .ad_info
                                                 .ad_info_name LINSSEN YACHTS LINSSEN 439 SEDAN
                                                 .ad_info_price 26 686 000 руб.
                                                 .ad_info_old_price 395 000 €
                                                 .ad_info_options
-                                                    span Нидерланды –
-                                                    span.ff_mon_r 2х345 cv
-                                                    span  - Дизель
-                                    li
+                                                    span Нидерланды – 2х345 cv - Дизель
+                                    li.gridItem
                                         .ad_unit
-                                            .ad_photo.bs
+                                            .ad_photo.bs.imgLoad
                                                 .ad_photo_year 2017
-                                                a.ad_unit_more(href='#')
+                                                a.ad_unit_more.btn_blue(href='#')
                                                 img(src='./images/kater_1.jpg')
                                             .ad_info
                                                 .ad_info_name PRESTIGE PRESTIGE 630
                                                 .ad_info_price 112 220 000 руб.
                                                 .ad_info_old_price 1 650 000 €
                                                 .ad_info_options
-                                                    span Нидерланды –
-                                                    span.ff_mon_r 2х345 cv
-                                                    span  - Дизель
-                                    li
+                                                    span Нидерланды – 2х345 cv - Дизель
+                                    li.gridItem
                                         .ad_unit
-                                            .ad_photo.bs
+                                            .ad_photo.bs.imgLoad
                                                 .ad_photo_year 2017
-                                                a.ad_unit_more(href='#')
+                                                a.ad_unit_more.btn_blue(href='#')
                                                 img(src='./images/kater_1.jpg')
                                             .ad_info
                                                 .ad_info_name PRINCESS YACHTS PRINCESS V53
                                                 .ad_info_price 112 220 000 руб.
                                                 .ad_info_old_price 1 650 000 €
                                                 .ad_info_options
-                                                    span Нидерланды –
-                                                    span.ff_mon_r 2х345 cv
-                                                    span  - Дизель
+                                                    span Нидерланды – 2х345 cv - Дизель
+                                li.gridItem
+                                    .ad_unit
+                                        .ad_photo.bs.imgLoad
+                                            .ad_photo_year 2012
+                                            a.ad_unit_more.btn_blue(href='#')
+                                            img(src='./images/kater_1.jpg')
+                                        .ad_info
+                                            .ad_info_name LINSSEN YACHTS LINSSEN 439 SEDAN
+                                            .ad_info_price 26 686 000 руб.
+                                            .ad_info_old_price 395 000 €
+                                            .ad_info_options
+                                                span Нидерланды – 2х345 cv - Дизель
+                                li.gridItem
+                                    .ad_unit
+                                        .ad_photo.bs.imgLoad
+                                            .ad_photo_year 2017
+                                            a.ad_unit_more.btn_blue(href='#')
+                                            img(src='./images/kater_1.jpg')
+                                        .ad_info
+                                            .ad_info_name PRESTIGE PRESTIGE 630
+                                            .ad_info_price 112 220 000 руб.
+                                            .ad_info_old_price 1 650 000 €
+                                            .ad_info_options
+                                                span Нидерланды – 2х345 cv - Дизель
+
+                                +loop_while(1)
+                                    li.gridItem.dt_only
+                                        .ad_unit
+                                            .ad_photo.bs.imgLoad
+                                                .ad_photo_year 2012
+                                                a.ad_unit_more.btn_blue(href='#')
+                                                img(src='./images/kater_1.jpg')
+                                            .ad_info
+                                                .ad_info_name LINSSEN YACHTS LINSSEN 439 SEDAN
+                                                .ad_info_price 26 686 000 руб.
+                                                .ad_info_old_price 395 000 €
+                                                .ad_info_options
+                                                    span Нидерланды – 2х345 cv - Дизель
+                                    li.gridItem.dt_only
+                                        .ad_unit
+                                            .ad_photo.bs.imgLoad
+                                                .ad_photo_year 2017
+                                                a.ad_unit_more.btn_blue(href='#')
+                                                img(src='./images/kater_1.jpg')
+                                            .ad_info
+                                                .ad_info_name PRESTIGE PRESTIGE 630
+                                                .ad_info_price 112 220 000 руб.
+                                                .ad_info_old_price 1 650 000 €
+                                                .ad_info_options
+                                                    span Нидерланды – 2х345 cv - Дизель
+                                    li.gridItem.dt_only
+                                        .ad_unit
+                                            .ad_photo.bs.imgLoad
+                                                .ad_photo_year 2017
+                                                a.ad_unit_more.btn_blue(href='#')
+                                                img(src='./images/kater_1.jpg')
+                                            .ad_info
+                                                .ad_info_name PRINCESS YACHTS PRINCESS V53
+                                                .ad_info_price 112 220 000 руб.
+                                                .ad_info_old_price 1 650 000 €
+                                                .ad_info_options
+                                                    span Нидерланды – 2х345 cv - Дизель
+                                    li.gridItem.dt_only
+                                        .ad_unit
+                                            .ad_photo.bs.imgLoad
+                                                .ad_photo_year 2017
+                                                a.ad_unit_more.btn_blue(href='#')
+                                                img(src='./images/kater_1.jpg')
+                                            .ad_info
+                                                .ad_info_name PRINCESS YACHTS PRINCESS V53
+                                                .ad_info_price 112 220 000 руб.
+                                                .ad_info_old_price 1 650 000 €
+                                                .ad_info_options
+                                                    span Нидерланды – 2х345 cv - Дизель
 
                             ul.ad_list_pagination
                                 li._first
                                     a.btn_v1.pagination_btn.btn_gray(href='#')
-                                        span.i-chevron-left
+                                        span.pagination_text
+                                            span.i-chevron-left
                                 li
-                                    span.btn_v1.pagination_btn.btn_gray._active() 1
+                                    span.btn_v1.pagination_btn.btn_gray._active()
+                                        span.pagination_text 1
                                 li
-                                    a.btn_v1.pagination_btn.btn_gray(href='#') 2
+                                    a.btn_v1.pagination_btn.btn_gray(href='#')
+                                        span.pagination_text 2
+                                li.mob_hidden
+                                    a.btn_v1.pagination_btn.btn_gray(href='#')
+                                        span.pagination_text 3
+                                li.mob_hidden
+                                    a.btn_v1.pagination_btn.btn_gray(href='#')
+                                        span.pagination_text 4
                                 li
-                                    a.btn_v1.pagination_btn.btn_gray(href='#') 3
+                                    span.btn_v1.pagination_btn.btn_gray()
+                                        span.pagination_text ...
                                 li
-                                    a.btn_v1.pagination_btn.btn_gray(href='#') 4
-                                li
-                                    span.btn_v1.pagination_btn.btn_gray() ...
-                                li
-                                    a.btn_v1.pagination_btn.btn_gray(href='#') 24
+                                    a.btn_v1.pagination_btn.btn_gray(href='#')
+                                        span.pagination_text 24
                                 li._last
                                     a.btn_v1.pagination_btn.btn_gray(href='#')
-                                        span.i-chevron-right
+                                        span.pagination_text
+                                            span.i-chevron-right
 
                         .aside._title_space
-                            ul.aside_ads
+                            ul.aside_ads.dt_only
                                 li
                                     .ad_box.text_center
                                         .ad_box_decor
@@ -165,11 +314,6 @@ html(lang='ru')
                                             li: a.ad_box_link(href='#') Guarantee
                                             li: a.ad_box_link(href='#') Insurance
 
-
-
-
-
-
                 .advice_section
                     .section_inner
                         .advice_block.clearfix
@@ -180,13 +324,13 @@ html(lang='ru')
 
                             .adv_decor._dec-cloud-1
                                 img(src='./images/decor_cloud.svg')
-                            .adv_decor._dec-cloud-2
+                            .adv_decor._dec-cloud-2.mob_hidden
                                 img(src='./images/decor_cloud.svg')
-                            .adv_decor._dec-bird-1
+                            .adv_decor._dec-bird-1.mob_hidden
                                 img(src='./images/decor_bird.svg')
 
                             .advice_consultant_block._left
-                                .adv_decor._dec-wave-1.mob_hidden
+                                .adv_decor._dec-wave-1
                                     img(src='./images/decor_wave_2.svg')
                                 .adv_decor._dec-wave-2.mob_hidden
                                     img(src='./images/decor_wave_2.svg')
@@ -237,4 +381,6 @@ html(lang='ru')
             +footer()
 
         +popups()
+
+    +scripts(true)
 
