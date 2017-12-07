@@ -2,11 +2,11 @@
 
 @font-face {
   font-family: 'kater_icons';
-  src:  url('#{$icomoon-font-path}/kater_icons.eot?r9shac');
-  src:  url('#{$icomoon-font-path}/kater_icons.eot?r9shac#iefix') format('embedded-opentype'),
-    url('#{$icomoon-font-path}/kater_icons.ttf?r9shac') format('truetype'),
-    url('#{$icomoon-font-path}/kater_icons.woff?r9shac') format('woff'),
-    url('#{$icomoon-font-path}/kater_icons.svg?r9shac#kater_icons') format('svg');
+  src:  url('#{$icomoon-font-path}/kater_icons.eot?e26r0b');
+  src:  url('#{$icomoon-font-path}/kater_icons.eot?e26r0b#iefix') format('embedded-opentype'),
+    url('#{$icomoon-font-path}/kater_icons.ttf?e26r0b') format('truetype'),
+    url('#{$icomoon-font-path}/kater_icons.woff?e26r0b') format('woff'),
+    url('#{$icomoon-font-path}/kater_icons.svg?e26r0b#kater_icons') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -44,6 +44,11 @@
 .i-phone {
   &:before {
     content: $i-phone;
+  }
+}
+.i-search {
+  &:before {
+    content: $i-search;
   }
 }
 .i-clock2 {

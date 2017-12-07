@@ -1,18 +1,19 @@
 var body, html, doc, wnd,
     closeMenuTimer,
-    boardGrid,
-    callback_popup,
-    auth_popup,
-    fail_popup,
-    success_popup,
-    quick_search_popup,
-    add2cart_popup,
-    recovery_popup;
+    boardGrid;
 
 $(function ($) {
 
     body = $('body');
     html = $('html');
+
+    $(document).on('click', function (e) {
+        if (!($(e.target).hasClass('multiPicker') || $(e.target).closest('.multiPicker').length)) {
+            $('.multiPicker').removeClass('_opened');
+            body.removeClass('_slider_opened');
+            toggleSliderClose(false);
+        }
+    });
 
     body.delegate('.openMobMenu', 'click', function () {
         if (html.hasClass('menu_opened')) {
@@ -29,18 +30,70 @@ $(function ($) {
 
         return false;
 
-    }).delegate('.openFav', 'click', function () {
+    }).delegate('.tabCloseLink', 'click', function () {
+        var btn = $(this);
 
-        body.toggleClass('fav_opened');
+        btn.closest('.tabContainer').removeClass('_tab_switched');
+
         return false;
+    }).delegate('.categoryBtn', 'click', function () {
+        var btn = $(this);
 
-    }).delegate('.toggleOneClick', 'click', function () {
+        btn.closest('.tabContainer').addClass('_open_tabs');
 
-        $('.oneClickForm').toggle();
         return false;
+    }).delegate('.closeCategoryBtn', 'click', function () {
+        var btn = $(this);
 
-    }).delegate('.favBtn', 'click', function () {
-        $(this).toggleClass('favorite');
+        btn.closest('.tabContainer').removeClass('_open_tabs');
+
+        return false;
+    }).delegate('.filterRmBtn', 'click', function () {
+        var btn = $(this), rslts = btn.closest('.multiPickerResults');
+
+        btn.closest('.filter_item').remove();
+
+        rslts.closest('.multiPicker').removeClass('_opened').toggleClass('_not_empty', !!rslts.find('li').length);
+
+        body.removeClass('_slider_opened');
+
+        toggleSliderClose(false);
+
+        return false;
+    }).delegate('.multiPickerLabel, .multiPickerResults', 'click', function () {
+        var pckr = $(this).closest('.multiPicker');
+
+        $('.multiPicker').not(pckr).removeClass('_opened');
+
+        pckr.toggleClass('_opened');
+
+        body.addClass('_slider_opened');
+
+        toggleSliderClose(true);
+
+        return false;
+    }).delegate('.multiPickerBtn', 'click', function () {
+        var pckr_btn = $(this),
+            pckr = pckr_btn.closest('.multiPicker'),
+            sldr = pckr.find('.filterToddler'),
+            format = sldr.attr('data-format') || '',
+            rslts = pckr.find('.multiPickerResults'),
+            limit = pckr.attr('data-limit') || 0,
+            val = sldr[0].noUiSlider.get();
+
+        if (limit) {
+            do
+                pckr.find('.multiPickerResults li').last().remove();
+            while (pckr.find('.multiPickerResults li').length >= limit)
+        }
+
+        rslts.append('<li class="filter_item" title="Металл"><span class="filter_remove filterRmBtn">×</span>' +
+            (format ? ('money' === format ? parseMoney(val[0].toString(), 1) : parseInt(val[0])) : parseInt(val[0])) + ' – ' +
+            (format ? ('money' === format ? parseMoney(val[1].toString(), 1) : parseInt(val[1])) : parseInt(val[1])) +
+            '</li>');
+
+        pckr.addClass('_not_empty').removeClass('_opened');
+
         return false;
     });
 
@@ -54,25 +107,9 @@ $(function ($) {
 
     initStick();
 
-    initInputFillChecker();
-
-    initCallbackPopup();
-
-    initAuthPopup();
-
-    initRecoveryPopup();
-
-    initFailPopup();
-
-    initSuccessPopup();
-
-    initAddToCartPopup();
-
-    initQuickSearchPopup();
-
     initTabs();
 
-    initAsideSubmenu();
+    initToddlers();
 
     initSelect2();
 
@@ -105,6 +142,12 @@ function getScrollbarWidth() {
     return widthNoScroll - widthWithScroll;
 }
 
+function toggleSliderClose(show) {
+    setTimeout(function () {
+        $('.closeMobSlider').toggle($('.multiPicker._opened').length || show);
+    }, 100);
+}
+
 function initBoard() {
     if ((boardGrid && boardGrid.length && boardGrid.data() && boardGrid.data('isotope'))) {
         setTimeout(function () {
@@ -128,7 +171,7 @@ function loadImages() {
 
         img.imagesLoaded()
             .always(function (instance) {
-                console.log(img.addClass('_loaded'));
+                img.addClass('_loaded');
             })
             .done(function (instance) {
 
@@ -157,14 +200,14 @@ function initBS() {
 function initStick() {
 
     $('.sticky').on('sticky_kit:stick', function (e) {
+        $('.header').addClass('_wide');
         $(this).addClass('_top');
     }).on('sticky_kit:unstick', function (e) {
+        $('.header').removeClass('_wide');
         $(this).removeClass('_top');
     }).on('sticky_kit:bottom', function (e) {
-        $('.header').addClass('_wide');
         $(this).addClass('_bottom');
     }).on('sticky_kit:unbottom', function (e) {
-        $('.header').removeClass('_wide');
         $(this).removeClass('_bottom');
     }).each(function (ind) {
         var stck = $(this);
@@ -175,280 +218,260 @@ function initStick() {
     });
 }
 
-function initInputFillChecker() {
-    $('input').on('change keyup blur', function () {
-        var inp = $(this);
-
-        if ('text' == inp[0].type && 'required' == inp.attr('required')) {
-            inp.toggleClass('empty', inp.val() == 0);
-        }
-    });
-}
-
-function initQuickSearchPopup() {
-
-    quick_search_popup = $('#quick_search_popup').dialog({
-        autoOpen: false,
-        modal: true,
-        closeOnEscape: true,
-        closeText: '',
-        dialogClass: 'no_close_mod no_title dialog_fixed',
-        //appendTo: '.wrapper',
-        width: '100%',
-        draggable: true,
-        collision: "fit",
-        position: {my: "top center", at: "top center", of: window},
-        open: function (event, ui) {
-            body.addClass('modal_opened overlay_v2');
-        },
-        close: function (event, ui) {
-            body.removeClass('modal_opened overlay_v2');
-        }
-    });
-
-    $('.quickSearchBtn').on('click', function () {
-
-        quick_search_popup.dialog('open');
-
-        return false;
-    });
-
-}
-
-function initAddToCartPopup() {
-
-    add2cart_popup = $('#add2cart_popup').dialog({
-        autoOpen: false,
-        modal: false,
-        closeOnEscape: true,
-        closeText: '',
-        dialogClass: 'no_close_on_dt dialog_close_butt_mod_1 dialog_g_size_3 mob_dialog_fixed',
-        //appendTo: '.wrapper',
-        width: 430,
-        draggable: true,
-        collision: "fit",
-        position: {
-            my: "right-5 top+15",
-            at: "right bottom",
-            of: $('.cartLink')
-        },
-        open: function (event, ui) {
-            //body.addClass('modal_opened overlay_v2');
-        },
-        close: function (event, ui) {
-            //body.removeClass('modal_opened overlay_v2');
-        }
-    });
-
-    $('.addToCart').on('click', function () {
-
-        add2cart_popup.dialog('open');
-
-        setTimeout(function () {
-            add2cart_popup.dialog('close');
-        }, 3000);
-
-        return false;
-    });
-
-}
-
-function initCallbackPopup() {
-
-    callback_popup = $('#callback_popup').dialog({
-        autoOpen: false,
-        modal: true,
-        closeOnEscape: true,
-        closeText: '',
-        dialogClass: 'no_close_mod dialog_g_size_1',
-        //appendTo: '.wrapper',
-        width: 300,
-        draggable: true,
-        collision: "fit",
-        position: {my: "top center", at: "top center", of: window},
-        open: function (event, ui) {
-            body.addClass('modal_opened overlay_v2');
-        },
-        close: function (event, ui) {
-            body.removeClass('modal_opened overlay_v2');
-        }
-    });
-
-    $('.callbackBtn').on('click', function () {
-
-        callback_popup.dialog('open');
-
-        return false;
-    });
-
-}
-
-function initAuthPopup() {
-
-    auth_popup = $('#auth_popup').dialog({
-        autoOpen: false,
-        modal: true,
-        closeOnEscape: true,
-        closeText: '',
-        dialogClass: 'no_close_mod dialog_g_size_1',
-        //appendTo: '.wrapper',
-        width: 462,
-        draggable: true,
-        collision: "fit",
-        position: {my: "top center", at: "top center", of: window},
-        open: function (event, ui) {
-            body.addClass('modal_opened overlay_v2');
-        },
-        close: function (event, ui) {
-            body.removeClass('modal_opened overlay_v2');
-        }
-    });
-
-    $('.authBtn').on('click', function () {
-
-        auth_popup.dialog('open');
-
-        return false;
-    });
-
-}
-
-function initFailPopup() {
-
-    fail_popup = $('#fail_popup').dialog({
-        autoOpen: false,
-        modal: true,
-        closeOnEscape: true,
-        closeText: '',
-        dialogClass: 'no_close_mod dialog_g_size_1',
-        //appendTo: '.wrapper',
-        width: 462,
-        draggable: true,
-        collision: "fit",
-        position: {my: "top center", at: "top center", of: window},
-        open: function (event, ui) {
-            body.addClass('modal_opened overlay_v2');
-        },
-        close: function (event, ui) {
-            body.removeClass('modal_opened overlay_v2');
-        }
-    });
-
-    $('.openFailPopup').on('click', function () {
-
-        fail_popup.dialog('open');
-
-        return false;
-    });
-
-}
-
-function initSuccessPopup() {
-
-    success_popup = $('#success_popup').dialog({
-        autoOpen: false,
-        modal: true,
-        closeOnEscape: true,
-        closeText: '',
-        dialogClass: 'no_close_mod dialog_g_size_1',
-        //appendTo: '.wrapper',
-        width: 462,
-        draggable: true,
-        collision: "fit",
-        position: {my: "top center", at: "top center", of: window},
-        open: function (event, ui) {
-            body.addClass('modal_opened overlay_v2');
-        },
-        close: function (event, ui) {
-            body.removeClass('modal_opened overlay_v2');
-        }
-    });
-
-    $('.openSuccessPopup').on('click', function () {
-
-        success_popup.dialog('open');
-
-        return false;
-    });
-
-}
-
-function initRecoveryPopup() {
-
-    recovery_popup = $('#recovery_popup').dialog({
-        autoOpen: false,
-        modal: true,
-        closeOnEscape: true,
-        closeText: '',
-        dialogClass: 'no_close_mod dialog_g_size_1',
-        //appendTo: '.wrapper',
-        width: 462,
-        draggable: true,
-        collision: "fit",
-        position: {my: "top center", at: "top center", of: window},
-        open: function (event, ui) {
-            body.addClass('modal_opened overlay_v2');
-        },
-        close: function (event, ui) {
-            body.removeClass('modal_opened overlay_v2');
-        }
-    });
-
-    $('.passRecoveryBtn').on('click', function () {
-        auth_popup.dialog('close');
-
-        recovery_popup.dialog('open');
-
-        return false;
-    });
-
-}
-
-function initAsideSubmenu() {
-
-    $('body').delegate('.menuItem', 'mouseenter ', function (e) {
-        $(this).addClass('hovered just_hovered');
-    }).delegate('.menuItem', 'mouseleave', function (e) {
-        $(this).removeClass('hovered just_hovered');
-    }).delegate('.menuItem', 'click', function (e) {
-
-        var el = $(this);
-
-        if (el.hasClass('just_hovered')) {
-            el.removeClass('just_hovered');
-        } else {
-            el.toggleClass('hovered');
-        }
-    });
-
-}
-
 function initTabs() {
 
-    $('.tabBlock').each(function (ind) {
-        var tab = $(this);
+    $('.tabContainer').each(function (ind) {
+        var tabs = $(this);
 
-        tab.tabs({
-            active: 0,
-            tabContext: tab.attr('data-tab-context'),
-            activate: function (e, u) {
+        tabs.bind('easytabs:before', function (event, link, panel) {
+            var func = $(this).attr('data-mob-event');
 
+            if (func in window) {
+                window[func](event, link, panel, $(this));
             }
+        }).easytabs({
+            animationSpeed: 0,
+            tabs: '.tabControls>li'
         });
     });
 }
 
+function mobTabSwitcher(event, link, panel, tabHolder) {
+    tabHolder.addClass('_tab_switched');
+
+    console.log(tabHolder, link);
+    console.log(event);
+    console.log(panel);
+}
+
+function initToddlers() {
+    var canUpdate = true;
+
+    $('.filterToddler').each(function (ind) {
+        var tdlr = $(this),
+            plural = tdlr.attr('data-plural'),
+            plural_text = tdlr.attr('data-plural-text') || '',
+            format = tdlr.attr('data-format') || '',
+            plural_1 = '',
+            plural_2 = '',
+            suffix_1 = tdlr.attr('data-suffix_1') || '',
+            suffix_2 = tdlr.attr('data-suffix_2') || '',
+            arr = [],
+            filter = tdlr.closest('.multiPickerPopup'),
+            single = tdlr.attr('data-single'),
+            min = parseInt(tdlr.attr('data-min')) || 0,
+            max = parseInt(tdlr.attr('data-max')) || 10,
+            val_1 = min,
+            val_2 = max;
+
+        if (single) {
+            noUiSlider.create(this, {
+                start: min + Math.floor((max - min) * .5),
+                connect: [true, false],
+                range: {
+                    'min': min,
+                    'max': max
+                }
+            });
+        } else {
+            noUiSlider.create(this, {
+                start: [min + Math.floor((max - min) * .2), min + Math.floor((max - min) * .8)],
+                connect: true,
+                range: {
+                    'min': min,
+                    'max': max
+                }
+            });
+        }
+
+        if (plural !== void 0) {
+            arr = plural.split(',');
+            plural_1 = plural.length > 0 ? getPural(val_1, arr[0], arr[1], arr[2]) : '';
+            plural_2 = plural.length > 0 ? getPural(val_2, arr[0], arr[1], arr[2]) : '';
+
+        } else if (plural_text.length) {
+            plural_1 = plural_2 = plural_text;
+        }
+
+        filter.find('.min').html(
+            (format ? ('money' === format ? parseMoney(val_1.toString()) : suffix_1) : suffix_1)
+        );
+
+        filter.find('.max').html(
+            (format ? ('money' === format ? parseMoney(val_2.toString()) : suffix_2) : suffix_2)
+        );
+
+        filter.find('.toddlerVal').text(min + ' – ' + max);
+
+        this.noUiSlider.on('update', function (values, handle) {
+            var target = $(this.target),
+                filter = target.closest('.multiPickerPopup'),
+                plural = target.attr('data-plural'),
+                plural_text = target.attr('data-plural-text') || '',
+                format = target.attr('data-format') || '',
+                suffix = target.attr('data-suffix') || '',
+                suffix_1 = target.attr('data-suffix_1') || '',
+                suffix_2 = target.attr('data-suffix_2') || '',
+                val_1 = parseInt(values[0]),
+                val_2 = parseInt(values[1]),
+                plural_suffix_1 = target.attr('data-plural-suffix_1') || false,
+                plural_suffix_2 = target.attr('data-plural-suffix_2') || false,
+                plural_1 = '',
+                plural_2 = '',
+                arr = [];
+
+            //if (plural !== void 0) {
+            //    arr = plural.split(',');
+            //    plural_1 = plural.length > 0 ? getPural(val_1, arr[0], arr[1], arr[2]) : '';
+            //    plural_2 = plural.length > 0 ? getPural(val_2, arr[0], arr[1], arr[2]) : '';
+            //
+            //} else if (plural_text.length) {
+            //    plural_1 = plural_2 = plural_text;
+            //}
+
+            filter.find('.toddlerVal').text(
+                (format ? ('money' === format ? parseMoney(val_1.toString(), 1) : val_1) : val_1 + plural_text) + ' – ' +
+                (format ? ('money' === format ? parseMoney(val_2.toString(), 1) : val_2) : val_2 + plural_text));
+
+            //if (canUpdate) {
+            //    resize(filter.find('.start .val').val(
+            //        (format ? ('money' == format ? moneyFormat(val_1.toString()) : val_1) : val_1) +
+            //        suffix_1 + (plural_suffix_1 ? getPural(val_1, arr[0], arr[1], arr[2]) : '')
+            //    ));
+            //
+            //    resize(filter.find('.end .val').val(
+            //        (format ? ('money' == format ? moneyFormat(val_2.toString()) : val_2) : val_2) +
+            //        suffix_2 + (plural_suffix_2 ? getPural(val_2, arr[0], arr[1], arr[2]) : '')
+            //    ));
+            //}
+
+        });
+
+        //filter.find('.start input.val').on('keyup keypress change update', function () {
+        //    canUpdate = false;
+        //    tdlr[0].noUiSlider.set([toNum($(this).val()), null]);
+        //}).on('blur', function () {
+        //    canUpdate = true;
+        //    tdlr[0].noUiSlider.set([toNum($(this).val()), null]);
+        //});
+        //
+        //filter.find('.end input.val').on('keyup keypress change update', function () {
+        //    canUpdate = false;
+        //    tdlr[0].noUiSlider.set([null, toNum($(this).val())]);
+        //}).on('blur', function () {
+        //    canUpdate = true;
+        //    tdlr[0].noUiSlider.set([null, toNum($(this).val())]);
+        //});
+
+        //filter.find('.toddlerSelect').each(function (ind) {
+        //    var slct = $(this), target = filter.find(slct.attr('data-target'));
+        //
+        //    slct.on('change', function (e) {
+        //        var _this = $(this);
+        //        canUpdate = true;
+        //
+        //        if (_this.attr('data-target') == '.start') {
+        //            tdlr[0].noUiSlider.set([_this.val(), null]);
+        //        } else if ($(this).attr('data-target') == '.end') {
+        //            tdlr[0].noUiSlider.set([null, _this.val()]);
+        //        }
+        //
+        //    }).select2({
+        //        minimumResultsForSearch: Infinity,
+        //        dropdownParent: target,
+        //        width: '100%',
+        //        language: {
+        //            noResults: function (e, r) {
+        //                return 'Нет результатов';
+        //                // return "Город не найден. <a href='#' class='gl_link _clr_turqoise'>Список городов</a>";
+        //            }
+        //        },
+        //        templateResult: function (data) {
+        //            return $.isNumeric(data.text) ? numFormat(data.text) : data.text;
+        //        },
+        //        escapeMarkup: function (markup) {
+        //            return markup;
+        //        },
+        //        adaptDropdownCssClass: function () {
+        //            return slct.attr('data-dropdown-class');
+        //        }
+        //    });
+        //
+        //    target.on('click', function () {
+        //        slct.select2('open');
+        //        return false;
+        //    });
+        //});
+
+    });
+}
+
+function parseMoney(money, fix) {
+    var m = money, l = '';
+
+    if ((money / 1000000) >= 1) {
+        m = (money / 1000000).toFixed(fix || 0);
+        l = 'м';
+    } else if ((money / 1000) >= 1) {
+        m = (money / 1000).toFixed(fix || 0);
+        l = 'к';
+    }
+
+    return m + l;
+}
+
 function initSelect2() {
+    $.fn.select2.amd.define('select2/i18n/ru', [], function () {
+        // Russian
+        return {
+            errorLoading: function () {
+                return 'Результат не может быть загружен.';
+            },
+            inputTooLong: function (args) {
+                var overChars = args.input.length - args.maximum;
+                return 'Пожалуйста, удалите ' + overChars + ' символ' + getPural(overChars, '', 'а', 'ов');
+            },
+            inputTooShort: function (args) {
+                var remainingChars = args.minimum - args.input.length;
+
+                return 'Пожалуйста, введите ' + remainingChars + ' или более символов';
+            },
+            loadingMore: function () {
+                return 'Загружаем ещё ресурсы…';
+            },
+            maximumSelected: function (args) {
+                return 'Вы можете выбрать ' + args.maximum + ' элемент' + getPural(args.maximum, '', 'а', 'ов').trim();
+            },
+            noResults: function () {
+                return 'Ничего не найдено';
+            },
+            searching: function () {
+                return 'Поиск…';
+            }
+        };
+    });
 
     $('.select2').each(function (ind) {
         var slct = $(this);
 
-        slct.select2({
+        slct.on('select2:open', function () {
+            $('.multiPicker').removeClass('_opened');
+            body.removeClass('_slider_opened');
+            toggleSliderClose(false);
+        }).select2({
             minimumResultsForSearch: Infinity,
             dropdownParent: slct.parent(),
             width: '100%'
         });
     });
+}
+
+function getPural(n, str1, str2, str5) {
+    return ' ' + ((((n % 10) == 1) && ((n % 100) != 11)) ? (str1) : (((((n % 10) >= 2) && ((n % 10) <= 4)) && (((n % 100) < 10) || ((n % 100) >= 20))) ? (str2) : (str5)))
+}
+
+function moneyFormat(str) {
+    return (str + '').replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1 ");
 }
 
 function all_dialog_close() {
@@ -463,3 +486,15 @@ function all_dialog_close_gl() {
         }
     });
 }
+
+function getScrollTop() {
+    return window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+}
+
+function mobileCheck() {
+    return (/Android|iPhone|iPad|iPod|BlackBerry/i).test(navigator.userAgent || navigator.vendor || window.opera) || (('ontouchstart' in window) || (navigator.MaxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0));
+}
+
+$(window).on('scroll', function () {
+
+});

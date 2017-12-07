@@ -24,6 +24,8 @@ mixin loop_while(counter)
         block
 
 mixin header(active)
+    a.mob_menu_btn._slider_close_btn.closeMobSlider(href='#')
+
     .header_bg.bs
         img(src='./images/hero_1.jpg')
     div.header
@@ -88,6 +90,51 @@ mixin breadcrumbs(list)
                     span=item
                 - else
                     a.gl_link(href= item == 'Главная' ? 'index.html' : (item == 'Каталог' ? 'catalog.html' : 'products.html'))=item
+
+mixin filter_tab()
+    .filter_table
+        .filter_cell._cell-1
+            .filter_label Материал
+            .filter_param.select_box_v2
+                select.select2(multiple data-placeholder='Выбрать…' data-maximum-selection-length=2)
+                    option Металл
+                    option Дерево
+                    option Пластик
+        .filter_cell._cell-2
+            .filter_label Длина
+            .filter_param
+                +multi_picker(1, 30, 'м', '1м', '30м')
+        .filter_cell._cell-3
+            .filter_label год выпуска
+            .filter_param
+                +multi_picker(1960, 2017, null, 1960, 2017, 1, null)
+        .filter_cell._cell-4
+            .filter_label тип топлива
+            .filter_param.select_box_v2
+                select.select2(multiple data-placeholder='Выбрать…' data-maximum-selection-length=1)
+                    option бензин
+                    option дизель
+                    option электро
+        .filter_cell._cell-5
+            .filter_label стоимость
+            .filter_param
+                +multi_picker(1000, 10000000, '', '1к', '10м', 1, 'money')
+        .filter_cell._cell-6
+            button.btn_blue.btn_v2.filter_btn: span Искать
+
+mixin multi_picker(min, max, suffix, suffix_1, suffix_2, limit, format)
+    .multiple_slider_picker.multiPicker(data-limit= limit)
+        ul.multiple_slider_results.multiPickerResults
+        span.multiPickerLabel.multiple_slider_label Выбрать…
+        .multiPickerPopup.multi_picker_popup
+            .multi_picker_inner.toddler-v1
+                .toddler_val.toddlerVal
+                .toddler_range
+                    .min
+                    .max
+                .filterToddler.filter_toddler(data-suffix_2= suffix_2 data-suffix_1= suffix_1 data-plural-text= suffix data-min= min data-max= max data-format= format)
+
+            a.multiPickerBtn.btn_v3.multi_picker_btn.btn_blue(href='#') Добавить
 
 mixin popups()
     .popup_close_btn.popupClose
@@ -212,14 +259,16 @@ mixin scripts(index, news, search, product, lk, cart)
     |
     | <!--build:js js/main.min.js -->
     script(src='js/lib/jquery-1.12.1.min.js')
-    script(src='js/lib/jquery-ui-1.11.4.js')
+    //script(src='js/easytabs/vendor/jquery.hashchange.min.js')
+    script(src='js/easytabs/lib/jquery.easytabs.js')
+    script(src='js/lib/nouislider.min.js')
     script(src='js/lib/jquery.backstretch.min.js')
     script(src='js/lib/jquery.sticky-kit.min.js')
     script(src='js/lib/jquery.inputmask.bundle.js')
     script(src='js/lib/imagesloaded.pkgd.min.js')
     script(src='js/lib/isotope.pkgd.min.js')
     script(src='js/lib/packery-mode.pkgd.js')
-    script(src='js/lib/skrollr.js')
+    //-script(src='js/lib/skrollr.js')
     script(src='js/lib/select2.js')
     script(src='js/main.js')
     |

@@ -15,7 +15,7 @@
   </head>
   <body class="wide_menu">
     <div class="wrapper">
-      <div class="base">
+      <div class="base"><a class="mob_menu_btn _slider_close_btn closeMobSlider" href="#"></a>
         <div class="header_bg bs"><img src="./images/hero_1.jpg"/></div>
         <div class="header">
           <div class="header_bg_w">
@@ -52,14 +52,427 @@
               </div>
               <div class="filter_title" data-0-top-top="transform: scale(.8) translate(0, 200px); opacity: 0;" data-120-top-top="transform: scale(1) translate(0, 0px); opacity: 1;">Катера из Европы</div>
               <div class="filter_wrapper sticky" data-margin-top_="100" data-sticky-class="_stuck">
-                <div class="filter_tabs">
-                  <div class="section_inner"></div>
-                </div>
-                <div class="filter_box">
-                  <div class="section_inner"></div>
+                <div class="tabContainer" data-mob-event="mobTabSwitcher">
+                  <div class="filter_tabs">
+                    <div class="filter_category dt_hidden"><a class="category_btn categoryBtn" href="#">Категории</a><a class="close_category_btn btn_blue closeCategoryBtn" href="#"></a></div>
+                    <ul class="tabControls tab_controls">
+                      <li class="tab_unit _tab-1"><a class="tab_link" href="#tab_1"><span>Более 10 метров</span></a><a class="tab_close_link tabCloseLink" href="#"></a></li>
+                      <li class="tab_unit _tab-2"><a class="tab_link" href="#tab_2"><span>Cо стационарными двигателями</span></a><a class="tab_close_link tabCloseLink" href="#"></a></li>
+                      <li class="tab_unit _tab-3"><a class="tab_link" href="#tab_3"><span>C подвесными двигателями</span></a><a class="tab_close_link tabCloseLink" href="#"></a></li>
+                      <li class="tab_unit _tab-4"><a class="tab_link" href="#tab_4"><span>РИБ</span></a><a class="tab_close_link tabCloseLink" href="#"></a></li>
+                      <li class="tab_unit _tab-5"><a class="tab_link" href="#tab_4"><span>Трейлеры</span></a><a class="tab_close_link tabCloseLink" href="#"></a></li>
+                    </ul><a class="collapse_category_btn closeCategoryBtn btn_v4 btn_gray-2" href="#">Закрыть</a>
+                  </div>
+                  <div class="filter_box">
+                    <div class="filter_tab" id="tab_1">
+                      <div class="filter_table">
+                        <div class="filter_cell _cell-1">
+                          <div class="filter_label">Материал</div>
+                          <div class="filter_param select_box_v2">
+                            <select class="select2" multiple="multiple" data-placeholder="Выбрать…" data-maximum-selection-length="2">
+                              <option>Металл</option>
+                              <option>Дерево</option>
+                              <option>Пластик</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="filter_cell _cell-2">
+                          <div class="filter_label">Длина</div>
+                          <div class="filter_param">
+                            <div class="multiple_slider_picker multiPicker">
+                              <ul class="multiple_slider_results multiPickerResults"></ul><span class="multiPickerLabel multiple_slider_label">Выбрать…</span>
+                              <div class="multiPickerPopup multi_picker_popup">
+                                <div class="multi_picker_inner toddler-v1">
+                                  <div class="toddler_val toddlerVal"></div>
+                                  <div class="toddler_range">
+                                    <div class="min"></div>
+                                    <div class="max"></div>
+                                  </div>
+                                  <div class="filterToddler filter_toddler" data-suffix_2="30м" data-suffix_1="1м" data-plural-text="м" data-min="1" data-max="30"></div>
+                                </div><a class="multiPickerBtn btn_v3 multi_picker_btn btn_blue" href="#">Добавить</a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="filter_cell _cell-3">
+                          <div class="filter_label">год выпуска</div>
+                          <div class="filter_param">
+                            <div class="multiple_slider_picker multiPicker" data-limit="1">
+                              <ul class="multiple_slider_results multiPickerResults"></ul><span class="multiPickerLabel multiple_slider_label">Выбрать…</span>
+                              <div class="multiPickerPopup multi_picker_popup">
+                                <div class="multi_picker_inner toddler-v1">
+                                  <div class="toddler_val toddlerVal"></div>
+                                  <div class="toddler_range">
+                                    <div class="min"></div>
+                                    <div class="max"></div>
+                                  </div>
+                                  <div class="filterToddler filter_toddler" data-suffix_2="2017" data-suffix_1="1960" data-min="1960" data-max="2017"></div>
+                                </div><a class="multiPickerBtn btn_v3 multi_picker_btn btn_blue" href="#">Добавить</a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="filter_cell _cell-4">
+                          <div class="filter_label">тип топлива</div>
+                          <div class="filter_param select_box_v2">
+                            <select class="select2" multiple="multiple" data-placeholder="Выбрать…" data-maximum-selection-length="1">
+                              <option>бензин</option>
+                              <option>дизель</option>
+                              <option>электро</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="filter_cell _cell-5">
+                          <div class="filter_label">стоимость</div>
+                          <div class="filter_param">
+                            <div class="multiple_slider_picker multiPicker" data-limit="1">
+                              <ul class="multiple_slider_results multiPickerResults"></ul><span class="multiPickerLabel multiple_slider_label">Выбрать…</span>
+                              <div class="multiPickerPopup multi_picker_popup">
+                                <div class="multi_picker_inner toddler-v1">
+                                  <div class="toddler_val toddlerVal"></div>
+                                  <div class="toddler_range">
+                                    <div class="min"></div>
+                                    <div class="max"></div>
+                                  </div>
+                                  <div class="filterToddler filter_toddler" data-suffix_2="10м" data-suffix_1="1к" data-plural-text="" data-min="1000" data-max="10000000" data-format="money"></div>
+                                </div><a class="multiPickerBtn btn_v3 multi_picker_btn btn_blue" href="#">Добавить</a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="filter_cell _cell-6">
+                          <button class="btn_blue btn_v2 filter_btn"><span>Искать</span></button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="filter_tab" id="tab_2">
+                      <div class="filter_table">
+                        <div class="filter_cell _cell-1">
+                          <div class="filter_label">Материал</div>
+                          <div class="filter_param select_box_v2">
+                            <select class="select2" multiple="multiple" data-placeholder="Выбрать…" data-maximum-selection-length="2">
+                              <option>Металл</option>
+                              <option>Дерево</option>
+                              <option>Пластик</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="filter_cell _cell-2">
+                          <div class="filter_label">Длина</div>
+                          <div class="filter_param">
+                            <div class="multiple_slider_picker multiPicker">
+                              <ul class="multiple_slider_results multiPickerResults"></ul><span class="multiPickerLabel multiple_slider_label">Выбрать…</span>
+                              <div class="multiPickerPopup multi_picker_popup">
+                                <div class="multi_picker_inner toddler-v1">
+                                  <div class="toddler_val toddlerVal"></div>
+                                  <div class="toddler_range">
+                                    <div class="min"></div>
+                                    <div class="max"></div>
+                                  </div>
+                                  <div class="filterToddler filter_toddler" data-suffix_2="30м" data-suffix_1="1м" data-plural-text="м" data-min="1" data-max="30"></div>
+                                </div><a class="multiPickerBtn btn_v3 multi_picker_btn btn_blue" href="#">Добавить</a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="filter_cell _cell-3">
+                          <div class="filter_label">год выпуска</div>
+                          <div class="filter_param">
+                            <div class="multiple_slider_picker multiPicker" data-limit="1">
+                              <ul class="multiple_slider_results multiPickerResults"></ul><span class="multiPickerLabel multiple_slider_label">Выбрать…</span>
+                              <div class="multiPickerPopup multi_picker_popup">
+                                <div class="multi_picker_inner toddler-v1">
+                                  <div class="toddler_val toddlerVal"></div>
+                                  <div class="toddler_range">
+                                    <div class="min"></div>
+                                    <div class="max"></div>
+                                  </div>
+                                  <div class="filterToddler filter_toddler" data-suffix_2="2017" data-suffix_1="1960" data-min="1960" data-max="2017"></div>
+                                </div><a class="multiPickerBtn btn_v3 multi_picker_btn btn_blue" href="#">Добавить</a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="filter_cell _cell-4">
+                          <div class="filter_label">тип топлива</div>
+                          <div class="filter_param select_box_v2">
+                            <select class="select2" multiple="multiple" data-placeholder="Выбрать…" data-maximum-selection-length="1">
+                              <option>бензин</option>
+                              <option>дизель</option>
+                              <option>электро</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="filter_cell _cell-5">
+                          <div class="filter_label">стоимость</div>
+                          <div class="filter_param">
+                            <div class="multiple_slider_picker multiPicker" data-limit="1">
+                              <ul class="multiple_slider_results multiPickerResults"></ul><span class="multiPickerLabel multiple_slider_label">Выбрать…</span>
+                              <div class="multiPickerPopup multi_picker_popup">
+                                <div class="multi_picker_inner toddler-v1">
+                                  <div class="toddler_val toddlerVal"></div>
+                                  <div class="toddler_range">
+                                    <div class="min"></div>
+                                    <div class="max"></div>
+                                  </div>
+                                  <div class="filterToddler filter_toddler" data-suffix_2="10м" data-suffix_1="1к" data-plural-text="" data-min="1000" data-max="10000000" data-format="money"></div>
+                                </div><a class="multiPickerBtn btn_v3 multi_picker_btn btn_blue" href="#">Добавить</a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="filter_cell _cell-6">
+                          <button class="btn_blue btn_v2 filter_btn"><span>Искать</span></button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="filter_tab" id="tab_3">
+                      <div class="filter_table">
+                        <div class="filter_cell _cell-1">
+                          <div class="filter_label">Материал</div>
+                          <div class="filter_param select_box_v2">
+                            <select class="select2" multiple="multiple" data-placeholder="Выбрать…" data-maximum-selection-length="2">
+                              <option>Металл</option>
+                              <option>Дерево</option>
+                              <option>Пластик</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="filter_cell _cell-2">
+                          <div class="filter_label">Длина</div>
+                          <div class="filter_param">
+                            <div class="multiple_slider_picker multiPicker">
+                              <ul class="multiple_slider_results multiPickerResults"></ul><span class="multiPickerLabel multiple_slider_label">Выбрать…</span>
+                              <div class="multiPickerPopup multi_picker_popup">
+                                <div class="multi_picker_inner toddler-v1">
+                                  <div class="toddler_val toddlerVal"></div>
+                                  <div class="toddler_range">
+                                    <div class="min"></div>
+                                    <div class="max"></div>
+                                  </div>
+                                  <div class="filterToddler filter_toddler" data-suffix_2="30м" data-suffix_1="1м" data-plural-text="м" data-min="1" data-max="30"></div>
+                                </div><a class="multiPickerBtn btn_v3 multi_picker_btn btn_blue" href="#">Добавить</a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="filter_cell _cell-3">
+                          <div class="filter_label">год выпуска</div>
+                          <div class="filter_param">
+                            <div class="multiple_slider_picker multiPicker" data-limit="1">
+                              <ul class="multiple_slider_results multiPickerResults"></ul><span class="multiPickerLabel multiple_slider_label">Выбрать…</span>
+                              <div class="multiPickerPopup multi_picker_popup">
+                                <div class="multi_picker_inner toddler-v1">
+                                  <div class="toddler_val toddlerVal"></div>
+                                  <div class="toddler_range">
+                                    <div class="min"></div>
+                                    <div class="max"></div>
+                                  </div>
+                                  <div class="filterToddler filter_toddler" data-suffix_2="2017" data-suffix_1="1960" data-min="1960" data-max="2017"></div>
+                                </div><a class="multiPickerBtn btn_v3 multi_picker_btn btn_blue" href="#">Добавить</a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="filter_cell _cell-4">
+                          <div class="filter_label">тип топлива</div>
+                          <div class="filter_param select_box_v2">
+                            <select class="select2" multiple="multiple" data-placeholder="Выбрать…" data-maximum-selection-length="1">
+                              <option>бензин</option>
+                              <option>дизель</option>
+                              <option>электро</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="filter_cell _cell-5">
+                          <div class="filter_label">стоимость</div>
+                          <div class="filter_param">
+                            <div class="multiple_slider_picker multiPicker" data-limit="1">
+                              <ul class="multiple_slider_results multiPickerResults"></ul><span class="multiPickerLabel multiple_slider_label">Выбрать…</span>
+                              <div class="multiPickerPopup multi_picker_popup">
+                                <div class="multi_picker_inner toddler-v1">
+                                  <div class="toddler_val toddlerVal"></div>
+                                  <div class="toddler_range">
+                                    <div class="min"></div>
+                                    <div class="max"></div>
+                                  </div>
+                                  <div class="filterToddler filter_toddler" data-suffix_2="10м" data-suffix_1="1к" data-plural-text="" data-min="1000" data-max="10000000" data-format="money"></div>
+                                </div><a class="multiPickerBtn btn_v3 multi_picker_btn btn_blue" href="#">Добавить</a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="filter_cell _cell-6">
+                          <button class="btn_blue btn_v2 filter_btn"><span>Искать</span></button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="filter_tab" id="tab_4">
+                      <div class="filter_table">
+                        <div class="filter_cell _cell-1">
+                          <div class="filter_label">Материал</div>
+                          <div class="filter_param select_box_v2">
+                            <select class="select2" multiple="multiple" data-placeholder="Выбрать…" data-maximum-selection-length="2">
+                              <option>Металл</option>
+                              <option>Дерево</option>
+                              <option>Пластик</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="filter_cell _cell-2">
+                          <div class="filter_label">Длина</div>
+                          <div class="filter_param">
+                            <div class="multiple_slider_picker multiPicker">
+                              <ul class="multiple_slider_results multiPickerResults"></ul><span class="multiPickerLabel multiple_slider_label">Выбрать…</span>
+                              <div class="multiPickerPopup multi_picker_popup">
+                                <div class="multi_picker_inner toddler-v1">
+                                  <div class="toddler_val toddlerVal"></div>
+                                  <div class="toddler_range">
+                                    <div class="min"></div>
+                                    <div class="max"></div>
+                                  </div>
+                                  <div class="filterToddler filter_toddler" data-suffix_2="30м" data-suffix_1="1м" data-plural-text="м" data-min="1" data-max="30"></div>
+                                </div><a class="multiPickerBtn btn_v3 multi_picker_btn btn_blue" href="#">Добавить</a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="filter_cell _cell-3">
+                          <div class="filter_label">год выпуска</div>
+                          <div class="filter_param">
+                            <div class="multiple_slider_picker multiPicker" data-limit="1">
+                              <ul class="multiple_slider_results multiPickerResults"></ul><span class="multiPickerLabel multiple_slider_label">Выбрать…</span>
+                              <div class="multiPickerPopup multi_picker_popup">
+                                <div class="multi_picker_inner toddler-v1">
+                                  <div class="toddler_val toddlerVal"></div>
+                                  <div class="toddler_range">
+                                    <div class="min"></div>
+                                    <div class="max"></div>
+                                  </div>
+                                  <div class="filterToddler filter_toddler" data-suffix_2="2017" data-suffix_1="1960" data-min="1960" data-max="2017"></div>
+                                </div><a class="multiPickerBtn btn_v3 multi_picker_btn btn_blue" href="#">Добавить</a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="filter_cell _cell-4">
+                          <div class="filter_label">тип топлива</div>
+                          <div class="filter_param select_box_v2">
+                            <select class="select2" multiple="multiple" data-placeholder="Выбрать…" data-maximum-selection-length="1">
+                              <option>бензин</option>
+                              <option>дизель</option>
+                              <option>электро</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="filter_cell _cell-5">
+                          <div class="filter_label">стоимость</div>
+                          <div class="filter_param">
+                            <div class="multiple_slider_picker multiPicker" data-limit="1">
+                              <ul class="multiple_slider_results multiPickerResults"></ul><span class="multiPickerLabel multiple_slider_label">Выбрать…</span>
+                              <div class="multiPickerPopup multi_picker_popup">
+                                <div class="multi_picker_inner toddler-v1">
+                                  <div class="toddler_val toddlerVal"></div>
+                                  <div class="toddler_range">
+                                    <div class="min"></div>
+                                    <div class="max"></div>
+                                  </div>
+                                  <div class="filterToddler filter_toddler" data-suffix_2="10м" data-suffix_1="1к" data-plural-text="" data-min="1000" data-max="10000000" data-format="money"></div>
+                                </div><a class="multiPickerBtn btn_v3 multi_picker_btn btn_blue" href="#">Добавить</a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="filter_cell _cell-6">
+                          <button class="btn_blue btn_v2 filter_btn"><span>Искать</span></button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="filter_tab" id="tab_5">
+                      <div class="filter_table">
+                        <div class="filter_cell _cell-1">
+                          <div class="filter_label">Материал</div>
+                          <div class="filter_param select_box_v2">
+                            <select class="select2" multiple="multiple" data-placeholder="Выбрать…" data-maximum-selection-length="2">
+                              <option>Металл</option>
+                              <option>Дерево</option>
+                              <option>Пластик</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="filter_cell _cell-2">
+                          <div class="filter_label">Длина</div>
+                          <div class="filter_param">
+                            <div class="multiple_slider_picker multiPicker">
+                              <ul class="multiple_slider_results multiPickerResults"></ul><span class="multiPickerLabel multiple_slider_label">Выбрать…</span>
+                              <div class="multiPickerPopup multi_picker_popup">
+                                <div class="multi_picker_inner toddler-v1">
+                                  <div class="toddler_val toddlerVal"></div>
+                                  <div class="toddler_range">
+                                    <div class="min"></div>
+                                    <div class="max"></div>
+                                  </div>
+                                  <div class="filterToddler filter_toddler" data-suffix_2="30м" data-suffix_1="1м" data-plural-text="м" data-min="1" data-max="30"></div>
+                                </div><a class="multiPickerBtn btn_v3 multi_picker_btn btn_blue" href="#">Добавить</a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="filter_cell _cell-3">
+                          <div class="filter_label">год выпуска</div>
+                          <div class="filter_param">
+                            <div class="multiple_slider_picker multiPicker" data-limit="1">
+                              <ul class="multiple_slider_results multiPickerResults"></ul><span class="multiPickerLabel multiple_slider_label">Выбрать…</span>
+                              <div class="multiPickerPopup multi_picker_popup">
+                                <div class="multi_picker_inner toddler-v1">
+                                  <div class="toddler_val toddlerVal"></div>
+                                  <div class="toddler_range">
+                                    <div class="min"></div>
+                                    <div class="max"></div>
+                                  </div>
+                                  <div class="filterToddler filter_toddler" data-suffix_2="2017" data-suffix_1="1960" data-min="1960" data-max="2017"></div>
+                                </div><a class="multiPickerBtn btn_v3 multi_picker_btn btn_blue" href="#">Добавить</a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="filter_cell _cell-4">
+                          <div class="filter_label">тип топлива</div>
+                          <div class="filter_param select_box_v2">
+                            <select class="select2" multiple="multiple" data-placeholder="Выбрать…" data-maximum-selection-length="1">
+                              <option>бензин</option>
+                              <option>дизель</option>
+                              <option>электро</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="filter_cell _cell-5">
+                          <div class="filter_label">стоимость</div>
+                          <div class="filter_param">
+                            <div class="multiple_slider_picker multiPicker" data-limit="1">
+                              <ul class="multiple_slider_results multiPickerResults"></ul><span class="multiPickerLabel multiple_slider_label">Выбрать…</span>
+                              <div class="multiPickerPopup multi_picker_popup">
+                                <div class="multi_picker_inner toddler-v1">
+                                  <div class="toddler_val toddlerVal"></div>
+                                  <div class="toddler_range">
+                                    <div class="min"></div>
+                                    <div class="max"></div>
+                                  </div>
+                                  <div class="filterToddler filter_toddler" data-suffix_2="10м" data-suffix_1="1к" data-plural-text="" data-min="1000" data-max="10000000" data-format="money"></div>
+                                </div><a class="multiPickerBtn btn_v3 multi_picker_btn btn_blue" href="#">Добавить</a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="filter_cell _cell-6">
+                          <button class="btn_blue btn_v2 filter_btn"><span>Искать</span></button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div class="filter_banner" data-120-top-top="transform: scale(.8) translate(0, 200px); opacity: 0;" data-220-top-top="transform: scale(1) translate(0, 0px); opacity: 1;"><img src="./images/adv.jpg"></div>
+              <div class="filter_banner mob_hidden" data-120-top-top="transform: scale(.8) translate(0, 200px); opacity: 0;" data-220-top-top="transform: scale(1) translate(0, 0px); opacity: 1;"><img src="./images/adv.jpg"></div>
             </div>
           </div>
         </div>
@@ -560,14 +973,15 @@
   
   <!--build:js js/main.min.js -->
   <script src="js/lib/jquery-1.12.1.min.js"></script>
-  <script src="js/lib/jquery-ui-1.11.4.js"></script>
+  <!--script(src='js/easytabs/vendor/jquery.hashchange.min.js')-->
+  <script src="js/easytabs/lib/jquery.easytabs.js"></script>
+  <script src="js/lib/nouislider.min.js"></script>
   <script src="js/lib/jquery.backstretch.min.js"></script>
   <script src="js/lib/jquery.sticky-kit.min.js"></script>
   <script src="js/lib/jquery.inputmask.bundle.js"></script>
   <script src="js/lib/imagesloaded.pkgd.min.js"></script>
   <script src="js/lib/isotope.pkgd.min.js"></script>
   <script src="js/lib/packery-mode.pkgd.js"></script>
-  <script src="js/lib/skrollr.js"></script>
   <script src="js/lib/select2.js"></script>
   <script src="js/main.js"></script>
   <!--endbuild-->

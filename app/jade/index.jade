@@ -45,13 +45,42 @@ html(lang='ru')
                                 ) Катера из Европы
 
                             .filter_wrapper.sticky(data-margin-top_='100' data-sticky-class='_stuck')
-                                .filter_tabs
-                                    .section_inner
+                                .tabContainer(data-mob-event='mobTabSwitcher')
+                                    .filter_tabs
+                                        .filter_category.dt_hidden
+                                            a.category_btn.categoryBtn(href='#') Категории
+                                            a.close_category_btn.btn_blue.closeCategoryBtn(href='#')
+                                        ul.tabControls.tab_controls
+                                            li.tab_unit._tab-1
+                                                a.tab_link(href='#tab_1'): span Более 10 метров
+                                                a.tab_close_link.tabCloseLink(href='#')
+                                            li.tab_unit._tab-2
+                                                a.tab_link(href='#tab_2'): span Cо стационарными двигателями
+                                                a.tab_close_link.tabCloseLink(href='#')
+                                            li.tab_unit._tab-3
+                                                a.tab_link(href='#tab_3'): span C подвесными двигателями
+                                                a.tab_close_link.tabCloseLink(href='#')
+                                            li.tab_unit._tab-4
+                                                a.tab_link(href='#tab_4'): span РИБ
+                                                a.tab_close_link.tabCloseLink(href='#')
+                                            li.tab_unit._tab-5
+                                                a.tab_link(href='#tab_4'): span Трейлеры
+                                                a.tab_close_link.tabCloseLink(href='#')
+                                        a.collapse_category_btn.closeCategoryBtn.btn_v4.btn_gray-2(href='#') Закрыть
 
-                                .filter_box
-                                    .section_inner
+                                    .filter_box
+                                        #tab_1.filter_tab
+                                            +filter_tab()
+                                        #tab_2.filter_tab
+                                            +filter_tab()
+                                        #tab_3.filter_tab
+                                            +filter_tab()
+                                        #tab_4.filter_tab
+                                            +filter_tab()
+                                        #tab_5.filter_tab
+                                            +filter_tab()
 
-                            .filter_banner(
+                            .filter_banner.mob_hidden(
                             data-120-top-top='transform: scale(.8) translate(0, 200px); opacity: 0;'
                             data-220-top-top='transform: scale(1) translate(0, 0px); opacity: 1;'
                             )

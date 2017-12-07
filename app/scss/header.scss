@@ -48,7 +48,10 @@
   }
 
   ._wide & {
-    height: 148px !important;
+
+    @include respond-to-min($resp_xl) {
+      height: 148px !important;
+    }
   }
 }
 
@@ -245,8 +248,8 @@
     }
   }
 
+  ._slider_opened &,
   .menu_opened & {
-
     &:before {
       width: 18px;
       -webkit-transform: translate(0, -7px) rotate(135deg);
@@ -278,8 +281,20 @@
     }
   }
 
+  &._slider_close_btn {
+    position: fixed;
+    display: none;
+    z-index: 8;
+    top: 18px;
+    right: 15px;
+  }
+
   @include respond-to-min($resp_s) {
     top: -5px;
+
+    &._slider_close_btn {
+      display: none !important;
+    }
   }
 
   @include respond-to-min($resp_xl) {
@@ -732,52 +747,696 @@
 
 .filter_wrapper {
   pointer-events: none;
-  z-index: 6;
-  padding-top: 100px;
+  position: relative;
+  padding-top: 107px;
+
+  @include respond-to-max($resp_s) {
+    padding-top: 100px;
+  }
+
+  @include respond-to-min($resp_xl) {
+    z-index: 6;
+    padding-top: 100px;
+  }
 
   &._stuck {
     //top: 100px !important;
 
-    &._bottom {
-      position: fixed !important;
-      top: 0 !important;
-      right: 0 !important;
-      left: 0 !important;
-      width: auto !important;
-      bottom: auto !important;
+    @include respond-to-max($resp_xl) {
+      position: relative !important;
 
-      .filter_box {
-        background: #fff;
+      + div {
+        display: none !important;
+      }
+    }
+
+    &._bottom {
+
+      @include respond-to-min($resp_xl) {
+        position: fixed !important;
+        top: 0 !important;
+        right: 0 !important;
+        left: 0 !important;
+        width: auto !important;
+        bottom: auto !important;
         box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16);
 
-        .section_inner {
-          padding: 0 10px;
+        .filter_box {
+          background: #fff;
           height: 52px;
         }
-      }
-
-      ~ .filter_banner {
-        //visibility: hidden;
       }
     }
   }
 }
 
 .filter_tabs {
+  max-width: 1046px;
+  margin: 0 auto;
   pointer-events: all;
   background: rgba(0, 0, 0, .1);
 
   .section_inner {
-    height: 48px;
+
+  }
+}
+
+.filter_category {
+  @extend %clearfix;
+  position: relative;
+  line-height: 24px;
+  padding: 12px 13px 12px 16px;
+
+  @include respond-to-max($resp_xl) {
+    ._tab_switched & {
+      display: none;
+    }
+  }
+}
+
+.category_btn {
+  @extend %no-user-select;
+  float: left;
+  color: #fff;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.collapse_category_btn {
+  display: none;
+
+  @include respond-to-max($resp_s) {
+    ._open_tabs & {
+      display: block;
+    }
+
+    ._tab_switched & {
+      display: none;
+    }
+  }
+}
+
+.close_category_btn {
+  @extend %icon_pseudo;
+  display: none;
+  float: right;
+  position: relative;
+  border-radius: 100%;
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+  text-align: center;
+
+  &:before {
+    content: $i-close;
+    font-size: 12px;
+    line-height: 24px;
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  ._open_tabs & {
+    display: block;
+  }
+}
+
+.tab_close_link {
+  @extend %icon_pseudo;
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  width: 24px;
+  height: 24px;
+  font-size: 12px;
+  line-height: 20px;
+  text-align: center;
+  border-radius: 100%;
+  background: #034197;
+  color: #fff;
+  display: none;
+
+  &:before {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 1;
+    content: $i-chevron-right;
+  }
+
+  ._tab_switched .active & {
+    display: block;
+  }
+
+  @include respond-to-min($resp_xl) {
+    display: none !important;
   }
 }
 
 .filter_box {
   pointer-events: all;
   background: #fff;
+  display: none;
+
+  @include respond-to-max($resp_xl) {
+    ._tab_switched & {
+      display: block;
+    }
+  }
+
+  @include respond-to-min($resp_xl) {
+    display: block;
+  }
 
   .section_inner {
-    padding: 0;
-    height: 75px;
+    //padding: 0;
   }
 }
+
+.filter_label {
+  color: #000;
+  display: inline-block;
+  vertical-align: top;
+  font: 12px/18px $Ledger;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+
+  @include respond-to-min($resp_xl) {
+
+    .filter_wrapper._bottom & {
+      display: inline-block;
+      vertical-align: text-top;
+      margin: 0 5px 0 0;
+    }
+  }
+}
+
+.filter_param {
+
+  @include respond-to-min($resp_xl) {
+
+    .filter_wrapper._bottom & {
+      display: inline-block;
+      vertical-align: top;
+
+      &.select_box_v2 {
+        //max-width: 150px;
+      }
+    }
+  }
+}
+
+.filter_tab {
+  max-width: $content-max-w;
+  margin: 0 auto;
+  display: none;
+}
+
+.filter_table {
+  @extend %clearfix;
+
+  //@include respond-to-min($resp_s) {
+  //  margin-right: -1%;
+  //}
+  //
+  //@include respond-to-min($resp_xl) {
+  //  margin-right: 0;
+  //}
+}
+
+.filter_cell {
+  position: relative;
+  float: left;
+  height: 76px;
+  padding: 16px;
+  white-space: nowrap;
+
+  @include respond-to-min($resp_s) {
+    border-left: 1px solid #efefef;
+
+    &:first-child {
+      border-left: 0;
+    }
+  }
+
+  @include respond-to-max($resp_xl) {
+    width: 33.3333%;
+
+    &._cell-4,
+    &._cell-5,
+    &._cell-6 {
+      border-top: 1px solid #efefef;
+    }
+
+    &._cell-3 {
+      .multi_picker_popup {
+        margin-left: -240px;
+      }
+    }
+
+    &._cell-6 {
+      text-align: center;
+    }
+  }
+
+  @include respond-to-max($resp_s) {
+    width: 100%;
+    height: 63px;
+    padding-top: 8px;
+    padding-bottom: 5px;
+    border-top: 1px solid #efefef;
+
+    &._cell-3 {
+      .multi_picker_popup {
+        margin-left: 0;
+      }
+    }
+  }
+
+  @include respond-to-min($resp_xl) {
+    &:last-child {
+      border-left: 0;
+    }
+
+    &._cell-1 {
+      width: 26.1%;
+    }
+
+    &._cell-2 {
+      width: 15.4%;
+    }
+
+    &._cell-3 {
+      width: 15.2%;
+    }
+
+    &._cell-4 {
+      width: 15.3%;
+    }
+
+    &._cell-5 {
+      width: 15.4%;
+    }
+
+    &._cell-6 {
+      width: 12.6%;
+    }
+
+    .filter_wrapper._bottom & {
+      height: 52px;
+      padding: 15px 0 0 10px;
+      line-height: 24px;
+      border: none;
+
+      &._cell-1 {
+        width: 21.3%;
+      }
+
+      &._cell-2 {
+        width: 14.4%;
+      }
+
+      &._cell-3 {
+        width: 18.5%;
+      }
+
+      &._cell-4 {
+        width: 17.3%;
+      }
+
+      &._cell-5 {
+        width: 19.4%;
+      }
+
+      &._cell-6 {
+        width: 9.1%;
+      }
+
+      &:last-child {
+        padding-right: 0;
+      }
+    }
+  }
+}
+
+.multiple_slider_picker {
+  //position: relative;
+}
+
+.multiple_slider_results {
+  @extend %clearfix;
+  font-size: 12px;
+  color: #1a1a1a;
+  padding: 0;
+  //max-height: 24px;
+  //overflow: hidden;
+}
+
+.filter_item {
+  background: #e6e6e6;
+  border: none;
+  border-radius: 4px;
+  height: 24px;
+  line-height: 24px;
+  margin: 0 4px 4px 0;
+  padding: 0 3px 0 10px;
+  cursor: default;
+  float: left;
+}
+
+.filter_remove {
+  @extend %icon_pseudo;
+  cursor: pointer;
+  float: right;
+  font-size: 0;
+  height: 24px;
+  width: 10px;
+  position: relative;
+  margin-left: 10px;
+
+  &:before {
+    color: #1a1a1a;
+    font-size: 8px;
+    line-height: 26px;
+    content: $i-close;
+  }
+}
+
+.multi_picker_popup {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 7;
+  display: none;
+
+  &:before {
+    z-index: 1;
+    content: '';
+    position: absolute;
+    left: 50%;
+    margin-left: -7px;
+    bottom: 100%;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-bottom: 7px solid #fff;
+  }
+
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    height: 1000px;
+    right: 0;
+    left: 0;
+    opacity: 0.3;
+    background: #15253b;
+  }
+
+  ._opened & {
+    display: block;
+  }
+
+  @include respond-to-min($resp_s) {
+    z-index: 3;
+    position: absolute;
+    bottom: auto;
+    right: auto;
+    top: 100%;
+    left: 50%;
+    width: 375px;
+    margin-top: 7px;
+    margin-left: -187px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .5);
+
+    &:after {
+      display: none;
+    }
+  }
+}
+
+.toddler_range {
+  position: relative;
+  margin: 0 5px;
+
+  .min {
+    left: 0;
+  }
+
+  .max {
+    left: 100%;
+  }
+
+  .max,
+  .min {
+    position: absolute;
+    bottom: 8px;
+    width: 50px;
+    white-space: nowrap;
+    margin-left: -25px;
+    text-align: center;
+    color: #9b9b9b;
+    font-size: 12px;
+    line-height: 14px;
+    text-transform: uppercase;
+  }
+}
+
+.filter_toddler {
+  position: relative;
+
+  &:after,
+  &:before {
+    content: '';
+    position: absolute;
+    border-radius: 100%;
+    width: 7px;
+    height: 7px;
+    top: 50%;
+    margin-top: -3px;
+    margin-left: -3px;
+    background: #fff;
+    border: 1px solid #dbdbdb;
+  }
+
+  &:before {
+    left: 0;
+  }
+
+  &:after {
+    left: 100%;
+  }
+}
+
+.toddler_val {
+  text-align: center;
+  padding: 0 30px;
+  color: #000;
+  height: 25px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font: 18px/25px $Ledger;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+
+.multi_picker_inner {
+  background: #fff;
+  padding: 15px 20px;
+}
+
+.multiple_slider_label {
+  color: $gl_blue;
+  font-size: 12px;
+  cursor: pointer;
+  display: inline-block;
+  vertical-align: top;
+
+  ._not_empty & {
+    display: none;
+  }
+}
+
+.tab_controls {
+  @extend %clearfix;
+  position: relative;
+  padding-bottom: 76px;
+  display: none;
+
+  @include respond-to-max($resp_xl) {
+    ._tab_switched & {
+      padding-bottom: 0;
+    }
+
+    ._open_tabs & {
+      display: block;
+    }
+  }
+
+  @include respond-to-max($resp_s) {
+    padding-bottom: 0;
+  }
+
+  @include respond-to-min($resp_xl) {
+    padding-bottom: 0;
+    display: table;
+    border-collapse: collapse;
+    width: 100%;
+  }
+}
+
+.tab_unit {
+
+  @include respond-to-max($resp_xl) {
+    float: left;
+    background: #fff;
+
+    &._tab-1,
+    &._tab-4,
+    &._tab-5 {
+      width: 33.3333%;
+      border-left: 1px solid #efefef;
+      border-bottom: 1px solid #efefef;
+    }
+
+    &._tab-2 {
+      left: 0;
+    }
+
+    &._tab-3,
+    &._tab-2 {
+      width: 50%;
+      position: absolute;
+      bottom: 0;
+    }
+
+    &._tab-3 {
+      right: 0;
+      border-left: 1px solid #efefef;
+    }
+
+    &:first-child {
+      border-left: 0;
+    }
+
+    ._tab_switched & {
+      display: none;
+      background: $gl_blue;
+
+      &.active {
+        display: block;
+        width: 100%;
+        position: relative;
+        padding-right: 50px;
+        left: auto;
+        right: auto;
+        bottom: auto;
+        border: none;
+
+        .tab_link {
+          text-align: left;
+          height: 48px;
+          line-height: 48px;
+
+          &.active {
+            background: $gl_blue;
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+
+  @include respond-to-max($resp_s) {
+    .tab_controls & {
+      width: 100%;
+      position: relative;
+      left: auto;
+      right: auto;
+      bottom: auto;
+      border-top: 1px solid #efefef;
+
+      .tab_link {
+        height: 63px;
+        line-height: 63px;
+        text-align: left;
+      }
+
+      &.active {
+        border: none;
+      }
+    }
+
+  }
+
+  @include respond-to-min($resp_xl) {
+    display: table-cell;
+    vertical-align: middle;
+    border-left: 1px solid rgba(255, 255, 255, .1);
+
+    &:first-child {
+      border-left: 0;
+    }
+  }
+}
+
+.tab_link {
+  @include transition_all(background .2s ease-in-out);
+  height: 76px;
+  display: block;
+  padding: 0 10px;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 76px;
+  color: $gl_blue;
+  background: #fff;
+  text-align: center;
+  position: relative;
+
+  span {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 1.2;
+  }
+
+  &.active {
+    color: #9b9b9b;
+    cursor: default;
+  }
+
+  @include respond-to-min($resp_xl) {
+    height: 48px;
+    line-height: 48px;
+    color: #fff;
+    background-color: transparent;
+
+    &:before {
+      @include transition_all(opacity .2s ease-in-out);
+      content: '';
+      position: absolute;
+      left: 50%;
+      margin-left: -7px;
+      bottom: 0;
+      border-left: 7px solid transparent;
+      border-right: 7px solid transparent;
+      border-bottom: 7px solid #fff;
+      opacity: 0;
+    }
+
+    &.active {
+      background: $gl_blue;
+      color: #fff;
+
+      &:before {
+        opacity: 1;
+      }
+    }
+  }
+
+  @include respond-to-max($resp_s) {
+    padding: 0 15px;
+  }
+}
+
+
+

@@ -30,14 +30,6 @@ function destroySkrollr() {
     }
 }
 
-function mobileCheck() {
-    return (/Android|iPhone|iPad|iPod|BlackBerry/i).test(navigator.userAgent || navigator.vendor || window.opera) || (('ontouchstart' in window) || (navigator.MaxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0));
-}
-
-function getScrollTop() {
-    return window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-}
-
 function initSkrollr() {
     var $window = $(window);
 

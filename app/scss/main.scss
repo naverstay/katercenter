@@ -5,6 +5,8 @@ html, body {
 html {
   overflow-x: hidden;
   overflow-y: scroll;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
 
   &.menu_opened {
     overflow-y: hidden;
