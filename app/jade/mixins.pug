@@ -1,6 +1,4 @@
-- var production = locals['production'];
-
-mixin dev_head(page_title, index, news, search, product, lk, cart)
+mixin dev_head(page_title, index, contacts, search, product, lk, cart)
     head
         title= page_title
         |
@@ -23,8 +21,8 @@ mixin loop_while(counter)
         -i++;
         block
 
-mixin header(active)
-    a.mob_menu_btn._slider_close_btn.closeMobSlider(href='#')
+mixin header(active, breadcrumbs)
+    a.mob_menu_btn._slider_close_btn.openMobMenu(href='#')
 
     .header_bg.bs
         img(src='./images/hero_1.jpg')
@@ -34,8 +32,6 @@ mixin header(active)
 
         .section_inner
             .header_menu
-                a.mob_menu_btn.openMobMenu(href='#')
-                    span
                 .logo_block
                     a.logo(href='index.html')
                         span Kater&nbsp;&nbsp;Center
@@ -56,6 +52,14 @@ mixin header(active)
                     li
                         +menu_link((active === 4 ? '_active' : ''), 'articles.html', 'Статьи')
 
+        - if (breadcrumbs === 1)
+            +breadcrumbs(['Главная', 'Контакты'])
+
+        - if (breadcrumbs === 2)
+            +breadcrumbs(['Главная', 'Статьи'])
+
+        - if (breadcrumbs === 3)
+            +breadcrumbs(['Главная', 'Статьи', 'Парусная регата: 45 футов между небом и морем'])
 
 
 mixin menu_link(cls, ref, txt)
@@ -63,6 +67,75 @@ mixin menu_link(cls, ref, txt)
         span.menu_link(class= cls)= txt
     - else
         a.menu_link(href= ref)= txt
+
+mixin advice_section()
+    .advice_section
+        .section_inner
+            .advice_block.clearfix
+                .advice_caption
+                    span Получите индивидуальную консультацию по&nbsp;выбору&nbsp;катера
+                    span.adv_decor._dec-bird-2
+                        img(src='./images/decor_bird.svg')
+
+                .adv_decor._dec-cloud-1
+                    img(src='./images/decor_cloud.svg')
+                .adv_decor._dec-cloud-2.mob_hidden
+                    img(src='./images/decor_cloud.svg')
+                .adv_decor._dec-bird-1.mob_hidden
+                    img(src='./images/decor_bird.svg')
+
+                .advice_consultant_block._left
+                    .adv_decor._dec-wave-1
+                        img(src='./images/decor_wave_2.svg')
+                    .adv_decor._dec-wave-2.mob_hidden
+                        img(src='./images/decor_wave_2.svg')
+                    .advice_consultant_info
+                        .advice_consultant_photo
+                            img(src='./images/anton.png')
+                        .advice_consultant_name Антон
+                        ul.advice_consultant_contacts
+                            li: a.gl_link(href='mailto:stas@katercenter.ru') stas@katercenter.ru
+                            li: a.gl_link(href='tel:+79151337988') +7 915 133-79-88
+
+                .advice_consultant_block._right
+                    .adv_decor._dec-wave-3.mob_hidden
+                        img(src='./images/decor_wave_2.svg')
+                    .advice_consultant_info
+                        .advice_consultant_photo
+                            img(src='./images/stas.png')
+                        .advice_consultant_name Стас
+                        ul.advice_consultant_contacts
+                            li: a.gl_link(href='mailto:stas@katercenter.ru') stas@katercenter.ru
+                            li: a.gl_link(href='tel:+79151337988') +7 915 133-79-88
+
+                .advice_form_holder
+                    form(action='#')
+                        .advice_form
+                            .advice_form_cell
+                                label.f_label.label_v1(for='contact_name') Ваше имя
+                                .input_w
+                                    input#contact_name.f_input.input_v1(placeholder='Заполнтие поле')
+                                    span.input_border
+                            .advice_form_cell._half
+                                label.f_label.label_v1(for='contact_email') Электронная почта
+                                .input_w
+                                    input#contact_email.f_input.input_v1(placeholder='Заполнтие поле')
+                                    span.input_border
+                            .advice_form_cell._half
+                                label.f_label.label_v1(for='contact_phone') телефон
+                                .input_w
+                                    input#contact_phone.f_input.input_v1(placeholder='+7 (___) ___-__-__' data-inputmask="'mask': '[+7] (999) 999-99-99'")
+                                    span.input_border
+                            .advice_form_cell.cb
+                                label.f_label.label_v1(for='contact_comment') Комментарий
+                                .input_w
+                                    textarea#contact_comment.f_input.input_v1(placeholder='Текст комментария')
+                                    span.input_border
+                        .text_center
+                            button.btn_v2.advice_btn.btn_blue
+                                span.i-dove.btn_icon
+                                span Отправить запрос
+
 
 mixin footer()
     .footer
@@ -81,15 +154,15 @@ mixin footer()
                 li
                     a.gl_link(href='tel:+79262862116') +7 926 286-21-16
 
-
 mixin breadcrumbs(list)
-    ul.breadcrumbs
-        for item, i in list
-            li.breadcrumb_item
-                - if (i == list.length - 1)
-                    span=item
-                - else
-                    a.gl_link(href= item == 'Главная' ? 'index.html' : (item == 'Каталог' ? 'catalog.html' : 'products.html'))=item
+    .breadcrumbs_section: .section_inner
+        ul.breadcrumbs_list
+            for item, i in list
+                li.breadcrumb_item
+                    - if (i === (list.length - 1))
+                        span=item
+                    - else
+                        a.gl_link(href= item === 'Главная' ? 'index.html' : (item === 'Статьи' ? 'articles.html' : 'survey.html'))= item
 
 mixin filter_tab()
     .filter_table
@@ -112,9 +185,9 @@ mixin filter_tab()
             .filter_label тип топлива
             .filter_param.select_box_v2
                 select.select2(multiple data-placeholder='Выбрать…' data-maximum-selection-length=1)
-                    option бензин
-                    option дизель
-                    option электро
+                    option Дизель
+                    option Бензин
+                    option Электромотор
         .filter_cell._cell-5
             .filter_label стоимость
             .filter_param
@@ -133,13 +206,13 @@ mixin multi_picker(min, max, suffix, suffix_1, suffix_2, limit, format)
                     .min
                     .max
                 .filterToddler.filter_toddler(data-suffix_2= suffix_2 data-suffix_1= suffix_1 data-plural-text= suffix data-min= min data-max= max data-format= format)
-
             a.multiPickerBtn.btn_v3.multi_picker_btn.btn_blue(href='#') Добавить
 
 mixin popups()
-    .popup_close_btn.popupClose
+    |
+    //-.popup_close_btn.popupClose
 
-    #review_popup.popup.popup_v5
+    //-#review_popup.popup.popup_v5
         .popup_inner
             .prod_review
                 .prod_review_photos
@@ -155,7 +228,7 @@ mixin popups()
                             img(src='images/preview_main_1.jpg')
                             .product_hit Хит продаж
 
-    #callback_popup.popup.popup_v2
+    //-#callback_popup.popup.popup_v2
         .popup_inner
             ul#callback_switcher.tab_holder.tab_v1
                 li: a.tab_link(href='#callback_tab_1'): span Перезвоните мне
@@ -189,7 +262,7 @@ mixin popups()
                             .form_cell
                                 button.btn_v1.blue_btn.order_btn Отправить вопрос
 
-    #fail_popup.popup.popup_v3.popup_fail
+    //-#fail_popup.popup.popup_v3.popup_fail
         .popup_inner.form_cell_v1
             .popup_caption Ошибка
             .popup_msg Вы указали почту, которой нет.  <br>  Попробуйте еще раз
@@ -198,7 +271,7 @@ mixin popups()
                 a.btn_v1.blue_btn.order_btn.mod_2(href='#') Попробовать еще раз
                 a.gl_link.popupClose(href='#') Закрыть
 
-    #success_popup.popup.popup_v3.popup_success
+    //-#success_popup.popup.popup_v3.popup_success
         .popup_inner.form_cell_v1
             .popup_caption Успех!
             .popup_msg Новый пароль отправлен на вашу почту. Откройте письмо и пройдите по ссылке
@@ -206,7 +279,7 @@ mixin popups()
             .form_cell
                 button.btn_v1.blue_btn.order_btn.mod_3.popupClose Закрыть
 
-    #recovery_popup.popup.popup_v3
+    //-#recovery_popup.popup.popup_v3
         .popup_inner.form_cell_v1
             .popup_caption Восстановление пароля
             form(action='#')
@@ -216,7 +289,7 @@ mixin popups()
                 .form_cell
                     button.btn_v1.blue_btn.order_btn.mod_2 Выслать новый пароль
 
-    #auth_popup.popup.popup_v3
+    //-#auth_popup.popup.popup_v3
         .popup_inner
             ul.tab_holder.tab_v2
                 li.ui-state-active: span.tab_link(href='#'): span Вход
@@ -255,11 +328,11 @@ mixin popups()
                                 a.about_link(href='#')
                                     span.i-g
 
-mixin scripts(index, news, search, product, lk, cart)
+mixin scripts(index, contacts, search, product, lk, cart)
     |
     | <!--build:js js/main.min.js -->
     script(src='js/lib/jquery-1.12.1.min.js')
-    //script(src='js/easytabs/vendor/jquery.hashchange.min.js')
+    //-script(src='js/easytabs/vendor/jquery.hashchange.min.js')
     script(src='js/easytabs/lib/jquery.easytabs.js')
     script(src='js/lib/nouislider.min.js')
     script(src='js/lib/jquery.backstretch.min.js')
@@ -279,12 +352,13 @@ mixin scripts(index, news, search, product, lk, cart)
         script(src='js/index.js')
         |
         | <!--endbuild-->
-    - if (news)
+    - if (contacts)
         |
-        | <!--build:js js/news.min.js -->
-        script(src='js/news.js')
+        | <!--build:js js/contacts.min.js -->
+        script(src='js/contacts.js')
         |
         | <!--endbuild-->
+        script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCl7THpWflv0u70jhfuU4T6KbuNy0fuxME&callback=loadMap')
 
     - if (cart)
         |

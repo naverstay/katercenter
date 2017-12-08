@@ -8,16 +8,23 @@
   left: 0;
   z-index: 5;
 
-  .section_inner {
+  > .section_inner {
     @extend %clearfix;
     @extend %translate3d;
     padding-top: 16px;
+    min-height: 78px;
   }
 
   @include respond-to-min($resp_s) {
 
-    .section_inner {
+    > .section_inner {
       padding-top: 24px;
+    }
+  }
+
+  @include respond-to-min($resp_xl) {
+    > .section_inner {
+      min-height: 103px;
     }
   }
 
@@ -28,10 +35,8 @@
     }
   }
 
-  @include respond-to-min($resp_xxl) {
-    .wide_menu & {
-      padding-left: 0;
-    }
+  ._has_breadcrumbs & {
+
   }
 }
 
@@ -45,10 +50,13 @@
 
   @include respond-to-min($resp_s) {
     height: 100px;
+
+    ._has_breadcrumbs & {
+      height: 130px;
+    }
   }
 
   ._wide & {
-
     @include respond-to-min($resp_xl) {
       height: 148px !important;
     }
@@ -248,7 +256,6 @@
     }
   }
 
-  ._slider_opened &,
   .menu_opened & {
     &:before {
       width: 18px;
@@ -283,17 +290,37 @@
 
   &._slider_close_btn {
     position: fixed;
-    display: none;
+    //display: none;
     z-index: 8;
     top: 18px;
     right: 15px;
+  }
+
+  @include respond-to-max($resp_s) {
+    ._slider_opened & {
+      &:before {
+        width: 18px;
+        -webkit-transform: translate(0, -7px) rotate(135deg);
+        -ms-transform: translate(0, -7px) rotate(135deg);
+        transform: translate(0, -7px) rotate(135deg);
+      }
+
+      &:after {
+        -webkit-transform: translate(0, 7px) rotate(-135deg);
+        -ms-transform: translate(0, 7px) rotate(-135deg);
+        transform: translate(0, 7px) rotate(-135deg);
+        height: 2px;
+        border-width: 2px 0 0;
+      }
+    }
   }
 
   @include respond-to-min($resp_s) {
     top: -5px;
 
     &._slider_close_btn {
-      display: none !important;
+      top: 19px;
+      right: 34px;
     }
   }
 
@@ -535,30 +562,48 @@
 
 }
 
-.breadcrumbs {
+.breadcrumbs_section {
+  position: relative;
+  background: #fff;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .16);
+
+  @include respond-to-min($resp_xl) {
+    margin-top: 25px;
+  }
+}
+
+.breadcrumbs_list {
   @extend %clearfix;
-  line-height: 18px;
-  margin-bottom: 10px;
+  padding: 16px 0 18px;
+
+  @include respond-to-min($resp_s) {
+    padding: 16px 0 16px;
+  }
 }
 
 .breadcrumb_item {
-  @extend %icon_pseudo;
   float: left;
-  font-size: 12px;
-  margin-bottom: 20px;
+  font: 12px/18px $Ledger;
+  text-transform: uppercase;
+  letter-spacing: .09em;
 
   &:after {
-    //content: $i-arr_right;
+    content: '–';
     display: inline-block;
     vertical-align: middle;
-    margin: 0 6px 0 4px;
-    font-size: 14px;
-    color: $gl_main_black;
+    padding-right: 5px;
+  }
+
+  &:last-child {
+    &:after {
+      display: none;
+    }
   }
 
   span {
     display: inline-block;
     vertical-align: middle;
+    color: #4a4a4a;
   }
 
   .gl_link {
@@ -566,12 +611,11 @@
     display: inline-block;
     vertical-align: middle;
     text-decoration: none;
-    color: $gl_main_black;
+    color: $gl_blue;
 
     &:hover {
-      color: $gl_violette_link_hover;
+      text-decoration: underline;
     }
-
   }
 
   &:last-child {
@@ -967,7 +1011,7 @@
   position: relative;
   float: left;
   height: 76px;
-  padding: 16px;
+  padding: 16px 0 16px 16px;
   white-space: nowrap;
 
   @include respond-to-min($resp_s) {
@@ -1130,7 +1174,7 @@
   display: none;
 
   &:before {
-    z-index: 1;
+    z-index: 2;
     content: '';
     position: absolute;
     left: 50%;
@@ -1142,14 +1186,15 @@
   }
 
   &:after {
+    z-index: 1;
     content: '';
     position: absolute;
+    left: 50%;
+    margin-left: -8px;
     bottom: 100%;
-    height: 1000px;
-    right: 0;
-    left: 0;
-    opacity: 0.3;
-    background: #15253b;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid rgba(0, 0, 0, .08);
   }
 
   ._opened & {
@@ -1167,10 +1212,6 @@
     margin-top: 7px;
     margin-left: -187px;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .5);
-
-    &:after {
-      display: none;
-    }
   }
 }
 
@@ -1243,11 +1284,29 @@
 .multi_picker_inner {
   background: #fff;
   padding: 15px 20px;
+
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    height: 1000px;
+    right: 0;
+    left: 0;
+    opacity: 0.3;
+    background: #15253b;
+  }
+
+  @include respond-to-min($resp_s) {
+    &:after {
+      display: none;
+    }
+  }
 }
 
 .multiple_slider_label {
   color: $gl_blue;
   font-size: 12px;
+  line-height: 22px;
   cursor: pointer;
   display: inline-block;
   vertical-align: top;

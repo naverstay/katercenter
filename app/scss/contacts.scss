@@ -1,0 +1,101 @@
+.map_block {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.map_holder {
+  position: relative;
+  height: 284px;
+  background: #f8f8f8;
+
+  @include respond-to-min($resp_s) {
+    float: right;
+    width: 48.5%;
+  }
+
+  @include respond-to-min($resp_xl) {
+    width: 74.7%;
+  }
+}
+
+.contacts_holder {
+  @extend %clearfix;
+  margin-bottom: 120px;
+
+  @include respond-to-min($resp_s) {
+
+  }
+}
+
+.contacts_info_holder {
+  @include respond-to-min($resp_s) {
+    float: left;
+    width: 50%;
+    padding-right: 10px;
+  }
+
+  @include respond-to-min($resp_xl) {
+    width: 25%;
+    padding-right: 35px;
+  }
+}
+
+.contacts_info {
+  background: #f8f8f8;
+  padding: 24px;
+  margin-bottom: 16px;
+  min-height: 284px;
+
+  @include respond-to-min($resp_s) {
+    margin-bottom: 0;
+  }
+}
+
+.contacts_list {
+  font-size: 12px;
+  line-height: 20px;
+
+  dt {
+    display: block;
+    font-weight: bold;
+    margin-bottom: -2px;
+    letter-spacing: .04em;
+  }
+
+  dd {
+    display: block;
+    letter-spacing: .02em;
+
+    + dt {
+      margin-top: 18px;
+    }
+  }
+
+  .gl_link {
+    color: $gl_blue;
+    position: relative;
+    text-decoration: none !important;
+
+    &:before {
+      @include transition_all(opacity .2s ease-in-out);
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      right: 0;
+      left: 0;
+      height: 1px;
+      background: $gl_blue;
+      opacity: .3;
+    }
+
+    &:hover {
+      &:before {
+        opacity: 1;
+      }
+    }
+  }
+
+}

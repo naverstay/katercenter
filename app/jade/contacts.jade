@@ -1,0 +1,42 @@
+include mixins.pug
+doctype html
+html(lang='ru')
+    +dev_head("Kater Контакты", false, true)
+
+    body._has_breadcrumbs
+        .rect_1024
+        .wrapper
+            .base
+                +header(1, 1)
+
+                .main_content
+                    .section_inner.clearfix
+                        .page_title Контакты
+                        .contacts_holder
+                            .contacts_info_holder
+                                .contacts_info
+                                    dl.contacts_list
+                                        dt Адрес
+                                        dd 125212, Москва, Ленинградское шоссе дом 39, строение 7
+
+                                        dt Телефон
+                                        dd +7 (915) 133 79 88
+
+                                        dt E-mail
+                                        dd
+                                            a.gl_link(href='mailto:info@katercenter.ru') info@katercenter.ru
+
+                                        dt Сайт
+                                        dd
+                                            a.gl_link(href='www.katercenter.ru') www.katercenter.ru
+
+                            .map_holder: #contacts_map.map_block
+
+                +advice_section()
+
+            +footer()
+
+        +popups()
+
+    +scripts(false, true)
+
