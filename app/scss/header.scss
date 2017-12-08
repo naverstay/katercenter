@@ -69,6 +69,7 @@
   top: 0;
   left: 0;
   right: 0;
+  background: #173556;
 
   .header & {
     position: absolute;
@@ -567,7 +568,7 @@
   background: #fff;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .16);
 
-  @include respond-to-min($resp_xl) {
+  @include respond-to-min($resp_s) {
     margin-top: 25px;
   }
 }

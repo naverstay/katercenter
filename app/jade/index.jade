@@ -2,7 +2,7 @@ include mixins.pug
 doctype html
 html(lang='ru')
     +dev_head("Kater Главная", true)
-    body.wide_menu
+    body
         //-.rect_1024
         .wrapper
             .base
@@ -313,32 +313,7 @@ html(lang='ru')
                                         span.pagination_text
                                             span.i-chevron-right
 
-                        .aside._title_space
-                            ul.aside_ads.dt_only
-                                li
-                                    .ad_box.text_center
-                                        .ad_box_decor
-                                            .ad_infinity._left
-                                            .ad_infinity._right
-                                            .ad_bird
-                                                img(src='./images/ad_bird.svg')
-                                        .ad_box_title
-                                            span -&nbsp;20%
-                                            .ad_box_wave
-                                                img(src='./images/wave_light_blue.svg')
-                                        .ad_box_counter До лета осталось 243 дня.
-                                        .ad_box_tip Время задуматься о катере!
-                                        a.ad_box_more(href='#') Подробнее
-                                li
-                                    .ad_box
-                                        .ad_box_recommend
-                                            span.ff_mon_b Kater Center<br>
-                                            span рекомендует
-                                        ul.ad_box_links
-                                            li: a.ad_box_link(href='#') Selected boats
-                                            li: a.ad_box_link(href='#') Trade-in possible
-                                            li: a.ad_box_link(href='#') Guarantee
-                                            li: a.ad_box_link(href='#') Insurance
+                        +aside(true)
 
                 +advice_section()
 

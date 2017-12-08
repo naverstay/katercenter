@@ -1,4 +1,4 @@
-mixin dev_head(page_title, index, contacts, search, product, lk, cart)
+mixin dev_head(page_title, index, contacts, articles, product, lk, cart)
     head
         title= page_title
         |
@@ -8,9 +8,10 @@ mixin dev_head(page_title, index, contacts, search, product, lk, cart)
         meta(name="SKYPE_TOOLBAR", content="SKYPE_TOOLBAR_PARSER_COMPATIBLE")
         meta(name="apple-mobile-web-app-capable", content="yes")
         meta(name="format-detection", content="telephone=no")
+        link(rel='stylesheet', href='//fonts.googleapis.com/css?family=Ledger|Montserrat:400,600,700&amp;subset=cyrillic', media='all')
         |
         | <!--build:css css/styles.min.css-->
-        link(rel='stylesheet', href='//fonts.googleapis.com/css?family=Ledger|Montserrat:400,600,700&amp;subset=cyrillic', media='all')
+        link(rel='stylesheet', href='js/fancybox-master/dist/jquery.fancybox.min.css', media='all')
         link(rel='stylesheet', href='css/main_global.css', media='all')
         |
         | <!--endbuild-->
@@ -67,6 +68,34 @@ mixin menu_link(cls, ref, txt)
         span.menu_link(class= cls)= txt
     - else
         a.menu_link(href= ref)= txt
+
+mixin aside(title_spacer)
+    .aside(class= title_spacer ? '_title_space' : '')
+        ul.aside_ads.dt_only
+            li
+                .ad_box.text_center
+                    .ad_box_decor
+                        .ad_infinity._left
+                        .ad_infinity._right
+                        .ad_bird
+                            img(src='./images/ad_bird.svg')
+                    .ad_box_title
+                        span -&nbsp;20%
+                        .ad_box_wave
+                            img(src='./images/wave_light_blue.svg')
+                    .ad_box_counter До лета осталось 243 дня.
+                    .ad_box_tip Время задуматься о катере!
+                    a.ad_box_more(href='#') Подробнее
+            li
+                .ad_box
+                    .ad_box_recommend
+                        span.ff_mon_b Kater Center<br>
+                        span рекомендует
+                    ul.ad_box_links
+                        li: a.ad_box_link(href='#') Selected boats
+                        li: a.ad_box_link(href='#') Trade-in possible
+                        li: a.ad_box_link(href='#') Guarantee
+                        li: a.ad_box_link(href='#') Insurance
 
 mixin advice_section()
     .advice_section
@@ -328,13 +357,14 @@ mixin popups()
                                 a.about_link(href='#')
                                     span.i-g
 
-mixin scripts(index, contacts, search, product, lk, cart)
+mixin scripts(index, contacts, articles, product, lk, cart)
     |
     | <!--build:js js/main.min.js -->
     script(src='js/lib/jquery-1.12.1.min.js')
     //-script(src='js/easytabs/vendor/jquery.hashchange.min.js')
     script(src='js/easytabs/lib/jquery.easytabs.js')
     script(src='js/lib/nouislider.min.js')
+    script(src='js/fancybox-master/dist/jquery.fancybox.min.js')
     script(src='js/lib/jquery.backstretch.min.js')
     script(src='js/lib/jquery.sticky-kit.min.js')
     script(src='js/lib/jquery.inputmask.bundle.js')

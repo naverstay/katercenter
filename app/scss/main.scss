@@ -190,7 +190,7 @@ body {
 
 .ad_list {
   margin-left: -20px;
-  padding-bottom: 40px;
+  //padding-bottom: 40px;
 
   @include respond-to-min($resp_xl) {
     margin-right: -1%;
@@ -198,7 +198,8 @@ body {
   }
 
   > li {
-    margin-top: 16px;
+    //margin-top: 16px;
+    margin-bottom: 16px;
     padding-left: 20px;
     width: 100%;
 
@@ -210,13 +211,19 @@ body {
     @include respond-to-min($resp_s) {
       width: 50%;
       float: left;
-      margin-top: 20px;
+      //margin-top: 20px;
+      margin-bottom: 20px;
     }
 
     @include respond-to-min($resp_xl) {
       width: 33%;
-      margin-top: 40px;
+      //margin-top: 40px;
+      margin-bottom: 40px;
       padding-left: 40px;
+
+      &._wide {
+        width: 66%;
+      }
     }
   }
 }
@@ -237,6 +244,10 @@ body {
 
   &._loaded {
     opacity: 1;
+  }
+
+  ._wide & {
+    height: 100%;
   }
 }
 
@@ -269,12 +280,41 @@ body {
   }
 }
 
+.ad_info_title {
+  position: absolute;
+  right: 0;
+  left: 0;
+  bottom: 57px;
+  padding: 15px 23px;
+  font: 24px/28px $Ledger;
+  letter-spacing: .027em;
+  color: #fff;
+
+  @include respond-to-min($resp_s) {
+    bottom: 53px;
+  }
+
+  @include respond-to-min($resp_xl) {
+    bottom: 57px;
+  }
+}
+
 .ad_info {
   @include transition_all(background .2s ease-in-out, color .2s ease-in-out);
   padding: 15px 22px;
   color: #000;
   background: #f8f8f8;
   position: relative;
+
+  ._wide & {
+    color: #fff;
+    background-color: transparent !important;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    padding-top: 0;
+  }
 }
 
 .ad_info_name {
@@ -284,6 +324,10 @@ body {
   color: inherit;
   margin-bottom: 1px;
   letter-spacing: .025em;
+
+  ._articles & {
+    height: 7.25em;
+  }
 }
 
 .ad_info_link {
@@ -314,14 +358,15 @@ body {
 
 .ad_title_holder {
   border-bottom: 1px solid #d8d8d8;
+  margin-bottom: 16px;
 
   @include respond-to-min($resp_s) {
     padding-bottom: 8px;
-    margin-bottom: 35px;
+    margin-bottom: 55px;
   }
 
   @include respond-to-min($resp_xl) {
-    margin-bottom: 0;
+    margin-bottom: 40px;
   }
 }
 
@@ -344,7 +389,21 @@ body {
   color: #878787;
   padding-top: 16px;
   border-top: 1px solid #dfdfdf;
-  height: 31px;
+  height: 33px;
+}
+
+.ad_info_date {
+  @extend %icon_pseudo;
+  font-size: 18px;
+  padding-right: 5px;
+  margin-top: -3px;
+  color: #d2d2d2;
+  display: inline-block;
+  vertical-align: middle;
+
+  &:before {
+    content: $i-clock;
+  }
 }
 
 .ad_unit {
@@ -360,6 +419,10 @@ body {
     .ad_unit_more {
       @extend .btn_blue:hover;
     }
+  }
+
+  ._articles & {
+    height: 361px;
   }
 }
 
