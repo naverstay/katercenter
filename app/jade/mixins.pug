@@ -8,6 +8,7 @@ mixin dev_head(page_title, index, contacts, articles, product, lk, cart)
         meta(name="SKYPE_TOOLBAR", content="SKYPE_TOOLBAR_PARSER_COMPATIBLE")
         meta(name="apple-mobile-web-app-capable", content="yes")
         meta(name="format-detection", content="telephone=no")
+        meta(name="theme-color" content="#173556")
         link(rel='stylesheet', href='//fonts.googleapis.com/css?family=Ledger|Montserrat:400,600,700&amp;subset=cyrillic', media='all')
         |
         | <!--build:css css/styles.min.css-->
@@ -161,10 +162,15 @@ mixin advice_section()
                                     textarea#contact_comment.f_input.input_v1(placeholder='Текст комментария')
                                     span.input_border
                         .text_center
-                            button.btn_v2.advice_btn.btn_blue
+                            button.btn_v2.advice_btn.btn_blue.openThanksPopup()
                                 span.i-dove.btn_icon
                                 span Отправить запрос
 
+mixin action_widget()
+    .action_widget
+        <script src="//yastatic.net/es5-shims/0.0.2/es5-shims.min.js"></script>
+        <script src="//yastatic.net/share2/share.js"></script>
+        <div class="ya-share2" data-services="vkontakte,facebook,twitter,gplus,odnoklassniki,pocket" data-size="s"></div>
 
 mixin footer()
     .footer
@@ -238,7 +244,12 @@ mixin multi_picker(min, max, suffix, suffix_1, suffix_2, limit, format)
             a.multiPickerBtn.btn_v3.multi_picker_btn.btn_blue(href='#') Добавить
 
 mixin popups()
-    |
+    #thanks_modal.popup.popup_v1
+        .popup_title Спасибо!
+        p Ваша заявка отправлена.
+        p: a.btn_v2.popup_btn.btn_blue.closeThanksPopup(href='#' data-fancybox-close) Закрыть
+
+
     //-.popup_close_btn.popupClose
 
     //-#review_popup.popup.popup_v5

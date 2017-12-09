@@ -15,17 +15,19 @@ $(function ($) {
     });
 
     body.delegate('.openMobMenu', 'click', function () {
-        if (!body.hasClass('_slider_opened')) {
-            if (html.hasClass('menu_opened')) {
-                html.removeClass('menu_opened').css('margin-right', '');
+        if (!(body.hasClass('_slider_opened') || body.hasClass('_popup_opened'))) {
+            if (html.hasClass('_menu_opened')) {
+                html.removeClass('_menu_opened').css('margin-right', '');
                 $('.callback_block').addClass('_invis');
                 setTimeout(function () {
                     $('.callback_block').removeClass('_invis');
                 }, 200);
             } else {
-                html.addClass('menu_opened').css('margin-right', getScrollbarWidth());
+                html.addClass('_menu_opened').css('margin-right', getScrollbarWidth());
             }
         }
+
+        $('.fancybox-close-small').click();
 
         body.removeClass('_slider_opened');
 
@@ -102,6 +104,8 @@ $(function ($) {
 
     loadImages();
 
+    initThanksPopup();
+
     initMask();
 
     initBoard();
@@ -143,6 +147,126 @@ function getScrollbarWidth() {
     outer.parentNode.removeChild(outer);
 
     return widthNoScroll - widthWithScroll;
+}
+
+function initThanksPopup() {
+    //var thanks_modal = $("#thanks_modal").fancybox({
+    //    maxWidth: 800,
+    //    maxHeight: 600,
+    //    fitToView: false,
+    //    width: '70%',
+    //    height: '70%',
+    //    autoSize: false,
+    //    closeClick: false,
+    //    openEffect: 'none',
+    //    closeEffect: 'none',
+    //    afterLoad: function () {
+    //
+    //    }
+    //});
+
+
+    //$('.openThanksPopup').on('click', function () {
+    //
+    //    $.fancybox.open($("#thanks_modal"), {
+    //        helpers: {
+    //            overlay: {
+    //                locked: false
+    //            }
+    //        }
+    //    });
+    //
+    //    return false;
+    //});
+
+
+    $.fancyConfirm = function (opts) {
+        opts = $.extend(true, {
+            title: 'Are you sure?',
+            message: '',
+            okButton: 'OK',
+            noButton: 'Cancel',
+            callback: $.noop
+        }, opts || {});
+
+        $.fancybox.open({
+            type: 'html',
+            src:
+            '<div class="fc-content">' +
+            '<div class="popup_decor">' +
+            '<div class="pop_decor _dec-bird-1"><img src="./images/decor_bird.svg"/></div>' +
+            '<div class="pop_decor _dec-bird-2"><img src="./images/decor_bird.svg"/></div>' +
+            '<div class="pop_decor _dec-wave-2"><img src="./images/decor_wave_2.svg"/></div>' +
+            '</div>' +
+            '<div class="popup_inner">' +
+            '<h3 class="popup_title">' + opts.title + '</h3>' +
+            '<p class="popup_text">' + opts.message + '</p>' +
+            '<div class="popup_controls">' +
+            '<a data-value="0" href="javascript:return:false;" class="btn_v2 popup_btn btn_blue" data-fancybox-close>' + opts.noButton + '</a>' +
+            (opts.okButton ? '<button data-value="1" data-fancybox-close class="btn btn_v2 popup_btn btn_blue">' + opts.okButton + '</button>' : '') +
+            '</div>' +
+            '</div>' +
+            '</div>',
+            opts: {
+                animationDuration: 350,
+                animationEffect: 'material',
+                //modal: true,
+                helpers: {
+                    overlay: {
+                        locked: false
+                    }
+                },
+                baseTpl:
+                '<div class="fancybox-container fc-container fancybox-container-v1" role="dialog" tabindex="-1">' +
+                '<div class="fancybox-bg"></div>' +
+                '<div class="fancybox-inner">' +
+                '<div class="fancybox-stage"></div>' +
+                '</div>' +
+                '</div>',
+                beforeShow: function () {
+                    body.addClass('_popup_opened');
+                },
+                afterClose: function (instance, current, e) {
+                    body.removeClass('_popup_opened');
+
+                    var button = e ? e.target || e.currentTarget : null;
+                    var value = button ? $(button).data('value') : 0;
+
+                    opts.callback(value);
+                }
+            }
+        });
+    };
+
+    $(".openThanksPopup").on('click', function (e) {
+        e.preventDefault();
+
+        // Open customized confirmation dialog window
+        $.fancyConfirm({
+            title: 'Спасибо!',
+            message: 'Ваша заявка отправлена.',
+            okButton: false,
+            noButton: 'Закрыть',
+            helpers: {
+                overlay: {
+                    locked: false
+                }
+            },
+            callback: function (value) {
+                if (value) {
+                    console.log("Let's do this!", value);
+
+                } else {
+                    console.log("Maybe later.", value);
+                }
+
+                return false;
+            }
+        });
+
+        return false;
+    });
+
 }
 
 function initBoard() {

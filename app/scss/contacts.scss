@@ -97,5 +97,164 @@
       }
     }
   }
+}
 
+.article_date {
+  color: #878787;
+  font-size: 12px;
+}
+
+.action_widget {
+  text-align: center;
+  margin-bottom: 45px;
+
+  > div {
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  .article_controls & {
+    margin-top: 40px;
+
+    @include respond-to-min($resp_s) {
+      margin-top: 0;
+      float: right;
+    }
+  }
+}
+
+.article {
+  max-width: 616px;
+  margin: 0 auto;
+  color: #1a1a1a;
+
+  .article_date {
+    margin-bottom: 17px;
+  }
+
+  @include respond-to-max($resp_s) {
+    margin-top: -5px;
+  }
+
+  h1 {
+    font: 36px/48px "Ledger", serif;
+    padding: 3px 0 30px;
+    text-align: center;
+
+    @include respond-to-min($resp_s) {
+      font-size: 40px;
+    }
+  }
+
+  h2 {
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 30px;
+    letter-spacing: .012em;
+    margin: 0 0 50px;
+  }
+
+  > p {
+    font-size: 15px;
+    line-height: 24px;
+    color: #1a1a1a;
+    margin-bottom: 40px;
+
+    + p {
+      margin-top: -15px;
+    }
+  }
+
+  figure {
+
+    p {
+      text-align: center;
+      margin-bottom: 17px;
+
+      img {
+        display: inline-block;
+        vertical-align: top;
+        max-width: 100%;
+      }
+    }
+
+    figcaption {
+      font-weight: bold;
+      font-size: 24px;
+      line-height: 32px;
+      letter-spacing: .016em;
+      margin-top: 42px;
+      margin-bottom: 24px;
+    }
+  }
+}
+
+.article_controls {
+  @extend %clearfix;
+  padding: 18px 0 15px;
+  text-align: center;
+
+  @include respond-to-min($resp_s) {
+    padding: 15px 0;
+  }
+}
+
+.article_goback {
+  color: $gl_blue;
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: bold;
+  letter-spacing: .02em;
+  text-transform: uppercase;
+
+  @include respond-to-min($resp_s) {
+    float: left;
+  }
+}
+
+.articles_more {
+  padding: 27px 0 40px;
+
+  @include respond-to-min($resp_s) {
+    padding-bottom: 27px;
+  }
+}
+
+.articles_more_caption {
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 29px;
+  letter-spacing: .025em;
+  color: #1a1a1a;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #d8d8d8;
+}
+
+.articles_more_list {
+  padding-bottom: 100px;
+
+  li {
+    margin-bottom: 10px;
+  }
+
+  @include respond-to-min($resp_s) {
+    padding-bottom: 110px;
+  }
+}
+
+.article_link {
+  @include transition_all(color .2s ease-in-out);
+  color: transparentize($gl_blue, .7);
+  text-decoration: underline;
+  font-size: 15px;
+  line-height: 18px;
+  letter-spacing: .02em;
+
+  span {
+    color: $gl_blue;
+  }
+
+  &:hover {
+    color: $gl_blue;
+  }
 }

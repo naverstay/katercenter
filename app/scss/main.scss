@@ -8,12 +8,12 @@ html {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 
-  &.menu_opened {
+  &._menu_opened {
     overflow-y: hidden;
   }
 
   @include respond-to-min($resp_xl) {
-    &.menu_opened {
+    &._menu_opened {
       overflow-y: scroll;
       margin-right: 0 !important;
     }
@@ -23,6 +23,10 @@ html {
 body {
   font: 15px/24px $Montserrat;
   color: $default_t_color;
+
+  &.compensate-for-scrollbar {
+    margin-right: 0 !important;
+  }
 }
 
 .hide {
@@ -138,7 +142,7 @@ body {
   position: absolute;
 }
 
-.ad_list_pagination {
+.action_list_pagination {
   @extend %clearfix;
   text-align: center;
   margin-bottom: 60px;
@@ -188,7 +192,7 @@ body {
   }
 }
 
-.ad_list {
+.action_list {
   margin-left: -20px;
   //padding-bottom: 40px;
 
@@ -228,7 +232,7 @@ body {
   }
 }
 
-.ad_photo {
+.action_photo {
   @include transition_all(opacity .2s ease-in-out, transform .2s ease-in-out);
   opacity: 0;
   display: block;
@@ -251,7 +255,7 @@ body {
   }
 }
 
-.ad_photo_year {
+.action_photo_year {
   z-index: 1;
   position: absolute;
   top: 16px;
@@ -263,7 +267,7 @@ body {
   letter-spacing: -.01em;
 }
 
-.ad_unit_more {
+.action_unit_more {
   @extend %icon_pseudo;
   position: absolute;
   right: 30px;
@@ -299,7 +303,7 @@ body {
   }
 }
 
-.ad_info {
+.action_info {
   @include transition_all(background .2s ease-in-out, color .2s ease-in-out);
   padding: 15px 22px;
   color: #000;
@@ -317,7 +321,7 @@ body {
   }
 }
 
-.ad_info_name {
+.action_info_name {
   font: bold 12px/18px $Montserrat;
   height: 3em;
   overflow: hidden;
@@ -330,7 +334,7 @@ body {
   }
 }
 
-.ad_info_link {
+.action_info_link {
   color: inherit;
 
   &:hover {
@@ -338,7 +342,7 @@ body {
   }
 }
 
-.ad_info_price {
+.action_info_price {
   font: 18px/32px $Ledger;
   height: 32px;
   overflow: hidden;
@@ -346,7 +350,7 @@ body {
   text-overflow: ellipsis;
 }
 
-.ad_info_old_price {
+.action_info_old_price {
   opacity: .5;
   font: 12px/17px $Ledger;
   margin-bottom: 15px;
@@ -356,7 +360,7 @@ body {
   text-overflow: ellipsis;
 }
 
-.ad_title_holder {
+.action_title_holder {
   border-bottom: 1px solid #d8d8d8;
   margin-bottom: 16px;
 
@@ -370,7 +374,7 @@ body {
   }
 }
 
-.ad_title {
+.action_title {
   font: bold 24px/29px $Montserrat;
   letter-spacing: .01em;
 
@@ -379,7 +383,7 @@ body {
   }
 }
 
-.ad_info_options {
+.action_info_options {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -406,17 +410,17 @@ body {
   }
 }
 
-.ad_unit {
+.action_unit {
   height: 374px;
   position: relative;
 
   &:hover {
-    .ad_info {
+    .action_info {
       color: #fff;
       background: #1a1a1a;
     }
 
-    .ad_unit_more {
+    .action_unit_more {
       @extend .btn_blue:hover;
     }
   }
@@ -462,7 +466,7 @@ body {
   padding: 20px 20px 10px;
   min-height: 250px;
 
-  .ad_list & {
+  .action_list & {
     width: 300px;
     max-width: 100%;
     margin: 0 auto;

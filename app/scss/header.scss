@@ -29,7 +29,7 @@
   }
 
   @include respond-to-max($resp_xl) {
-    .menu_opened & {
+    ._menu_opened & {
       @include transition_all(z-index 0s 0s);
       z-index: 7;
     }
@@ -49,7 +49,7 @@
   height: 80px;
 
   @include respond-to-min($resp_s) {
-    height: 100px;
+    height: 103px;
 
     ._has_breadcrumbs & {
       height: 130px;
@@ -91,6 +91,19 @@
 }
 
 .header_nav {
+
+  ._popup_opened & {
+    &:before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin: -5000px 0 0 -3000px;
+      width: 6000px;
+      height: 10000px;
+      background: transparentize(#f5f5f5, .02);
+    }
+  }
 
   @include respond-to-max($resp_xl) {
     @include transition_all(transform .2s ease-in-out);
@@ -135,7 +148,7 @@
       margin-right: 110px;
     }
 
-    .menu_opened & {
+    ._menu_opened & {
       @include transform_translate(0, 0);
 
       .callback_block {
@@ -189,9 +202,9 @@
     width: auto;
     height: auto;
 
-    &:before {
-      display: none;
-    }
+    //&:before {
+    //  display: none;
+    //}
   }
 }
 
@@ -214,6 +227,7 @@
 }
 
 .mob_menu_btn {
+  @include transition_all(background .2s ease-in-out);
   @extend %icon_pseudo;
   position: absolute;
   height: 40px;
@@ -252,12 +266,14 @@
   }
 
   &:hover {
+    background: #34b6ef;
+
     &:before {
       width: 18px;
     }
   }
 
-  .menu_opened & {
+  ._menu_opened & {
     &:before {
       width: 18px;
       -webkit-transform: translate(0, -7px) rotate(135deg);
@@ -297,6 +313,23 @@
     right: 15px;
   }
 
+  ._popup_opened & {
+    &:before {
+      width: 18px;
+      -webkit-transform: translate(0, -7px) rotate(135deg);
+      -ms-transform: translate(0, -7px) rotate(135deg);
+      transform: translate(0, -7px) rotate(135deg);
+    }
+
+    &:after {
+      -webkit-transform: translate(0, 7px) rotate(-135deg);
+      -ms-transform: translate(0, 7px) rotate(-135deg);
+      transform: translate(0, 7px) rotate(-135deg);
+      height: 2px;
+      border-width: 2px 0 0;
+    }
+  }
+
   @include respond-to-max($resp_s) {
     ._slider_opened & {
       &:before {
@@ -327,6 +360,11 @@
 
   @include respond-to-min($resp_xl) {
     display: none;
+    top: 25px;
+
+    ._popup_opened & {
+      display: block;
+    }
   }
 }
 
@@ -352,6 +390,7 @@
 }
 
 .tel_link {
+  //@include transition_all(color .2s ease-in-out);
   float: right;
   color: #fff;
   font: 16px/22px $Ledger;
@@ -360,11 +399,15 @@
   &:hover {
     text-decoration: underline;
   }
+
+  ._popup_opened & {
+    color: #1a1a1a;
+  }
 }
 
 .callback_btn {
   @extend %icon_pseudo;
-  @include transition_all(color .2s ease-in-out, border-color .2s ease-in-out);
+  @include transition_all(border-color .2s ease-in-out);
   position: relative;
   float: right;
   clear: both;
@@ -391,6 +434,7 @@
   }
 
   &:after {
+    @include transition_all(border-color .2s ease-in-out);
     pointer-events: none;
     content: '';
     position: absolute;
@@ -415,6 +459,14 @@
 
     }
   }
+
+  ._popup_opened & {
+    color: #1a1a1a;
+
+    &:after {
+      border-color: #9b9b9b;
+    }
+  }
 }
 
 .callback_inner {
@@ -431,6 +483,7 @@
 }
 
 .logo {
+  //@include transition_all(color .2s ease-in-out);
   display: inline-block;
   vertical-align: middle;
   position: relative;
@@ -443,6 +496,10 @@
     display: inline-block;
     vertical-align: top;
     max-width: 100%;
+  }
+
+  ._popup_opened & {
+    color: #1a1a1a;
   }
 }
 
@@ -460,6 +517,11 @@
   display: inline-block;
   vertical-align: middle;
   margin-bottom: -5px;
+  position: relative;
+
+  ._popup_opened & {
+    z-index: -1;
+  }
 
   > li {
     padding: 11px 10px;
@@ -470,7 +532,6 @@
   }
 
   @include respond-to-min($resp_xl) {
-    position: relative;
     display: block;
     margin: 0;
 
@@ -560,10 +621,10 @@
     height: 100%;
     overflow-y: auto;
   }
-
 }
 
 .breadcrumbs_section {
+  z-index: -1;
   position: relative;
   background: #fff;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .16);
@@ -574,8 +635,12 @@
 }
 
 .breadcrumbs_list {
-  @extend %clearfix;
-  padding: 16px 0 18px;
+  overflow: hidden;
+  font-size: 0;
+  //padding: 16px 0 18px;
+  padding: 16px 0 12px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 
   @include respond-to-min($resp_s) {
     padding: 16px 0 16px;
@@ -583,7 +648,8 @@
 }
 
 .breadcrumb_item {
-  float: left;
+  display: inline-block;
+  vertical-align: top;
   font: 12px/18px $Ledger;
   text-transform: uppercase;
   letter-spacing: .09em;
@@ -802,6 +868,10 @@
   @include respond-to-min($resp_xl) {
     z-index: 6;
     padding-top: 100px;
+  }
+
+  ._popup_opened & {
+    z-index: 0;
   }
 
   &._stuck {

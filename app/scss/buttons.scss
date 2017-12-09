@@ -59,6 +59,17 @@
     }
   }
 
+  &.popup_btn {
+    margin: 0 10px;
+    text-align: center;
+    display: inline-block;
+    vertical-align: top;
+    border-radius: 18px;
+    padding: 0 60px;
+    font: bold 12px/36px $Montserrat;
+    letter-spacing: .03em;
+  }
+
   &.advice_btn {
     margin: 22px 0 26px;
     text-align: center;
