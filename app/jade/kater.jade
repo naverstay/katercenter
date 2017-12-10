@@ -1,7 +1,7 @@
 include mixins.pug
 doctype html
 html(lang='ru')
-    +dev_head("Kater Главная", true)
+    +dev_head("Kater Катер", false, false, false, true)
     body
         .wrapper
             .base
@@ -50,18 +50,129 @@ html(lang='ru')
 
                 .main_content
                     .section_inner.clearfix
+                        .product_name Princess Yahts Princess V53
+                        .product_number Артикул 3424235
+
+                        .product_block
+                            .product_box._photos
+                                .product_gallery.fancyGallery
+                                    .fotorama(data-thumbwidth=64, data-thumbheight=49, data-width='100%', data-maxwidth=1200, data-maxheight=428, data-ratio="493/301", data-nav="thumbs")
+                                        +loop_while(20)
+                                            .gallery_image(data-thumb= './images/yacht_preview_1.jpg')
+                                                img(src= './images/yacht_1.jpg')
+
+                            .product_box._features
+                                .product_features
+                                    .product_year 2009
+                                    dl.product_features_list
+                                        dt Абсолютная длина
+                                        dd 7.17 м
+
+                                        dt Осадка
+                                        dd 0.37 м
+
+                                        dt Метариал
+                                        dd Полиэстер
+
+                                        dt Цвет
+                                        dd Белый
+
+                                        dt Страна
+                                        dd Франция
+
+                                    dl.product_features_list
+                                        dt Ширина
+                                        dd 2.59 м
+
+                                        dt Длина палубы
+                                        dd 1.8 м
+
+                                        dt Корпус
+                                        dd Цельный
+
+                                        dt Район/Область
+                                        dd 34 – Herault
+
+                            .product_box._action
+                                .product_action
+                                    .product_action_price 26 686 000 руб.
+                                    .product_action_old_price 395 000 €
+                                    p
+                                        a.btn_v2.btn_blue.get_info_btn(href='#') Запросить информацию
+                                    .product_action_caption Есть вопросы?
+                                    p Ответим на все интересующие вопросы, поможем с подбором
+                                    p
+                                        a.btn_v2.btn_black.get_info_btn.questionPopup(href='#') Задать вопрос
+
+                    .section_inner.clearfix
+                        +aside(false, 'mob_vis dt_only _promo-1')
+
+                        .main_block._mod-1
+                            .product_characteristics
+                                .product_characteristics_caption Характеристики
+                                ul.product_characteristics_list
+                                    li._motor
+                                        .product_characteristics_label двигатель
+                                        dl.product_features_list
+                                            dt Количество
+                                            dd 7.17 м
+
+                                            dt Тип двигателя
+                                            dd Стационарный
+
+                                            dt Мощность
+                                            dd 256
+
+                                            dt Пробег в часах
+                                            dd 15
+
+                                            dt Год выпуска
+                                            dd 2009
+
+                                            dt Марка
+                                            dd Volvo
+
+                                            dt Топливо
+                                            dd Бензин
+                                    li._living
+                                        .product_characteristics_label жилое пространство
+                                        dl.product_features_list
+                                            dt Numbers of cabin (exept saloon)
+                                            dd 1
+
+                                            dt Numbers of heads
+                                            dd 1
+
+                                            dt Total numbers of breths
+                                            dd 3
+
+                                            dt Convertible saloon
+                                    li._equipment
+                                        .product_characteristics_label оборудование
+                                        dl.product_features_list
+                                            dd Bimini top <br> Swimming platform <br> Cockpit table <br> Stern sunbathing cushions <br> Shore power ilnet <br> Chemical head <br> Electric fridge <br> Winter cover <br> Cockpit shower <br> Cockpit cushions <br> Electrical citrcuit 220V 12V <br> Burner stove
+
+                                    li._electric
+                                        .product_characteristics_label Электроника
+                                        dl.product_features_list
+                                            dt Number of battrries
+                                            dd 1
+
+                                            dd Compass
+
+                    .section_inner.clearfix
+                        .filter_promo.mob_hidden._alone
+                            img(src='./images/adv.jpg')
+
+                    .section_inner.clearfix
                         .main_block
+                            //-.product_characteristics_caption._bordered Похожие предложения
+
                             .action_title_holder.clearfix
                                 .action_title
-                                    span 2070 объявлений
-                                .sort_block
-                                    span.fl Сортировка:
-                                    span.select_box_v1.fl
-                                        select.select2
-                                            option По цене
-                                            option По дате
+                                    span Похожие предложения
 
-                            ul.action_list.clearfix.boardGrid
+                            ul.action_list.clearfix.boardGrid._similar
                                 li.gridItem
                                     .action_unit
                                         a.action_photo.bs.imgLoad(href='kater.html')
@@ -86,7 +197,7 @@ html(lang='ru')
                                             .action_info_old_price 1 650 000 €
                                             .action_info_options
                                                 span Нидерланды – 2х345 cv - Дизель
-                                li.gridItem.dt_hidden._fr
+                                li.gridItem.dt_hidden._fr.mob_hidden
                                     .promo_box.text_center
                                         .promo_box_decor
                                             .promo_infinity._left
@@ -125,7 +236,7 @@ html(lang='ru')
                                             .action_info_old_price 1 650 000 €
                                             .action_info_options
                                                 span Нидерланды – 2х345 cv - Дизель
-                                li.gridItem.dt_hidden._fl
+                                li.gridItem.dt_hidden._fl.mob_hidden
                                     .promo_box
                                         .promo_box_recommend
                                             span.ff_mon_b Kater Center<br>
@@ -136,43 +247,6 @@ html(lang='ru')
                                             li: a.promo_box_link(href='#') Guarantee
                                             li: a.promo_box_link(href='#') Insurance
 
-                                +loop_while(2)
-                                    li.gridItem
-                                        .action_unit
-                                            a.action_photo.bs.imgLoad(href='kater.html')
-                                                .action_photo_year 2012
-                                                img(src='./images/kater_1.jpg')
-                                            .action_info
-                                                a.action_unit_more.btn_blue(href='kater.html')
-                                                .action_info_name: a.action_info_link(href='kater.html') LINSSEN YACHTS LINSSEN 439 SEDAN
-                                                .action_info_price 26 686 000 руб.
-                                                .action_info_old_price 395 000 €
-                                                .action_info_options
-                                                    span Нидерланды – 2х345 cv - Дизель
-                                    li.gridItem
-                                        .action_unit
-                                            a.action_photo.bs.imgLoad(href='kater.html')
-                                                .action_photo_year 2017
-                                                img(src='./images/kater_1.jpg')
-                                            .action_info
-                                                a.action_unit_more.btn_blue(href='kater.html')
-                                                .action_info_name: a.action_info_link(href='kater.html') PRESTIGE PRESTIGE 630
-                                                .action_info_price 112 220 000 руб.
-                                                .action_info_old_price 1 650 000 €
-                                                .action_info_options
-                                                    span Нидерланды – 2х345 cv - Дизель
-                                    li.gridItem
-                                        .action_unit
-                                            a.action_photo.bs.imgLoad(href='kater.html')
-                                                .action_photo_year 2017
-                                                img(src='./images/kater_1.jpg')
-                                            .action_info
-                                                a.action_unit_more.btn_blue(href='kater.html')
-                                                .action_info_name: a.action_info_link(href='kater.html') PRINCESS YACHTS PRINCESS V53
-                                                .action_info_price 112 220 000 руб.
-                                                .action_info_old_price 1 650 000 €
-                                                .action_info_options
-                                                    span Нидерланды – 2х345 cv - Дизель
                                 li.gridItem
                                     .action_unit
                                         a.action_photo.bs.imgLoad(href='kater.html')
@@ -185,7 +259,7 @@ html(lang='ru')
                                             .action_info_old_price 395 000 €
                                             .action_info_options
                                                 span Нидерланды – 2х345 cv - Дизель
-                                li.gridItem
+                                li.gridItem.mob_hidden
                                     .action_unit
                                         a.action_photo.bs.imgLoad(href='kater.html')
                                             .action_photo_year 2017
@@ -198,90 +272,10 @@ html(lang='ru')
                                             .action_info_options
                                                 span Нидерланды – 2х345 cv - Дизель
 
-                                +loop_while(1)
-                                    li.gridItem.dt_only
-                                        .action_unit
-                                            a.action_photo.bs.imgLoad(href='kater.html')
-                                                .action_photo_year 2012
-                                                img(src='./images/kater_1.jpg')
-                                            .action_info
-                                                a.action_unit_more.btn_blue(href='kater.html')
-                                                .action_info_name: a.action_info_link(href='kater.html') LINSSEN YACHTS LINSSEN 439 SEDAN
-                                                .action_info_price 26 686 000 руб.
-                                                .action_info_old_price 395 000 €
-                                                .action_info_options
-                                                    span Нидерланды – 2х345 cv - Дизель
-                                    li.gridItem.dt_only
-                                        .action_unit
-                                            a.action_photo.bs.imgLoad(href='kater.html')
-                                                .action_photo_year 2017
-                                                img(src='./images/kater_1.jpg')
-                                            .action_info
-                                                a.action_unit_more.btn_blue(href='kater.html')
-                                                .action_info_name: a.action_info_link(href='kater.html') PRESTIGE PRESTIGE 630
-                                                .action_info_price 112 220 000 руб.
-                                                .action_info_old_price 1 650 000 €
-                                                .action_info_options
-                                                    span Нидерланды – 2х345 cv - Дизель
-                                    li.gridItem.dt_only
-                                        .action_unit
-                                            a.action_photo.bs.imgLoad(href='kater.html')
-                                                .action_photo_year 2017
-                                                img(src='./images/kater_1.jpg')
-                                            .action_info
-                                                a.action_unit_more.btn_blue(href='kater.html')
-                                                .action_info_name: a.action_info_link(href='kater.html') PRINCESS YACHTS PRINCESS V53
-                                                .action_info_price 112 220 000 руб.
-                                                .action_info_old_price 1 650 000 €
-                                                .action_info_options
-                                                    span Нидерланды – 2х345 cv - Дизель
-                                    li.gridItem.dt_only
-                                        .action_unit
-                                            a.action_photo.bs.imgLoad(href='kater.html')
-                                                .action_photo_year 2017
-                                                img(src='./images/kater_1.jpg')
-                                            .action_info
-                                                a.action_unit_more.btn_blue(href='kater.html')
-                                                .action_info_name: a.action_info_link(href='kater.html') PRINCESS YACHTS PRINCESS V53
-                                                .action_info_price 112 220 000 руб.
-                                                .action_info_old_price 1 650 000 €
-                                                .action_info_options
-                                                    span Нидерланды – 2х345 cv - Дизель
-
-                            ul.action_pagination_list
-                                li._first
-                                    a.btn_v1.pagination_btn.btn_gray(href='#')
-                                        span.pagination_text
-                                            span.i-chevron-left
-                                li
-                                    span.btn_v1.pagination_btn.btn_gray._active()
-                                        span.pagination_text 1
-                                li
-                                    a.btn_v1.pagination_btn.btn_gray(href='#')
-                                        span.pagination_text 2
-                                li.mob_hidden
-                                    a.btn_v1.pagination_btn.btn_gray(href='#')
-                                        span.pagination_text 3
-                                li.mob_hidden
-                                    a.btn_v1.pagination_btn.btn_gray(href='#')
-                                        span.pagination_text 4
-                                li
-                                    span.btn_v1.pagination_btn.btn_gray()
-                                        span.pagination_text ...
-                                li
-                                    a.btn_v1.pagination_btn.btn_gray(href='#')
-                                        span.pagination_text 24
-                                li._last
-                                    a.btn_v1.pagination_btn.btn_gray(href='#')
-                                        span.pagination_text
-                                            span.i-chevron-right
-
-                        +aside(true, 'dt_only')
-
                 +advice_section()
 
             +footer()
 
         +popups()
 
-    +scripts(true)
+    +scripts(false, false, false, true)

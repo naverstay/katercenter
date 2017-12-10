@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'kater_icons';
-  src:  url('fonts/kater_icons.eot?e26r0b');
-  src:  url('fonts/kater_icons.eot?e26r0b#iefix') format('embedded-opentype'),
-    url('fonts/kater_icons.ttf?e26r0b') format('truetype'),
-    url('fonts/kater_icons.woff?e26r0b') format('woff'),
-    url('fonts/kater_icons.svg?e26r0b#kater_icons') format('svg');
+  src:  url('fonts/kater_icons.eot?7h27td');
+  src:  url('fonts/kater_icons.eot?7h27td#iefix') format('embedded-opentype'),
+    url('fonts/kater_icons.ttf?7h27td') format('truetype'),
+    url('fonts/kater_icons.woff?7h27td') format('woff'),
+    url('fonts/kater_icons.svg?7h27td#kater_icons') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -24,6 +24,9 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.i-filter:before {
+  content: "\e909";
+}
 .i-clock:before {
   content: "\e904";
 }

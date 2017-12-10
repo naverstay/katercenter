@@ -150,36 +150,6 @@ function getScrollbarWidth() {
 }
 
 function initThanksPopup() {
-    //var thanks_modal = $("#thanks_modal").fancybox({
-    //    maxWidth: 800,
-    //    maxHeight: 600,
-    //    fitToView: false,
-    //    width: '70%',
-    //    height: '70%',
-    //    autoSize: false,
-    //    closeClick: false,
-    //    openEffect: 'none',
-    //    closeEffect: 'none',
-    //    afterLoad: function () {
-    //
-    //    }
-    //});
-
-
-    //$('.openThanksPopup').on('click', function () {
-    //
-    //    $.fancybox.open($("#thanks_modal"), {
-    //        helpers: {
-    //            overlay: {
-    //                locked: false
-    //            }
-    //        }
-    //    });
-    //
-    //    return false;
-    //});
-
-
     $.fancyConfirm = function (opts) {
         opts = $.extend(true, {
             title: 'Are you sure?',
@@ -191,6 +161,9 @@ function initThanksPopup() {
 
         $.fancybox.open({
             type: 'html',
+            clickSlide: false,
+            clickOutside: false,
+            touch: false,
             src:
             '<div class="fc-content">' +
             '<div class="popup_decor">' +
@@ -216,6 +189,8 @@ function initThanksPopup() {
                         locked: false
                     }
                 },
+                //parentEl: ".header",
+                //parentEl: ".fancyParent",
                 baseTpl:
                 '<div class="fancybox-container fc-container fancybox-container-v1" role="dialog" tabindex="-1">' +
                 '<div class="fancybox-bg"></div>' +
@@ -238,10 +213,53 @@ function initThanksPopup() {
         });
     };
 
+    $.fancyPopup = function (opts) {
+        opts = $.extend(true, {
+            title: 'Are you sure?',
+            message: '',
+            block: '',
+            okButton: 'OK',
+            noButton: 'Cancel',
+            callback: $.noop
+        }, opts || {});
+
+        $.fancybox.open({
+            type: 'html',
+            clickSlide: false,
+            clickOutside: false,
+            touch: false,
+            src: $('<div class="fc-content _full"></div>').append(opts.block),
+            opts: {
+                animationDuration: 350,
+                animationEffect: 'material',
+                //modal: true,
+                helpers: {
+                    overlay: {
+                        locked: false
+                    }
+                },
+                //parentEl: ".header",
+                //parentEl: ".fancyParent",
+                baseTpl:
+                '<div class="fancybox-container fc-container fancybox-container-v1" role="dialog" tabindex="-1">' +
+                '<div class="fancybox-bg"></div>' +
+                '<div class="fancybox-inner">' +
+                '<div class="fancybox-stage"></div>' +
+                '</div>' +
+                '</div>',
+                beforeShow: function () {
+                    body.addClass('_popup_opened');
+                },
+                afterClose: function (instance, current, e) {
+                    body.removeClass('_popup_opened');
+                }
+            }
+        });
+    };
+
     $(".openThanksPopup").on('click', function (e) {
         e.preventDefault();
 
-        // Open customized confirmation dialog window
         $.fancyConfirm({
             title: 'Спасибо!',
             message: 'Ваша заявка отправлена.',
@@ -267,6 +285,22 @@ function initThanksPopup() {
         return false;
     });
 
+    if ($('.advice_section').length) {
+        $(".questionPopup").on('click', function (e) {
+            e.preventDefault();
+
+            // Open customized confirmation dialog window
+            $.fancyPopup({
+                block: $('.advice_section').html(),
+                helpers: {
+                    overlay: {
+                        locked: false
+                    }
+                }
+            });
+            return false;
+        });
+    }
 }
 
 function initBoard() {

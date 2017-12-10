@@ -70,6 +70,16 @@
     letter-spacing: .03em;
   }
 
+  &.get_info_btn {
+    text-align: center;
+    display: inline-block;
+    vertical-align: top;
+    border-radius: 18px;
+    padding: 0 20px;
+    font: bold 12px/34px $Montserrat;
+    letter-spacing: .03em;
+  }
+
   &.advice_btn {
     margin: 22px 0 26px;
     text-align: center;
@@ -158,5 +168,17 @@
 
   &:hover {
     background: #34b6ef;
+  }
+}
+
+.btn_black {
+  @include transition_all(background .2s ease-in-out, border-color .2s ease-in-out);
+  color: #fff;
+  background: #1a1a1a;
+  border: 1px solid transparentize($gl_blue, .5);
+
+  &:hover {
+    background: $gl_blue;
+    border-color: $gl_blue;
   }
 }

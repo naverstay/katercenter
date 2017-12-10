@@ -197,6 +197,13 @@
   }
 }
 
+.mob_vis {
+
+  @include respond-to-max($resp_s) {
+    display: block !important;
+  }
+}
+
 // todo remove
 #chromeperfectpixel-supported-by {
   display: none !important;

@@ -70,33 +70,70 @@ mixin menu_link(cls, ref, txt)
     - else
         a.menu_link(href= ref)= txt
 
-mixin aside(title_spacer)
-    .aside(class= title_spacer ? '_title_space' : '')
-        ul.aside_ads.dt_only
+mixin filter_block()
+    .filter_wrapper.sticky(data-margin-top_='100' data-sticky-class='_stuck')
+        .tabContainer._open_tabs(data-mob-event='mobTabSwitcher')
+            .filter_tabs
+                .filter_category.dt_hidden
+                    a.category_btn.categoryBtn_(href='#') Категории
+                    //-a.close_category_btn.btn_blue.closeCategoryBtn(href='#')
+                ul.tabControls.tab_controls
+                    li.tab_unit._tab-1
+                        a.tab_link(href='#tab_1'): span Более 10 метров
+                        a.tab_close_link.tabCloseLink(href='#')
+                    li.tab_unit._tab-2
+                        a.tab_link(href='#tab_2'): span Cо стационарными двигателями
+                        a.tab_close_link.tabCloseLink(href='#')
+                    li.tab_unit._tab-3
+                        a.tab_link(href='#tab_3'): span C подвесными двигателями
+                        a.tab_close_link.tabCloseLink(href='#')
+                    li.tab_unit._tab-4
+                        a.tab_link(href='#tab_4'): span РИБ
+                        a.tab_close_link.tabCloseLink(href='#')
+                    li.tab_unit._tab-5
+                        a.tab_link(href='#tab_4'): span Трейлеры
+                        a.tab_close_link.tabCloseLink(href='#')
+                //-a.collapse_category_btn.closeCategoryBtn.btn_v4.btn_gray-2(href='#') Закрыть
+
+            .filter_box
+                #tab_1.filter_tab
+                    +filter_tab()
+                #tab_2.filter_tab
+                    +filter_tab()
+                #tab_3.filter_tab
+                    +filter_tab()
+                #tab_4.filter_tab
+                    +filter_tab()
+                #tab_5.filter_tab
+                    +filter_tab()
+
+mixin aside(title_spacer, cls)
+    .aside(class= (title_spacer ? '_title_space' : ''))
+        ul.aside_promo(class= (cls ? cls : ''))
             li
-                .ad_box.text_center
-                    .ad_box_decor
-                        .ad_infinity._left
-                        .ad_infinity._right
-                        .ad_bird
+                .promo_box.text_center
+                    .promo_box_decor
+                        .promo_infinity._left
+                        .promo_infinity._right
+                        .promo_bird
                             img(src='./images/ad_bird.svg')
-                    .ad_box_title
+                    .promo_box_title
                         span -&nbsp;20%
-                        .ad_box_wave
+                        .promo_box_wave
                             img(src='./images/wave_light_blue.svg')
-                    .ad_box_counter До лета осталось 243 дня.
-                    .ad_box_tip Время задуматься о катере!
-                    a.ad_box_more(href='#') Подробнее
+                    .promo_box_counter До лета осталось 243 дня.
+                    .promo_box_tip Время задуматься о катере!
+                    a.promo_box_more(href='#') Подробнее
             li
-                .ad_box
-                    .ad_box_recommend
+                .promo_box
+                    .promo_box_recommend
                         span.ff_mon_b Kater Center<br>
                         span рекомендует
-                    ul.ad_box_links
-                        li: a.ad_box_link(href='#') Selected boats
-                        li: a.ad_box_link(href='#') Trade-in possible
-                        li: a.ad_box_link(href='#') Guarantee
-                        li: a.ad_box_link(href='#') Insurance
+                    ul.promo_box_links
+                        li: a.promo_box_link(href='#') Selected boats
+                        li: a.promo_box_link(href='#') Trade-in possible
+                        li: a.promo_box_link(href='#') Guarantee
+                        li: a.promo_box_link(href='#') Insurance
 
 mixin advice_section()
     .advice_section
@@ -104,20 +141,20 @@ mixin advice_section()
             .advice_block.clearfix
                 .advice_caption
                     span Получите индивидуальную консультацию по&nbsp;выбору&nbsp;катера
-                    span.adv_decor._dec-bird-2
+                    span.advice_decor._dec-bird-2
                         img(src='./images/decor_bird.svg')
 
-                .adv_decor._dec-cloud-1
+                .advice_decor._dec-cloud-1
                     img(src='./images/decor_cloud.svg')
-                .adv_decor._dec-cloud-2.mob_hidden
+                .advice_decor._dec-cloud-2.mob_hidden
                     img(src='./images/decor_cloud.svg')
-                .adv_decor._dec-bird-1.mob_hidden
+                .advice_decor._dec-bird-1.mob_hidden
                     img(src='./images/decor_bird.svg')
 
                 .advice_consultant_block._left
-                    .adv_decor._dec-wave-1
+                    .advice_decor._dec-wave-1
                         img(src='./images/decor_wave_2.svg')
-                    .adv_decor._dec-wave-2.mob_hidden
+                    .advice_decor._dec-wave-2.mob_hidden
                         img(src='./images/decor_wave_2.svg')
                     .advice_consultant_info
                         .advice_consultant_photo
@@ -128,7 +165,7 @@ mixin advice_section()
                             li: a.gl_link(href='tel:+79151337988') +7 915 133-79-88
 
                 .advice_consultant_block._right
-                    .adv_decor._dec-wave-3.mob_hidden
+                    .advice_decor._dec-wave-3.mob_hidden
                         img(src='./images/decor_wave_2.svg')
                     .advice_consultant_info
                         .advice_consultant_photo
@@ -244,11 +281,13 @@ mixin multi_picker(min, max, suffix, suffix_1, suffix_2, limit, format)
             a.multiPickerBtn.btn_v3.multi_picker_btn.btn_blue(href='#') Добавить
 
 mixin popups()
-    #thanks_modal.popup.popup_v1
+    //-#thanks_modal.popup.popup_v1
         .popup_title Спасибо!
         p Ваша заявка отправлена.
         p: a.btn_v2.popup_btn.btn_blue.closeThanksPopup(href='#' data-fancybox-close) Закрыть
 
+    //-#question_popup.popup.popup_v1
+        +advice_section()
 
     //-.popup_close_btn.popupClose
 
@@ -375,14 +414,13 @@ mixin scripts(index, contacts, articles, product, lk, cart)
     //-script(src='js/easytabs/vendor/jquery.hashchange.min.js')
     script(src='js/easytabs/lib/jquery.easytabs.js')
     script(src='js/lib/nouislider.min.js')
-    script(src='js/fancybox-master/dist/jquery.fancybox.min.js')
+    script(src='js/fancybox-master/dist/jquery.fancybox.js')
     script(src='js/lib/jquery.backstretch.min.js')
     script(src='js/lib/jquery.sticky-kit.min.js')
     script(src='js/lib/jquery.inputmask.bundle.js')
     script(src='js/lib/imagesloaded.pkgd.min.js')
     script(src='js/lib/isotope.pkgd.min.js')
     script(src='js/lib/packery-mode.pkgd.js')
-    //-script(src='js/lib/skrollr.js')
     script(src='js/lib/select2.js')
     script(src='js/main.js')
     |
@@ -390,6 +428,7 @@ mixin scripts(index, contacts, articles, product, lk, cart)
     - if (index)
         |
         | <!--build:js js/index.min.js -->
+        script(src='js/lib/skrollr.js')
         script(src='js/index.js')
         |
         | <!--endbuild-->
@@ -401,9 +440,10 @@ mixin scripts(index, contacts, articles, product, lk, cart)
         | <!--endbuild-->
         script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCl7THpWflv0u70jhfuU4T6KbuNy0fuxME&callback=loadMap')
 
-    - if (cart)
+    - if (product)
         |
-        | <!--build:js js/cart.min.js -->
-        script(src='js/cart.js')
+        | <!--build:js js/kater.min.js -->
+        script(src='js/lib/fotorama.js')
+        script(src='js/kater.js')
         |
         | <!--endbuild-->

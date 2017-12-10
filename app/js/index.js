@@ -3,7 +3,7 @@ var s, heroDecoration;
 $(function ($) {
     heroDecoration = $('.heroDecoration');
 
-    //initSkrollr();
+    initSkrollr();
 
 });
 
@@ -33,7 +33,7 @@ function destroySkrollr() {
 function initSkrollr() {
     var $window = $(window);
 
-    if ($window.width() > 980) {
+    if ($window.width() > 768) {
         var scrollTime = .1;			//Scroll time
         var scrollDistance = 50;		//Distance. Use smaller value for shorter scroll and greater value for longer scroll
 

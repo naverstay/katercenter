@@ -117,6 +117,12 @@ body {
     padding-bottom: 62px;
   }
 
+  @include respond-to-max($resp_xl) {
+    &._mod-1 {
+      padding-bottom: 0;
+    }
+  }
+
   @include respond-to-min($resp_xl) {
     float: left;
     padding-right: 23px;
@@ -142,7 +148,7 @@ body {
   position: absolute;
 }
 
-.action_list_pagination {
+.action_pagination_list {
   @extend %clearfix;
   text-align: center;
   margin-bottom: 60px;
@@ -196,9 +202,23 @@ body {
   margin-left: -20px;
   //padding-bottom: 40px;
 
+  &._similar {
+    margin-bottom: 5px;
+  }
+
+  @include respond-to-min($resp_s) {
+    &._similar {
+      margin-bottom: 40px;
+    }
+  }
+
   @include respond-to-min($resp_xl) {
     margin-right: -1%;
     margin-left: -40px;
+
+    &._similar {
+      margin-bottom: 80px;
+    }
   }
 
   > li {
@@ -270,6 +290,7 @@ body {
 .action_unit_more {
   @extend %icon_pseudo;
   position: absolute;
+  z-index: 1;
   right: 30px;
   top: -12px;
   width: 24px;
@@ -293,6 +314,10 @@ body {
   font: 24px/28px $Ledger;
   letter-spacing: .027em;
   color: #fff;
+
+  &:hover {
+    text-decoration: underline;
+  }
 
   @include respond-to-min($resp_s) {
     bottom: 53px;
@@ -394,6 +419,22 @@ body {
   padding-top: 16px;
   border-top: 1px solid #dfdfdf;
   height: 33px;
+
+  ._wide & {
+    border-top: 0;
+    position: relative;
+    color: #fff;
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 30px;
+      border-top: 1px solid #dfdfdf;
+      opacity: .2;
+    }
+  }
 }
 
 .ad_info_date {
@@ -452,20 +493,21 @@ body {
   }
 }
 
-.aside_ads {
+.aside_promo {
 
   li {
     margin-bottom: 40px;
   }
 }
 
-.ad_box {
+.promo_box {
   background: $gl_blue;
   position: relative;
   color: #fff;
   padding: 20px 20px 10px;
   min-height: 250px;
 
+  ._promo-1 &,
   .action_list & {
     width: 300px;
     max-width: 100%;
@@ -483,7 +525,7 @@ body {
   }
 }
 
-.ad_box_recommend {
+.promo_box_recommend {
   font: 24px/31px $Montserrat;
   margin-bottom: 12px;
   padding: 4px 0 24px;
@@ -496,18 +538,18 @@ body {
   }
 }
 
-.ad_bird {
+.promo_bird {
   position: absolute;
   top: 0;
   right: 97px;
 }
 
-.ad_box_decor {
+.promo_box_decor {
   position: relative;
   height: 28px;
 }
 
-.ad_infinity {
+.promo_infinity {
   position: absolute;
   top: 0;
   width: 48px;
@@ -540,7 +582,7 @@ body {
   }
 }
 
-.ad_box_title {
+.promo_box_title {
   font: bold 48px/58px $Montserrat;
   text-align: center;
   background: inherit;
@@ -551,18 +593,18 @@ body {
   border-bottom: 4px solid #84c2f1;
 }
 
-.ad_box_counter {
+.promo_box_counter {
   font: bold 16px/24px $Montserrat;
   letter-spacing: .04em;
 }
 
-.ad_box_tip {
+.promo_box_tip {
   font: 18px/24px $Ledger;
   letter-spacing: .025em;
   margin-bottom: 21px;
 }
 
-.ad_box_more {
+.promo_box_more {
   display: inline-block;
   vertical-align: top;
   color: #fff;
@@ -570,7 +612,7 @@ body {
   letter-spacing: .05em;
 }
 
-.ad_box_links {
+.promo_box_links {
   background: url(../images/lifebuoy.svg) 93% 93% no-repeat;
 
   li {
@@ -578,13 +620,13 @@ body {
   }
 }
 
-.ad_box_link {
+.promo_box_link {
   color: #fff;
   font: bold 14px/24px $Montserrat;
   letter-spacing: -.01em;
 }
 
-.ad_box_wave {
+.promo_box_wave {
   position: absolute;
   bottom: -4px;
   right: 0;

@@ -50,14 +50,14 @@
 
   @include respond-to-min($resp_s) {
     height: 103px;
+  }
 
+  @include respond-to-min($resp_xl) {
     ._has_breadcrumbs & {
       height: 130px;
     }
-  }
 
-  ._wide & {
-    @include respond-to-min($resp_xl) {
+    ._wide & {
       height: 148px !important;
     }
   }
@@ -366,6 +366,7 @@
       display: block;
     }
   }
+
 }
 
 .callback_block {
@@ -386,6 +387,12 @@
 
   @include respond-to-min($resp_xl) {
     right: 15px;
+  }
+
+  @include respond-min-max($resp_xl, $resp_xxl) {
+    ._popup_opened & {
+      margin-right: 70px;
+    }
   }
 }
 
@@ -632,18 +639,19 @@
   @include respond-to-min($resp_s) {
     margin-top: 25px;
   }
+
 }
 
 .breadcrumbs_list {
   overflow: hidden;
   font-size: 0;
   //padding: 16px 0 18px;
-  padding: 16px 0 12px;
+  padding: 16px 0 10px;
   white-space: nowrap;
   text-overflow: ellipsis;
 
   @include respond-to-min($resp_s) {
-    padding: 16px 0 16px;
+    //padding: 16px 0 16px;
   }
 }
 
@@ -828,13 +836,13 @@
   }
 }
 
-.filter_banner {
-  position: absolute;
-  bottom: 15px;
-  right: 0;
-  left: 0;
+.filter_promo {
   z-index: 1;
   text-align: center;
+
+  &._alone {
+    margin-bottom: 40px;
+  }
 
   img {
     display: inline-block;
@@ -842,17 +850,39 @@
     max-width: 100%;
   }
 
+  .filter_block & {
+    position: absolute;
+    bottom: 15px;
+    right: 0;
+    left: 0;
+  }
+
   @include respond-to-min($resp_s) {
-    bottom: 20px;
-    right: -15px;
-    left: -15px;
+
+    .filter_block & {
+      bottom: 20px;
+      right: -15px;
+      left: -15px;
+    }
+
+    &._alone {
+      margin-bottom: 80px;
+    }
   }
 
   @include respond-to-min($resp_xl) {
-    right: 0;
-    left: 0;
-    bottom: 15px;
-    padding-right: 10%;
+    padding-right: 1.5%;
+
+    .filter_block & {
+      right: 0;
+      left: 0;
+      bottom: 15px;
+      padding-right: 10%;
+    }
+
+    &._alone {
+      margin-bottom: 88px;
+    }
   }
 }
 
