@@ -631,6 +631,7 @@
 }
 
 .breadcrumbs_section {
+  will-change: transform;
   z-index: -1;
   position: relative;
   background: #fff;
@@ -639,7 +640,6 @@
   @include respond-to-min($resp_s) {
     margin-top: 25px;
   }
-
 }
 
 .breadcrumbs_list {
@@ -738,7 +738,6 @@
 
   img {
     display: block;
-    width: 100%;
   }
 
   @include respond-to-min($resp_s) {

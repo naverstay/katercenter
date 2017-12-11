@@ -202,7 +202,7 @@
 
     .select2-search--inline .select2-search__field {
       margin: 0 0 5px;
-      font: 400 12px/22px $Montserrat;
+      font: 400 12px/18px $Montserrat;
 
       &::-webkit-input-placeholder {
         color: $gl_blue;
@@ -488,6 +488,7 @@
   .fancybox-slide {
     z-index: 5;
     pointer-events: none;
+    overflow: hidden;
   }
 
   .fc-content {
@@ -558,5 +559,4 @@
   .popup_controls {
     text-align: center;
   }
-
 }

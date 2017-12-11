@@ -37,7 +37,7 @@ mixin header(active, breadcrumbs)
                 .logo_block
                     a.logo(href='index.html')
                         span Kater&nbsp;&nbsp;Center
-                        img.logo_decor(src='./images/decor_wave_2.svg')
+                        img.logo_decor(src='./images/decor_wave_2.svg' width=48 height=10)
 
             .header_nav
                 .callback_block
@@ -142,20 +142,20 @@ mixin advice_section()
                 .advice_caption
                     span Получите индивидуальную консультацию по&nbsp;выбору&nbsp;катера
                     span.advice_decor._dec-bird-2
-                        img(src='./images/decor_bird.svg')
+                        img(src='./images/decor_bird.svg' width=16 height=10)
 
                 .advice_decor._dec-cloud-1
-                    img(src='./images/decor_cloud.svg')
+                    img(src='./images/decor_cloud.svg' width=70 height=26)
                 .advice_decor._dec-cloud-2.mob_hidden
-                    img(src='./images/decor_cloud.svg')
+                    img(src='./images/decor_cloud.svg' width=70 height=26)
                 .advice_decor._dec-bird-1.mob_hidden
-                    img(src='./images/decor_bird.svg')
+                    img(src='./images/decor_bird.svg' width=16 height=10)
 
                 .advice_consultant_block._left
                     .advice_decor._dec-wave-1
-                        img(src='./images/decor_wave_2.svg')
+                        img(src='./images/decor_wave_2.svg' width=48 height=10)
                     .advice_decor._dec-wave-2.mob_hidden
-                        img(src='./images/decor_wave_2.svg')
+                        img(src='./images/decor_wave_2.svg' width=48 height=10)
                     .advice_consultant_info
                         .advice_consultant_photo
                             img(src='./images/anton.png')
@@ -166,7 +166,7 @@ mixin advice_section()
 
                 .advice_consultant_block._right
                     .advice_decor._dec-wave-3.mob_hidden
-                        img(src='./images/decor_wave_2.svg')
+                        img(src='./images/decor_wave_2.svg' width=48 height=10)
                     .advice_consultant_info
                         .advice_consultant_photo
                             img(src='./images/stas.png')
@@ -215,7 +215,7 @@ mixin footer()
             .footer_logo
                 a.logo(href='index.html')
                     span Kater<br>Center
-                    img.logo_decor(src='./images/decor_wave_2.svg')
+                    img.logo_decor(src='./images/decor_wave_2.svg' width=48 height=10)
 
             .footer_slogan Катера<br>из европы
 
@@ -444,6 +444,7 @@ mixin scripts(index, contacts, articles, product, lk, cart)
         |
         | <!--build:js js/kater.min.js -->
         script(src='js/lib/fotorama.js')
+        script(src='js/lib/skrollr.js')
         script(src='js/kater.js')
         |
         | <!--endbuild-->

@@ -2650,6 +2650,7 @@ body {
     overflow-y: auto; }
 
 .breadcrumbs_section {
+  will-change: transform;
   z-index: -1;
   position: relative;
   background: #fff;
@@ -2722,8 +2723,7 @@ body {
   position: absolute;
   display: none; }
   .filter_decor img {
-    display: block;
-    width: 100%; }
+    display: block; }
   @media only screen and (min-width: 768px) {
     .filter_decor {
       display: block; } }
@@ -3576,7 +3576,7 @@ body {
 
 .select_box_v2 .select2-container--default .select2-search--inline .select2-search__field {
   margin: 0 0 5px;
-  font: 400 12px/22px "Montserrat", sans-serif; }
+  font: 400 12px/18px "Montserrat", sans-serif; }
   .select_box_v2 .select2-container--default .select2-search--inline .select2-search__field::-webkit-input-placeholder {
     color: #1961c5; }
   .select_box_v2 .select2-container--default .select2-search--inline .select2-search__field::-moz-placeholder {
@@ -3773,7 +3773,8 @@ body {
     pointer-events: none; }
   .fancybox-container-v1 .fancybox-slide {
     z-index: 5;
-    pointer-events: none; }
+    pointer-events: none;
+    overflow: hidden; }
   .fancybox-container-v1 .fc-content {
     width: 300%;
     max-width: 320px;
@@ -3846,8 +3847,7 @@ body {
 .advice_decor {
   position: absolute; }
   .advice_decor img {
-    display: block;
-    width: 100%; }
+    display: block; }
   .advice_decor._dec-bird-1 {
     top: 48px;
     left: 3.2%; }
@@ -4207,7 +4207,7 @@ body {
   @media only screen and (min-width: 1280px) {
     .product_block {
       margin-left: -40px;
-      margin-bottom: 37px; } }
+      margin-bottom: 0; } }
 
 .product_box {
   margin-bottom: 16px; }

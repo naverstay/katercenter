@@ -167,9 +167,9 @@ function initThanksPopup() {
             src:
             '<div class="fc-content">' +
             '<div class="popup_decor">' +
-            '<div class="pop_decor _dec-bird-1"><img src="./images/decor_bird.svg"/></div>' +
-            '<div class="pop_decor _dec-bird-2"><img src="./images/decor_bird.svg"/></div>' +
-            '<div class="pop_decor _dec-wave-2"><img src="./images/decor_wave_2.svg"/></div>' +
+            '<div class="pop_decor _dec-bird-1"><img width="16" height="10" src="./images/decor_bird.svg"/></div>' +
+            '<div class="pop_decor _dec-bird-2"><img width="16" height="10" src="./images/decor_bird.svg"/></div>' +
+            '<div class="pop_decor _dec-wave-2"><img width="48" height="10" src="./images/decor_wave_2.svg"/></div>' +
             '</div>' +
             '<div class="popup_inner">' +
             '<h3 class="popup_title">' + opts.title + '</h3>' +
@@ -350,6 +350,39 @@ function initBS() {
         var bs = $(this);
         bs.addClass('_backstretched').backstretch(bs.find('img').attr('src'));
     });
+}
+
+
+function destroySkrollr() {
+    if (s) {
+        var elements = $('.skrollable');
+        s.destroy();
+        elements.removeAttr('style');
+    }
+}
+
+function initSkrollr() {
+    var $window = $(window);
+
+    if ($window.width() > 768) {
+        var scrollTime = .1;			//Scroll time
+        var scrollDistance = 50;		//Distance. Use smaller value for shorter scroll and greater value for longer scroll
+
+        if (mobileCheck()) {
+            destroySkrollr();
+        } else {
+            s = skrollr.init({
+                forceHeight: false,
+                //scale: .6,
+                mobileCheck: false,
+                //skrollrBody: 'scroll-content',
+                //edgeStrategy: 'reset',
+                easing: 'easeOutQuad'
+            });
+        }
+    } else {
+        destroySkrollr();
+    }
 }
 
 function initStick() {
