@@ -53,11 +53,14 @@
   }
 
   @include respond-to-min($resp_xl) {
+    @include transition_all(height .2s ease-in-out);
+
     ._has_breadcrumbs & {
-      height: 130px;
+      //height: 130px;
     }
 
-    ._wide & {
+    ._wide:not(.nav-up) & {
+      //@include transition_all(height .1s ease-in-out);
       height: 148px !important;
     }
   }
@@ -412,6 +415,31 @@
   }
 }
 
+.go_top_btn {
+  @extend %icon_pseudo;
+  @extend .btn_blue;
+  @include transition_all(border-color .2s ease-in-out);
+  position: fixed;
+  z-index: 4;
+  color: rgba(255, 255, 255, .7);
+  margin-right: 5px;
+  letter-spacing: .02em;
+  right: 50px;
+  bottom: 50px;
+  width: 24px;
+  height: 24px;
+  border-radius: 100%;
+  text-align: center;
+
+  &:before {
+    content: $i-chevron-up;
+    text-align: center;
+    font-size: 14px;
+    line-height: 24px;
+    text-indent: 1px;
+  }
+}
+
 .callback_btn {
   @extend %icon_pseudo;
   @include transition_all(border-color .2s ease-in-out);
@@ -632,7 +660,7 @@
 
 .breadcrumbs_section {
   will-change: transform;
-  z-index: -1;
+  z-index: 2;
   position: relative;
   background: #fff;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .16);
@@ -666,7 +694,7 @@
     content: '–';
     display: inline-block;
     vertical-align: middle;
-    padding-right: 5px;
+    padding: 0 5px;
   }
 
   &:last-child {
@@ -917,6 +945,7 @@
     &._bottom {
 
       @include respond-to-min($resp_xl) {
+        //@include transition_all(transform .3s, opacity .3s);
         position: fixed !important;
         top: 0 !important;
         right: 0 !important;
@@ -929,9 +958,30 @@
           background: #fff;
           height: 52px;
         }
+
+        .tab_container {
+          height: 100px;
+        }
+
+        .nav-up & {
+          box-shadow: none;
+          overflow: hidden;
+
+          .tab_container {
+            @include transition_all(height .2s ease-in-out);
+            height: 0;
+            overflow: hidden;
+          }
+          //@include transform_translate(0, -100%);
+          //opacity: 0;
+        }
       }
     }
   }
+}
+
+.tab_container {
+  @include transition_all(height .2s 0s ease-in-out);
 }
 
 .filter_tabs {

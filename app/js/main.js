@@ -1,6 +1,9 @@
 var body, html, doc, wnd,
-    closeMenuTimer,
+    hideMenuTimer,
     boardGrid;
+var didScroll;
+var lastScrollTop = 0;
+var delta = 5;
 
 $(function ($) {
 
@@ -37,6 +40,9 @@ $(function ($) {
 
         return false;
 
+    }).delegate('.goTopBtn', 'click', function () {
+        docScrollTo(0, 600);
+        return false;
     }).delegate('.tabCloseLink', 'click', function () {
         var btn = $(this);
 
@@ -123,6 +129,15 @@ $(function ($) {
     all_dialog_close();
 
 });
+
+function docScrollTo(pos, speed, callback) {
+
+    $('html,body').animate({'scrollTop': pos}, speed, function () {
+        if (typeof(callback) == 'function') {
+            callback();
+        }
+    });
+}
 
 function getScrollbarWidth() {
     var outer = document.createElement("div");
@@ -682,6 +697,49 @@ function mobileCheck() {
     return (/Android|iPhone|iPad|iPod|BlackBerry/i).test(navigator.userAgent || navigator.vendor || window.opera) || (('ontouchstart' in window) || (navigator.MaxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0));
 }
 
-$(window).on('scroll', function () {
+function checkHeader() {
+    // Hide Header on on scroll down
+    var nb = $('.filter_section');
 
+    if (nb.length) {
+        var navbarHeight = nb.outerHeight(), hd = $('.header');
+
+        if (didScroll) {
+            hasScrolled();
+            didScroll = false;
+        }
+
+        function hasScrolled() {
+            var st = $(this).scrollTop();
+
+            // Make sure they scroll more than delta
+            if (Math.abs(lastScrollTop - st) <= delta) return;
+
+            // If they scrolled down and are past the navbar, add class .nav-up.
+            // This is necessary so you never see what is "behind" the navbar.
+            if (st > lastScrollTop && st > navbarHeight) {
+                // Scroll Down
+                nb.removeClass('nav-down').addClass('nav-up');
+                hd.removeClass('nav-down').addClass('nav-up');
+            } else {
+                // Scroll Up
+                if (st + $(window).height() < $(document).height()) {
+                    nb.removeClass('nav-up').addClass('nav-down');
+                    hd.removeClass('nav-up').addClass('nav-down');
+                }
+            }
+
+            lastScrollTop = st;
+        }
+    }
+}
+
+$(window).on('scroll', function () {
+    clearTimeout(hideMenuTimer);
+
+    hideMenuTimer = setTimeout(function () {
+        didScroll = true;
+
+        checkHeader();
+    }, 100);
 });
